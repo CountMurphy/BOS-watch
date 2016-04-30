@@ -2027,6 +2027,49 @@ by R. Vogg  15.March.2002</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="BOS_libs">
+<packages>
+<package name="SWD">
+<pad name="SWD_CLK" x="0" y="0" drill="1.1" shape="square"/>
+<pad name="SWD_DIO" x="-2.54" y="0" drill="1.1" shape="square"/>
+<pad name="GND" x="2.54" y="0" drill="1.1" shape="octagon"/>
+<wire x1="-3.81" y1="1.27" x2="-3.81" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="-1.27" x2="3.81" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="3.81" y1="-1.27" x2="3.81" y2="1.27" width="0.127" layer="21"/>
+<wire x1="3.81" y1="1.27" x2="-3.81" y2="1.27" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SWD_BREAKOUT">
+<wire x1="-17.78" y1="5.08" x2="12.7" y2="5.08" width="0.254" layer="94"/>
+<wire x1="12.7" y1="5.08" x2="12.7" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-5.08" x2="-17.78" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-17.78" y1="-5.08" x2="-17.78" y2="5.08" width="0.254" layer="94"/>
+<pin name="SWD_DIO" x="-12.7" y="10.16" length="middle" rot="R270"/>
+<pin name="SWD_CLK" x="-2.54" y="10.16" length="middle" rot="R270"/>
+<pin name="GND" x="7.62" y="10.16" length="middle" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SWD_BREAKOUTS">
+<gates>
+<gate name="G$1" symbol="SWD_BREAKOUT" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="SWD">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="SWD_CLK" pad="SWD_CLK"/>
+<connect gate="G$1" pin="SWD_DIO" pad="SWD_DIO"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -2061,6 +2104,8 @@ by R. Vogg  15.March.2002</description>
 <part name="SUPPLY11" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY12" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY13" library="supply2" deviceset="V+" device=""/>
+<part name="SWD_BREAKOUT" library="BOS_libs" deviceset="SWD_BREAKOUTS" device=""/>
+<part name="SUPPLY14" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2091,6 +2136,8 @@ by R. Vogg  15.March.2002</description>
 <instance part="SUPPLY11" gate="1" x="-121.92" y="78.74"/>
 <instance part="SUPPLY12" gate="GND" x="-119.38" y="139.7"/>
 <instance part="SUPPLY13" gate="1" x="-60.96" y="162.56"/>
+<instance part="SWD_BREAKOUT" gate="G$1" x="149.86" y="157.48" rot="R90"/>
+<instance part="SUPPLY14" gate="GND" x="127" y="165.1" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -2167,6 +2214,11 @@ by R. Vogg  15.March.2002</description>
 <pinref part="SUPPLY12" gate="GND" pin="GND"/>
 <wire x1="-101.6" y1="149.86" x2="-119.38" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="-119.38" y1="149.86" x2="-119.38" y2="142.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY14" gate="GND" pin="GND"/>
+<pinref part="SWD_BREAKOUT" gate="G$1" pin="GND"/>
+<wire x1="129.54" y1="165.1" x2="139.7" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="V+" class="0">
@@ -2362,6 +2414,29 @@ by R. Vogg  15.March.2002</description>
 <pinref part="U$3" gate="G$1" pin="R"/>
 <wire x1="38.1" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <label x="43.18" y="63.5" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PTA0" class="0">
+<segment>
+<pinref part="SWD_BREAKOUT" gate="G$1" pin="SWD_CLK"/>
+<wire x1="139.7" y1="154.94" x2="129.54" y2="154.94" width="0.1524" layer="91"/>
+<label x="129.54" y="152.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTA0"/>
+<wire x1="-25.4" y1="109.22" x2="-33.02" y2="109.22" width="0.1524" layer="91"/>
+<junction x="-33.02" y="109.22"/>
+</segment>
+</net>
+<net name="PTA3" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="PTA3"/>
+<wire x1="-25.4" y1="101.6" x2="-33.02" y2="101.6" width="0.1524" layer="91"/>
+<junction x="-33.02" y="101.6"/>
+</segment>
+<segment>
+<pinref part="SWD_BREAKOUT" gate="G$1" pin="SWD_DIO"/>
+<wire x1="139.7" y1="144.78" x2="129.54" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
