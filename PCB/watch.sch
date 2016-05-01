@@ -3713,7 +3713,7 @@ Standard decoupling cap</description>
 <part name="DISP1" library="SparkFun-Displays" deviceset="7-SEGMENT-4DIGIT-COUNTER" device="-HP-BUBBLE"/>
 <part name="DISP2" library="SparkFun-Displays" deviceset="7-SEGMENT-4DIGIT-COUNTER" device="-HP-BUBBLE"/>
 <part name="U$1" library="SparkFun" deviceset="HMC6343" device="A"/>
-<part name="C1" library="SparkFun" deviceset="CAP" device="0603"/>
+<part name="COMPCAP" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
 <part name="SUPPLY1" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="supply2" deviceset="V+" device=""/>
@@ -3761,10 +3761,10 @@ Standard decoupling cap</description>
 <instance part="DISP1" gate="G$1" x="-10.16" y="195.58"/>
 <instance part="DISP2" gate="G$1" x="60.96" y="195.58"/>
 <instance part="U$1" gate="G$1" x="-93.98" y="66.04"/>
-<instance part="C1" gate="G$1" x="-63.5" y="101.6"/>
+<instance part="COMPCAP" gate="G$1" x="-63.5" y="58.42"/>
 <instance part="SUPPLY1" gate="GND" x="-124.46" y="58.42"/>
-<instance part="SUPPLY2" gate="GND" x="-63.5" y="93.98"/>
-<instance part="SUPPLY3" gate="1" x="-63.5" y="114.3"/>
+<instance part="SUPPLY2" gate="GND" x="-63.5" y="50.8"/>
+<instance part="SUPPLY3" gate="1" x="-63.5" y="71.12"/>
 <instance part="SUPPLY4" gate="GND" x="58.42" y="55.88" rot="R90"/>
 <instance part="U1" gate="G$1" x="160.02" y="91.44"/>
 <instance part="SUPPLY5" gate="GND" x="119.38" y="96.52" rot="R270"/>
@@ -3821,8 +3821,8 @@ Standard decoupling cap</description>
 </segment>
 <segment>
 <pinref part="SUPPLY2" gate="GND" pin="GND"/>
-<pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="-63.5" y1="99.06" x2="-63.5" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="COMPCAP" gate="G$1" pin="2"/>
+<wire x1="-63.5" y1="55.88" x2="-63.5" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY4" gate="GND" pin="GND"/>
@@ -3915,9 +3915,9 @@ Standard decoupling cap</description>
 </net>
 <net name="V+" class="0">
 <segment>
-<pinref part="C1" gate="G$1" pin="1"/>
+<pinref part="COMPCAP" gate="G$1" pin="1"/>
 <pinref part="SUPPLY3" gate="1" pin="V+"/>
-<wire x1="-63.5" y1="106.68" x2="-63.5" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="-63.5" y1="63.5" x2="-63.5" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY8" gate="1" pin="V+"/>
