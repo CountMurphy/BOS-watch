@@ -3752,6 +3752,10 @@ Standard decoupling cap</description>
 <part name="S1" library="adafruit" deviceset="EG1213" device=""/>
 <part name="SUPPLY20" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY21" library="supply2" deviceset="GND" device=""/>
+<part name="I2CR1" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="12CR2" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="SUPPLY22" library="supply2" deviceset="V+" device=""/>
+<part name="SUPPLY23" library="supply2" deviceset="V+" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3800,6 +3804,10 @@ Standard decoupling cap</description>
 <instance part="S1" gate="1" x="134.62" y="55.88"/>
 <instance part="SUPPLY20" gate="1" x="124.46" y="73.66"/>
 <instance part="SUPPLY21" gate="GND" x="-81.28" y="93.98"/>
+<instance part="I2CR1" gate="G$1" x="91.44" y="144.78" rot="R90"/>
+<instance part="12CR2" gate="G$1" x="101.6" y="144.78" rot="R90"/>
+<instance part="SUPPLY22" gate="1" x="91.44" y="157.48"/>
+<instance part="SUPPLY23" gate="1" x="101.6" y="157.48"/>
 </instances>
 <busses>
 </busses>
@@ -3968,6 +3976,16 @@ Standard decoupling cap</description>
 <wire x1="124.46" y1="71.12" x2="132.08" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="71.12" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="SUPPLY22" gate="1" pin="V+"/>
+<pinref part="I2CR1" gate="G$1" pin="2"/>
+<wire x1="91.44" y1="154.94" x2="91.44" y2="149.86" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY23" gate="1" pin="V+"/>
+<pinref part="12CR2" gate="G$1" pin="2"/>
+<wire x1="101.6" y1="154.94" x2="101.6" y2="149.86" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PTA19" class="0">
 <segment>
@@ -4023,8 +4041,12 @@ Standard decoupling cap</description>
 <net name="PTC8" class="0">
 <segment>
 <pinref part="U2" gate="A" pin="PTC8"/>
-<wire x1="81.28" y1="134.62" x2="86.36" y2="134.62" width="0.1524" layer="91"/>
-<junction x="86.36" y="134.62"/>
+<wire x1="81.28" y1="134.62" x2="101.6" y2="134.62" width="0.1524" layer="91"/>
+<junction x="106.68" y="134.62"/>
+<pinref part="12CR2" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="134.62" x2="106.68" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="139.7" x2="101.6" y2="134.62" width="0.1524" layer="91"/>
+<junction x="101.6" y="134.62"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="SCL"/>
@@ -4040,8 +4062,12 @@ Standard decoupling cap</description>
 <net name="PTC9" class="0">
 <segment>
 <pinref part="U2" gate="A" pin="PTC9"/>
-<wire x1="81.28" y1="137.16" x2="86.36" y2="137.16" width="0.1524" layer="91"/>
-<junction x="86.36" y="137.16"/>
+<wire x1="81.28" y1="137.16" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
+<junction x="106.68" y="137.16"/>
+<pinref part="I2CR1" gate="G$1" pin="1"/>
+<wire x1="91.44" y1="137.16" x2="106.68" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="139.7" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
+<junction x="91.44" y="137.16"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="SDA"/>
