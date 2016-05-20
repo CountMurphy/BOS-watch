@@ -2127,6 +2127,45 @@ by R. Vogg  15.March.2002</description>
 <wire x1="3.81" y1="-1.27" x2="3.81" y2="1.27" width="0.127" layer="21"/>
 <wire x1="3.81" y1="1.27" x2="-3.81" y2="1.27" width="0.127" layer="21"/>
 </package>
+<package name="74HC595PW">
+<wire x1="-2.11" y1="1.99" x2="-2.11" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="-2.11" y1="-2.6" x2="2.48" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="2.48" y1="-2.6" x2="2.48" y2="1.99" width="0.127" layer="21"/>
+<wire x1="2.48" y1="1.99" x2="-2.11" y2="1.99" width="0.127" layer="21"/>
+<circle x="-1.585" y="1.485" radius="0.27" width="0.127" layer="21"/>
+<smd name="P$1" x="-2.6" y="1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$2" x="-2.6" y="1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$3" x="-2.6" y="0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$4" x="-2.6" y="0" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$5" x="-2.6" y="-0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$6" x="-2.6" y="-1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$7" x="-2.6" y="-1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$8" x="-2.6" y="-2.6" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$9" x="2.99" y="1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$10" x="2.99" y="1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$11" x="2.99" y="0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$12" x="2.99" y="0" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$13" x="2.99" y="-0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$14" x="2.99" y="-1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$15" x="2.99" y="-1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="P$16" x="2.99" y="-2.6" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="VDD" x="3.38" y="1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q0" x="3.38" y="1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="DS" x="3.38" y="0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="OE" x="3.38" y="0" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="STCP" x="3.38" y="-0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="SHCP" x="3.38" y="-1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="MR" x="3.38" y="-1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q7S" x="3.38" y="-2.6" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q1" x="-2.86" y="1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q2" x="-2.86" y="1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q3" x="-2.86" y="0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q4" x="-2.86" y="0" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q5" x="-2.86" y="-0.65" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q6" x="-2.86" y="-1.3" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="Q7" x="-2.86" y="-1.95" dx="0.6096" dy="0.3048" layer="1"/>
+<smd name="GND" x="-2.86" y="-2.6" dx="0.6096" dy="0.3048" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SWD_BREAKOUT">
@@ -2137,6 +2176,28 @@ by R. Vogg  15.March.2002</description>
 <pin name="SWD_DIO" x="-12.7" y="10.16" length="middle" rot="R270"/>
 <pin name="SWD_CLK" x="-2.54" y="10.16" length="middle" rot="R270"/>
 <pin name="GND" x="7.62" y="10.16" length="middle" rot="R270"/>
+</symbol>
+<symbol name="74HC595PW">
+<wire x1="-10.16" y1="17.78" x2="-10.16" y2="-25.4" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-25.4" x2="10.16" y2="-25.4" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-25.4" x2="10.16" y2="17.78" width="0.254" layer="94"/>
+<wire x1="10.16" y1="17.78" x2="-10.16" y2="17.78" width="0.254" layer="94"/>
+<pin name="SHCP" x="-5.08" y="22.86" length="middle" rot="R270"/>
+<pin name="STCP" x="0" y="22.86" length="middle" rot="R270"/>
+<pin name="DS" x="-15.24" y="-5.08" length="middle"/>
+<pin name="MR" x="-2.54" y="-30.48" length="middle" rot="R90"/>
+<pin name="OE" x="2.54" y="-30.48" length="middle" rot="R90"/>
+<pin name="Q5" x="15.24" y="-15.24" length="middle" rot="R180"/>
+<pin name="Q4" x="15.24" y="-10.16" length="middle" rot="R180"/>
+<pin name="Q3" x="15.24" y="-5.08" length="middle" rot="R180"/>
+<pin name="Q2" x="15.24" y="0" length="middle" rot="R180"/>
+<pin name="Q1" x="15.24" y="5.08" length="middle" rot="R180"/>
+<pin name="Q0" x="15.24" y="10.16" length="middle" rot="R180"/>
+<pin name="Q7S" x="15.24" y="15.24" length="middle" rot="R180"/>
+<pin name="Q6" x="15.24" y="-20.32" length="middle" rot="R180"/>
+<pin name="Q7" x="15.24" y="-25.4" length="middle" rot="R180"/>
+<pin name="GND" x="-15.24" y="12.7" length="middle"/>
+<pin name="VDD" x="-15.24" y="-22.86" length="middle"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2150,6 +2211,36 @@ by R. Vogg  15.March.2002</description>
 <connect gate="G$1" pin="GND" pad="GND"/>
 <connect gate="G$1" pin="SWD_CLK" pad="SWD_CLK"/>
 <connect gate="G$1" pin="SWD_DIO" pad="SWD_DIO"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="74HC595PW">
+<gates>
+<gate name="G$1" symbol="74HC595PW" x="0" y="5.08"/>
+</gates>
+<devices>
+<device name="" package="74HC595PW">
+<connects>
+<connect gate="G$1" pin="DS" pad="DS"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="MR" pad="MR"/>
+<connect gate="G$1" pin="OE" pad="OE"/>
+<connect gate="G$1" pin="Q0" pad="Q0"/>
+<connect gate="G$1" pin="Q1" pad="Q1"/>
+<connect gate="G$1" pin="Q2" pad="Q2"/>
+<connect gate="G$1" pin="Q3" pad="Q3"/>
+<connect gate="G$1" pin="Q4" pad="Q4"/>
+<connect gate="G$1" pin="Q5" pad="Q5"/>
+<connect gate="G$1" pin="Q6" pad="Q6"/>
+<connect gate="G$1" pin="Q7" pad="Q7"/>
+<connect gate="G$1" pin="Q7S" pad="Q7S"/>
+<connect gate="G$1" pin="SHCP" pad="SHCP"/>
+<connect gate="G$1" pin="STCP" pad="STCP"/>
+<connect gate="G$1" pin="VDD" pad="VDD"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3756,14 +3847,16 @@ Standard decoupling cap</description>
 <part name="12CR2" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
 <part name="SUPPLY22" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY23" library="supply2" deviceset="V+" device=""/>
+<part name="U$4" library="BOS_libs" deviceset="74HC595PW" device=""/>
+<part name="U$5" library="BOS_libs" deviceset="74HC595PW" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 </plain>
 <instances>
-<instance part="DISP1" gate="G$1" x="-10.16" y="195.58"/>
-<instance part="DISP2" gate="G$1" x="60.96" y="195.58"/>
+<instance part="DISP1" gate="G$1" x="-10.16" y="259.08"/>
+<instance part="DISP2" gate="G$1" x="60.96" y="259.08"/>
 <instance part="U$1" gate="G$1" x="-93.98" y="66.04"/>
 <instance part="COMPCAP" gate="G$1" x="-63.5" y="58.42"/>
 <instance part="SUPPLY1" gate="GND" x="-124.46" y="58.42"/>
@@ -3808,6 +3901,8 @@ Standard decoupling cap</description>
 <instance part="12CR2" gate="G$1" x="101.6" y="144.78" rot="R90"/>
 <instance part="SUPPLY22" gate="1" x="91.44" y="157.48"/>
 <instance part="SUPPLY23" gate="1" x="101.6" y="157.48"/>
+<instance part="U$4" gate="G$1" x="-15.24" y="208.28" rot="R90"/>
+<instance part="U$5" gate="G$1" x="63.5" y="205.74" rot="R90"/>
 </instances>
 <busses>
 </busses>
