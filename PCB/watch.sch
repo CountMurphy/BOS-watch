@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.5.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4587,7 +4587,7 @@ Standard decoupling cap</description>
 <pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="N$34" class="0">
+<net name="PTB2" class="0">
 <segment>
 <pinref part="U$5" gate="G$1" pin="SHCP"/>
 <wire x1="12.7" y1="205.74" x2="-27.94" y2="205.74" width="0.1524" layer="91"/>
@@ -4595,9 +4595,17 @@ Standard decoupling cap</description>
 <pinref part="U$4" gate="G$1" pin="SHCP"/>
 <wire x1="-27.94" y1="259.08" x2="-53.34" y2="259.08" width="0.1524" layer="91"/>
 <wire x1="-53.34" y1="259.08" x2="-53.34" y2="256.54" width="0.1524" layer="91"/>
+<wire x1="-53.34" y1="259.08" x2="-53.34" y2="266.7" width="0.1524" layer="91"/>
+<junction x="-53.34" y="259.08"/>
+<label x="-58.42" y="266.7" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTB2"/>
+<wire x1="81.28" y1="93.98" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
+<junction x="88.9" y="93.98"/>
 </segment>
 </net>
-<net name="N$35" class="0">
+<net name="PTB17" class="0">
 <segment>
 <pinref part="U$4" gate="G$1" pin="OE"/>
 <wire x1="-45.72" y1="203.2" x2="-45.72" y2="182.88" width="0.1524" layer="91"/>
@@ -4605,15 +4613,55 @@ Standard decoupling cap</description>
 <wire x1="73.66" y1="182.88" x2="73.66" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="U$5" gate="G$1" pin="OE"/>
 <wire x1="73.66" y1="213.36" x2="66.04" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="203.2" x2="-35.56" y2="203.2" width="0.1524" layer="91"/>
+<junction x="-45.72" y="203.2"/>
+<label x="-38.1" y="203.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTB17"/>
+<wire x1="81.28" y1="101.6" x2="88.9" y2="101.6" width="0.1524" layer="91"/>
+<junction x="88.9" y="101.6"/>
 </segment>
 </net>
-<net name="N$36" class="0">
+<net name="PTB18" class="0">
 <segment>
 <pinref part="U$5" gate="G$1" pin="MR"/>
 <wire x1="66.04" y1="208.28" x2="66.04" y2="185.42" width="0.1524" layer="91"/>
 <pinref part="U$4" gate="G$1" pin="MR"/>
 <wire x1="66.04" y1="185.42" x2="-50.8" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="-50.8" y1="185.42" x2="-50.8" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="203.2" x2="-63.5" y2="203.2" width="0.1524" layer="91"/>
+<junction x="-50.8" y="203.2"/>
+<label x="-63.5" y="203.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTB18"/>
+<wire x1="81.28" y1="104.14" x2="88.9" y2="104.14" width="0.1524" layer="91"/>
+<junction x="88.9" y="104.14"/>
+</segment>
+</net>
+<net name="PTB19" class="0">
+<segment>
+<pinref part="U$4" gate="G$1" pin="DS"/>
+<wire x1="-63.5" y1="228.6" x2="-81.28" y2="228.6" width="0.1524" layer="91"/>
+<label x="-81.28" y="226.06" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTB19"/>
+<wire x1="81.28" y1="106.68" x2="88.9" y2="106.68" width="0.1524" layer="91"/>
+<junction x="88.9" y="106.68"/>
+</segment>
+</net>
+<net name="PTB1" class="0">
+<segment>
+<pinref part="U$4" gate="G$1" pin="STCP"/>
+<wire x1="-48.26" y1="256.54" x2="-48.26" y2="266.7" width="0.1524" layer="91"/>
+<label x="-48.26" y="264.16" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTB1"/>
+<wire x1="81.28" y1="91.44" x2="88.9" y2="91.44" width="0.1524" layer="91"/>
+<junction x="88.9" y="91.44"/>
 </segment>
 </net>
 </nets>
