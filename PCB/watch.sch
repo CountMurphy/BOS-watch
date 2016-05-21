@@ -5375,6 +5375,9 @@ Source: www.kingbright.com</description>
 <part name="R12" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
 <part name="R13" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
 <part name="R14" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
+<part name="LED-IR" library="led" deviceset="LED" device="5MM"/>
+<part name="SUPPLY29" library="supply2" deviceset="GND" device=""/>
+<part name="R15" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
 </parts>
 <sheets>
 <sheet>
@@ -5450,6 +5453,9 @@ Source: www.kingbright.com</description>
 <instance part="R12" gate="G$1" x="-180.34" y="53.34" rot="R90"/>
 <instance part="R13" gate="G$1" x="-187.96" y="53.34" rot="R90"/>
 <instance part="R14" gate="G$1" x="-195.58" y="53.34" rot="R90"/>
+<instance part="LED-IR" gate="G$1" x="-177.8" y="142.24" rot="R180"/>
+<instance part="SUPPLY29" gate="GND" x="-177.8" y="119.38"/>
+<instance part="R15" gate="G$1" x="-177.8" y="132.08" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -5589,6 +5595,11 @@ Source: www.kingbright.com</description>
 <junction x="-187.96" y="45.72"/>
 <junction x="-180.34" y="45.72"/>
 <junction x="-172.72" y="45.72"/>
+</segment>
+<segment>
+<pinref part="R15" gate="G$1" pin="1"/>
+<pinref part="SUPPLY29" gate="GND" pin="GND"/>
+<wire x1="-177.8" y1="127" x2="-177.8" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="V+" class="0">
@@ -5770,6 +5781,11 @@ Source: www.kingbright.com</description>
 <pinref part="U$3" gate="G$1" pin="BTN"/>
 <wire x1="38.1" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
 <label x="43.18" y="68.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="LED-IR" gate="G$1" pin="C"/>
+<wire x1="-177.8" y1="147.32" x2="-177.8" y2="152.4" width="0.1524" layer="91"/>
+<label x="-182.88" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PTE21" class="0">
@@ -6290,6 +6306,13 @@ Source: www.kingbright.com</description>
 <pinref part="LED-W" gate="G$1" pin="A"/>
 <wire x1="-215.9" y1="60.96" x2="-226.06" y2="60.96" width="0.1524" layer="91"/>
 <label x="-228.6" y="60.96" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="R15" gate="G$1" pin="2"/>
+<pinref part="LED-IR" gate="G$1" pin="A"/>
+<wire x1="-177.8" y1="137.16" x2="-177.8" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
