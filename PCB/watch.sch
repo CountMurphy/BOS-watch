@@ -4590,14 +4590,19 @@ Standard decoupling cap</description>
 <net name="PTB2" class="0">
 <segment>
 <pinref part="U$5" gate="G$1" pin="SHCP"/>
-<wire x1="12.7" y1="205.74" x2="-27.94" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="205.74" x2="2.54" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="205.74" x2="-27.94" y2="205.74" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="205.74" x2="-27.94" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="SHCP"/>
-<wire x1="-27.94" y1="259.08" x2="-53.34" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="-53.34" y1="259.08" x2="-53.34" y2="256.54" width="0.1524" layer="91"/>
-<wire x1="-53.34" y1="259.08" x2="-53.34" y2="266.7" width="0.1524" layer="91"/>
-<junction x="-53.34" y="259.08"/>
-<label x="-58.42" y="266.7" size="1.778" layer="95"/>
+<pinref part="U$4" gate="G$1" pin="STCP"/>
+<wire x1="-48.26" y1="256.54" x2="-48.26" y2="259.08" width="0.1524" layer="91"/>
+<label x="-48.26" y="264.16" size="1.778" layer="95"/>
+<wire x1="-48.26" y1="259.08" x2="-48.26" y2="266.7" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="259.08" x2="-48.26" y2="259.08" width="0.1524" layer="91"/>
+<junction x="-48.26" y="259.08"/>
+<pinref part="U$5" gate="G$1" pin="STCP"/>
+<wire x1="12.7" y1="210.82" x2="2.54" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="210.82" x2="2.54" y2="205.74" width="0.1524" layer="91"/>
+<junction x="2.54" y="205.74"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTB2"/>
@@ -4654,14 +4659,16 @@ Standard decoupling cap</description>
 </net>
 <net name="PTB1" class="0">
 <segment>
-<pinref part="U$4" gate="G$1" pin="STCP"/>
-<wire x1="-48.26" y1="256.54" x2="-48.26" y2="266.7" width="0.1524" layer="91"/>
-<label x="-48.26" y="264.16" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="U2" gate="A" pin="PTB1"/>
 <wire x1="81.28" y1="91.44" x2="88.9" y2="91.44" width="0.1524" layer="91"/>
 <junction x="88.9" y="91.44"/>
+</segment>
+</net>
+<net name="N$34" class="0">
+<segment>
+<pinref part="U$4" gate="G$1" pin="SHCP"/>
+<wire x1="-53.34" y1="256.54" x2="-53.34" y2="266.7" width="0.1524" layer="91"/>
+<label x="-58.42" y="266.7" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
