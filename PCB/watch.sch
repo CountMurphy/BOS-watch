@@ -5778,62 +5778,57 @@ Source: www.kingbright.com</description>
 <junction x="-30.48" y="142.24"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="BTN"/>
-<wire x1="38.1" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
-<label x="43.18" y="68.58" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="LED-IR" gate="G$1" pin="C"/>
 <wire x1="-177.8" y1="147.32" x2="-177.8" y2="152.4" width="0.1524" layer="91"/>
 <label x="-182.88" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="PTE21" class="0">
-<segment>
-<pinref part="U2" gate="A" pin="PTE21"/>
-<wire x1="-25.4" y1="139.7" x2="-30.48" y2="139.7" width="0.1524" layer="91"/>
-<junction x="-30.48" y="139.7"/>
-</segment>
+<net name="PTA13" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="D"/>
 <wire x1="12.7" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
 <label x="5.08" y="58.42" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="PTE22" class="0">
 <segment>
-<pinref part="U2" gate="A" pin="PTE22"/>
-<wire x1="-25.4" y1="137.16" x2="-30.48" y2="137.16" width="0.1524" layer="91"/>
-<junction x="-30.48" y="137.16"/>
+<pinref part="U2" gate="A" pin="PTA13"/>
+<wire x1="-25.4" y1="91.44" x2="-30.48" y2="91.44" width="0.1524" layer="91"/>
+<junction x="-30.48" y="91.44"/>
 </segment>
+</net>
+<net name="PTA5" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="L"/>
 <wire x1="12.7" y1="63.5" x2="7.62" y2="63.5" width="0.1524" layer="91"/>
 <label x="5.08" y="63.5" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="PTE23" class="0">
 <segment>
-<pinref part="U2" gate="A" pin="PTE23"/>
-<wire x1="-25.4" y1="134.62" x2="-30.48" y2="134.62" width="0.1524" layer="91"/>
-<junction x="-30.48" y="134.62"/>
+<pinref part="U2" gate="A" pin="PTA5"/>
+<wire x1="-25.4" y1="96.52" x2="-30.48" y2="96.52" width="0.1524" layer="91"/>
+<junction x="-30.48" y="96.52"/>
 </segment>
+</net>
+<net name="PTA4" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="U"/>
 <wire x1="12.7" y1="68.58" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
 <label x="2.54" y="68.58" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="PTE29" class="0">
 <segment>
-<pinref part="U2" gate="A" pin="PTE29"/>
-<wire x1="-25.4" y1="121.92" x2="-30.48" y2="121.92" width="0.1524" layer="91"/>
-<junction x="-30.48" y="121.92"/>
+<pinref part="U2" gate="A" pin="PTA4"/>
+<wire x1="-25.4" y1="99.06" x2="-30.48" y2="99.06" width="0.1524" layer="91"/>
+<junction x="-30.48" y="99.06"/>
 </segment>
+</net>
+<net name="PTA20" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="R"/>
 <wire x1="38.1" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <label x="43.18" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTA20"/>
+<wire x1="81.28" y1="86.36" x2="86.36" y2="86.36" width="0.1524" layer="91"/>
+<junction x="86.36" y="86.36"/>
 </segment>
 </net>
 <net name="PTA0" class="0">
@@ -6313,6 +6308,18 @@ Source: www.kingbright.com</description>
 <pinref part="R15" gate="G$1" pin="2"/>
 <pinref part="LED-IR" gate="G$1" pin="A"/>
 <wire x1="-177.8" y1="137.16" x2="-177.8" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PTA12" class="0">
+<segment>
+<pinref part="U$3" gate="G$1" pin="BTN"/>
+<wire x1="38.1" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
+<label x="43.18" y="68.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTA12"/>
+<wire x1="-25.4" y1="93.98" x2="-30.48" y2="93.98" width="0.1524" layer="91"/>
+<junction x="-30.48" y="93.98"/>
 </segment>
 </net>
 </nets>
