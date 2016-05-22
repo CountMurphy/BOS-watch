@@ -8870,22 +8870,6 @@ Source: 008-0260-0_E.pdf</description>
 </net>
 <net name="PTB2" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="SHCP"/>
-<wire x1="12.7" y1="205.74" x2="2.54" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="205.74" x2="-27.94" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="205.74" x2="-27.94" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="STCP"/>
-<wire x1="-48.26" y1="256.54" x2="-48.26" y2="259.08" width="0.1524" layer="91"/>
-<label x="-48.26" y="264.16" size="1.778" layer="95"/>
-<wire x1="-48.26" y1="259.08" x2="-48.26" y2="266.7" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="259.08" x2="-48.26" y2="259.08" width="0.1524" layer="91"/>
-<junction x="-48.26" y="259.08"/>
-<pinref part="U$5" gate="G$1" pin="STCP"/>
-<wire x1="12.7" y1="210.82" x2="2.54" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="210.82" x2="2.54" y2="205.74" width="0.1524" layer="91"/>
-<junction x="2.54" y="205.74"/>
-</segment>
-<segment>
 <pinref part="U2" gate="A" pin="PTB2"/>
 <wire x1="81.28" y1="93.98" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 <junction x="88.9" y="93.98"/>
@@ -8943,13 +8927,6 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="U2" gate="A" pin="PTB1"/>
 <wire x1="81.28" y1="91.44" x2="88.9" y2="91.44" width="0.1524" layer="91"/>
 <junction x="88.9" y="91.44"/>
-</segment>
-</net>
-<net name="N$34" class="0">
-<segment>
-<pinref part="U$4" gate="G$1" pin="SHCP"/>
-<wire x1="-53.34" y1="256.54" x2="-53.34" y2="266.7" width="0.1524" layer="91"/>
-<label x="-58.42" y="266.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$35" class="0">
@@ -9119,6 +9096,48 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="Q1" gate="G$1" pin="1"/>
 <wire x1="-101.6" y1="154.94" x2="-111.76" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="-111.76" y1="154.94" x2="-111.76" y2="170.18" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PTC7" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="PTC7"/>
+<wire x1="81.28" y1="132.08" x2="86.36" y2="132.08" width="0.1524" layer="91"/>
+<junction x="86.36" y="132.08"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="STCP"/>
+<wire x1="12.7" y1="210.82" x2="5.08" y2="210.82" width="0.1524" layer="91"/>
+<label x="2.54" y="210.82" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PTC0" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="PTC0"/>
+<wire x1="81.28" y1="109.22" x2="88.9" y2="109.22" width="0.1524" layer="91"/>
+<junction x="88.9" y="109.22"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="SHCP"/>
+<wire x1="-53.34" y1="256.54" x2="-53.34" y2="259.08" width="0.1524" layer="91"/>
+<label x="-58.42" y="266.7" size="1.778" layer="95"/>
+<pinref part="U$5" gate="G$1" pin="SHCP"/>
+<wire x1="-53.34" y1="259.08" x2="-53.34" y2="266.7" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="205.74" x2="-30.48" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="205.74" x2="-30.48" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="259.08" x2="-53.34" y2="259.08" width="0.1524" layer="91"/>
+<junction x="-53.34" y="259.08"/>
+</segment>
+</net>
+<net name="PTC2" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="PTC2"/>
+<wire x1="81.28" y1="114.3" x2="88.9" y2="114.3" width="0.1524" layer="91"/>
+<junction x="88.9" y="114.3"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="STCP"/>
+<wire x1="-48.26" y1="256.54" x2="-48.26" y2="266.7" width="0.1524" layer="91"/>
+<label x="-48.26" y="264.16" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
