@@ -6869,10 +6869,22 @@ grid 5.08 mm</description>
 <part name="SUPPLY8" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY9" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY33" library="supply2" deviceset="GND" device=""/>
+<part name="SUPPLY34" library="supply2" deviceset="GND" device=""/>
+<part name="SUPPLY35" library="supply2" deviceset="V+" device=""/>
+<part name="SUPPLY36" library="supply2" deviceset="V+" device=""/>
+<part name="SUPPLY37" library="supply2" deviceset="V+" device=""/>
+<part name="C5" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="C6" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="C7" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="SUPPLY38" library="supply2" deviceset="V+" device=""/>
+<part name="C8" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="SUPPLY39" library="supply2" deviceset="V+" device=""/>
+<part name="SUPPLY40" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
+<text x="109.22" y="203.2" size="1.778" layer="91">place near MCU VCC</text>
 </plain>
 <instances>
 <instance part="DISP1" gate="G$1" x="-5.08" y="276.86"/>
@@ -6956,6 +6968,17 @@ grid 5.08 mm</description>
 <instance part="SUPPLY8" gate="1" x="119.38" y="106.68" rot="R90"/>
 <instance part="SUPPLY9" gate="GND" x="137.16" y="106.68" rot="R90"/>
 <instance part="SUPPLY33" gate="GND" x="147.32" y="132.08" rot="R180"/>
+<instance part="SUPPLY34" gate="GND" x="-35.56" y="154.94" rot="R270"/>
+<instance part="SUPPLY35" gate="1" x="-33.02" y="157.48" rot="R90"/>
+<instance part="SUPPLY36" gate="1" x="-43.18" y="88.9" rot="R90"/>
+<instance part="SUPPLY37" gate="1" x="91.44" y="121.92" rot="R270"/>
+<instance part="C5" gate="G$1" x="111.76" y="198.12" rot="R180"/>
+<instance part="C6" gate="G$1" x="121.92" y="198.12" rot="R180"/>
+<instance part="C7" gate="G$1" x="129.54" y="198.12" rot="R180"/>
+<instance part="SUPPLY38" gate="1" x="-35.56" y="132.08" rot="R90"/>
+<instance part="C8" gate="G$1" x="137.16" y="198.12" rot="R180"/>
+<instance part="SUPPLY39" gate="1" x="101.6" y="205.74"/>
+<instance part="SUPPLY40" gate="GND" x="101.6" y="185.42"/>
 </instances>
 <busses>
 </busses>
@@ -7111,6 +7134,26 @@ grid 5.08 mm</description>
 <pinref part="SUPPLY33" gate="GND" pin="GND"/>
 <wire x1="147.32" y1="127" x2="147.32" y2="129.54" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U2" gate="A" pin="VSS_2"/>
+<pinref part="SUPPLY34" gate="GND" pin="GND"/>
+<wire x1="-25.4" y1="154.94" x2="-33.02" y2="154.94" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C8" gate="G$1" pin="1"/>
+<pinref part="C7" gate="G$1" pin="1"/>
+<wire x1="137.16" y1="193.04" x2="129.54" y2="193.04" width="0.1524" layer="91"/>
+<pinref part="C6" gate="G$1" pin="1"/>
+<wire x1="129.54" y1="193.04" x2="121.92" y2="193.04" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="121.92" y1="193.04" x2="111.76" y2="193.04" width="0.1524" layer="91"/>
+<pinref part="SUPPLY40" gate="GND" pin="GND"/>
+<wire x1="111.76" y1="193.04" x2="101.6" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="193.04" x2="101.6" y2="187.96" width="0.1524" layer="91"/>
+<junction x="129.54" y="193.04"/>
+<junction x="121.92" y="193.04"/>
+<junction x="111.76" y="193.04"/>
+</segment>
 </net>
 <net name="V+" class="0">
 <segment>
@@ -7191,6 +7234,41 @@ grid 5.08 mm</description>
 <pinref part="C1" gate="G$1" pin="1"/>
 <pinref part="SUPPLY8" gate="1" pin="V+"/>
 <wire x1="124.46" y1="106.68" x2="121.92" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY35" gate="1" pin="V+"/>
+<pinref part="U2" gate="A" pin="VDD_2"/>
+<wire x1="-30.48" y1="157.48" x2="-25.4" y2="157.48" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY36" gate="1" pin="V+"/>
+<pinref part="U2" gate="A" pin="VDD_3"/>
+<wire x1="-40.64" y1="88.9" x2="-25.4" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="VDD"/>
+<pinref part="SUPPLY37" gate="1" pin="V+"/>
+<wire x1="81.28" y1="121.92" x2="88.9" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY38" gate="1" pin="V+"/>
+<pinref part="U2" gate="A" pin="VDDA"/>
+<wire x1="-33.02" y1="132.08" x2="-25.4" y2="132.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY39" gate="1" pin="V+"/>
+<wire x1="101.6" y1="203.2" x2="101.6" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="2"/>
+<wire x1="101.6" y1="200.66" x2="111.76" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="C6" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="200.66" x2="121.92" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="C7" gate="G$1" pin="2"/>
+<wire x1="121.92" y1="200.66" x2="129.54" y2="200.66" width="0.1524" layer="91"/>
+<pinref part="C8" gate="G$1" pin="2"/>
+<wire x1="129.54" y1="200.66" x2="137.16" y2="200.66" width="0.1524" layer="91"/>
+<junction x="111.76" y="200.66"/>
+<junction x="121.92" y="200.66"/>
+<junction x="129.54" y="200.66"/>
 </segment>
 </net>
 <net name="PTA19" class="0">
@@ -7331,16 +7409,16 @@ grid 5.08 mm</description>
 <junction x="-30.48" y="99.06"/>
 </segment>
 </net>
-<net name="PTA20" class="0">
+<net name="PTB16" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="R"/>
 <wire x1="38.1" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <label x="43.18" y="63.5" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U2" gate="A" pin="PTA20"/>
-<wire x1="81.28" y1="86.36" x2="86.36" y2="86.36" width="0.1524" layer="91"/>
-<junction x="86.36" y="86.36"/>
+<pinref part="U2" gate="A" pin="PTB16"/>
+<wire x1="81.28" y1="99.06" x2="88.9" y2="99.06" width="0.1524" layer="91"/>
+<junction x="88.9" y="99.06"/>
 </segment>
 </net>
 <net name="PTA0" class="0">
@@ -7877,6 +7955,15 @@ grid 5.08 mm</description>
 <pinref part="T2" gate="G$1" pin="B"/>
 <wire x1="134.62" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
 <label x="127" y="121.92" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="VSSA"/>
+<wire x1="-25.4" y1="124.46" x2="-30.48" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="124.46" x2="-30.48" y2="127" width="0.1524" layer="91"/>
+<pinref part="U2" gate="A" pin="VREFL"/>
+<wire x1="-30.48" y1="127" x2="-25.4" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
