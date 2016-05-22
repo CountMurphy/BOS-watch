@@ -10,7 +10,7 @@ Features
 ---------------
 - GPS time syncing - get local time anywhere on earth at power up
 
-- Tilt compensated compass (with LED directional indicators and exact heading information
+- Tilt compensated compass (with LED directional indicators and exact heading information)
 
 - Stop watch / countdown timer
 
