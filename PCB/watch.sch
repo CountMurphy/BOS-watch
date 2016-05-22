@@ -6868,6 +6868,7 @@ grid 5.08 mm</description>
 <part name="C1" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
 <part name="SUPPLY8" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY9" library="supply2" deviceset="GND" device=""/>
+<part name="SUPPLY33" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6887,7 +6888,7 @@ grid 5.08 mm</description>
 <instance part="U2" gate="A" x="-25.4" y="162.56"/>
 <instance part="SUPPLY6" gate="GND" x="-53.34" y="86.36" rot="R270"/>
 <instance part="SUPPLY7" gate="GND" x="99.06" y="119.38" rot="R90"/>
-<instance part="C2" gate="G$1" x="149.86" y="116.84" rot="R90"/>
+<instance part="C2" gate="G$1" x="147.32" y="124.46" rot="R180"/>
 <instance part="SUPPLY10" gate="1" x="154.94" y="111.76"/>
 <instance part="U$3" gate="G$1" x="25.4" y="63.5"/>
 <instance part="SP1" gate="S1" x="-81.28" y="109.22" rot="R270"/>
@@ -6954,6 +6955,7 @@ grid 5.08 mm</description>
 <instance part="C1" gate="G$1" x="129.54" y="106.68" rot="R90"/>
 <instance part="SUPPLY8" gate="1" x="119.38" y="106.68" rot="R90"/>
 <instance part="SUPPLY9" gate="GND" x="137.16" y="106.68" rot="R90"/>
+<instance part="SUPPLY33" gate="GND" x="147.32" y="132.08" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -7104,6 +7106,11 @@ grid 5.08 mm</description>
 <pinref part="SUPPLY9" gate="GND" pin="GND"/>
 <wire x1="132.08" y1="106.68" x2="134.62" y2="106.68" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C2" gate="G$1" pin="2"/>
+<pinref part="SUPPLY33" gate="GND" pin="GND"/>
+<wire x1="147.32" y1="127" x2="147.32" y2="129.54" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="V+" class="0">
 <segment>
@@ -7202,8 +7209,12 @@ grid 5.08 mm</description>
 <segment>
 <pinref part="U1" gate="G$1" pin="VCC"/>
 <wire x1="162.56" y1="101.6" x2="162.56" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="C2" gate="G$1" pin="2"/>
-<wire x1="152.4" y1="116.84" x2="162.56" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="T2" gate="G$1" pin="C"/>
+<wire x1="162.56" y1="116.84" x2="147.32" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="147.32" y1="116.84" x2="139.7" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="116.84" x2="147.32" y2="119.38" width="0.1524" layer="91"/>
+<junction x="147.32" y="116.84"/>
 </segment>
 </net>
 <net name="PTB3" class="0">
@@ -7866,13 +7877,6 @@ grid 5.08 mm</description>
 <pinref part="T2" gate="G$1" pin="B"/>
 <wire x1="134.62" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
 <label x="127" y="121.92" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="T2" gate="G$1" pin="C"/>
-<pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="139.7" y1="116.84" x2="144.78" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
