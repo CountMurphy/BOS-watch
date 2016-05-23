@@ -1,6 +1,6 @@
 Brotherhood of Steel Watch
 ========================
-![ ](https://i.imgur.com/1lzmw3d.png  "Ad Victoriam!")
+![ ](https://random-hackery.net/gitImages/1lzmw3d.png "Ad Victoriam!")
 
 Ad Victoriam brother!
 
