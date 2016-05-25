@@ -8026,6 +8026,12 @@ Source: 008-0260-0_E.pdf</description>
 <part name="R24" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
 <part name="R25" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
 <part name="R19" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="220Ohm"/>
+<part name="R26" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="R27" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="R28" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="R29" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="R30" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
+<part name="SUPPLY41" library="supply2" deviceset="V+" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8134,6 +8140,12 @@ Source: 008-0260-0_E.pdf</description>
 <instance part="R24" gate="G$1" x="-22.86" y="266.7" rot="R270"/>
 <instance part="R25" gate="G$1" x="-12.7" y="276.86" rot="R270"/>
 <instance part="R19" gate="G$1" x="-17.78" y="264.16" rot="R90"/>
+<instance part="R26" gate="G$1" x="-7.62" y="48.26" rot="R90"/>
+<instance part="R27" gate="G$1" x="-15.24" y="48.26" rot="R90"/>
+<instance part="R28" gate="G$1" x="-22.86" y="48.26" rot="R90"/>
+<instance part="R29" gate="G$1" x="-27.94" y="48.26" rot="R90"/>
+<instance part="R30" gate="G$1" x="0" y="48.26" rot="R90"/>
+<instance part="SUPPLY41" gate="1" x="-15.24" y="27.94" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -8425,6 +8437,32 @@ Source: 008-0260-0_E.pdf</description>
 <junction x="121.92" y="200.66"/>
 <junction x="129.54" y="200.66"/>
 </segment>
+<segment>
+<pinref part="R27" gate="G$1" pin="1"/>
+<pinref part="SUPPLY41" gate="1" pin="V+"/>
+<wire x1="-15.24" y1="43.18" x2="-15.24" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="R28" gate="G$1" pin="1"/>
+<wire x1="-15.24" y1="40.64" x2="-15.24" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="38.1" x2="-15.24" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="35.56" x2="-15.24" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="33.02" x2="-15.24" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="43.18" x2="-22.86" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="40.64" x2="-15.24" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="40.64" x2="-15.24" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="R29" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="43.18" x2="-27.94" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="38.1" x2="-15.24" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="R26" gate="G$1" pin="1"/>
+<wire x1="-7.62" y1="43.18" x2="-7.62" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="35.56" x2="-15.24" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="R30" gate="G$1" pin="1"/>
+<wire x1="0" y1="43.18" x2="0" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="0" y1="33.02" x2="-15.24" y2="33.02" width="0.1524" layer="91"/>
+<junction x="-15.24" y="38.1"/>
+<junction x="-15.24" y="40.64"/>
+<junction x="-15.24" y="35.56"/>
+<junction x="-15.24" y="33.02"/>
+</segment>
 </net>
 <net name="PTA19" class="0">
 <segment>
@@ -8531,8 +8569,13 @@ Source: 008-0260-0_E.pdf</description>
 <net name="PTA13" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="D"/>
-<wire x1="12.7" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="58.42" x2="10.16" y2="58.42" width="0.1524" layer="91"/>
 <label x="5.08" y="58.42" size="1.778" layer="95"/>
+<pinref part="R30" gate="G$1" pin="2"/>
+<wire x1="10.16" y1="58.42" x2="7.62" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="0" y1="53.34" x2="10.16" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="53.34" x2="10.16" y2="58.42" width="0.1524" layer="91"/>
+<junction x="10.16" y="58.42"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTA13"/>
@@ -8543,8 +8586,14 @@ Source: 008-0260-0_E.pdf</description>
 <net name="PTA5" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="L"/>
-<wire x1="12.7" y1="63.5" x2="7.62" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="63.5" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
 <label x="5.08" y="63.5" size="1.778" layer="95"/>
+<pinref part="R26" gate="G$1" pin="2"/>
+<wire x1="10.16" y1="63.5" x2="7.62" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="53.34" x2="-7.62" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="60.96" x2="10.16" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="60.96" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
+<junction x="10.16" y="63.5"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTA5"/>
@@ -8555,8 +8604,14 @@ Source: 008-0260-0_E.pdf</description>
 <net name="PTA4" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="U"/>
-<wire x1="12.7" y1="68.58" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="68.58" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
 <label x="2.54" y="68.58" size="1.778" layer="95"/>
+<pinref part="R27" gate="G$1" pin="2"/>
+<wire x1="10.16" y1="68.58" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="53.34" x2="-15.24" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="66.04" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
+<junction x="10.16" y="68.58"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTA4"/>
@@ -8569,6 +8624,11 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="U$3" gate="G$1" pin="R"/>
 <wire x1="38.1" y1="63.5" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
 <label x="43.18" y="63.5" size="1.778" layer="95"/>
+<pinref part="R29" gate="G$1" pin="2"/>
+<wire x1="-27.94" y1="53.34" x2="-27.94" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="76.2" x2="43.18" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="76.2" x2="43.18" y2="63.5" width="0.1524" layer="91"/>
+<junction x="43.18" y="63.5"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTB16"/>
@@ -8943,8 +9003,14 @@ Source: 008-0260-0_E.pdf</description>
 <net name="PTA12" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="BTN"/>
-<wire x1="38.1" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="68.58" x2="40.64" y2="68.58" width="0.1524" layer="91"/>
 <label x="43.18" y="68.58" size="1.778" layer="95"/>
+<pinref part="R28" gate="G$1" pin="2"/>
+<wire x1="40.64" y1="68.58" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="53.34" x2="-22.86" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="73.66" x2="40.64" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="73.66" x2="40.64" y2="68.58" width="0.1524" layer="91"/>
+<junction x="40.64" y="68.58"/>
 </segment>
 <segment>
 <pinref part="U2" gate="A" pin="PTA12"/>
