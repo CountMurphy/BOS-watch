@@ -2050,6 +2050,8 @@ SRAM.</description>
 <wire x1="-3.81" y1="-1.27" x2="3.81" y2="-1.27" width="0.127" layer="21"/>
 <wire x1="3.81" y1="-1.27" x2="3.81" y2="1.27" width="0.127" layer="21"/>
 <wire x1="3.81" y1="1.27" x2="-3.81" y2="1.27" width="0.127" layer="21"/>
+<text x="-0.889" y="-2.159" size="0.6096" layer="21">CLK</text>
+<text x="-3.302" y="-2.159" size="0.6096" layer="21">DIO</text>
 </package>
 <package name="74HC595PW">
 <wire x1="-2.11" y1="1.99" x2="-2.11" y2="-2.6" width="0.127" layer="21"/>
