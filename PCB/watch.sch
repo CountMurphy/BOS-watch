@@ -8844,16 +8844,6 @@ Source: 008-0260-0_E.pdf</description>
 </net>
 <net name="PTB18" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="MR"/>
-<wire x1="66.04" y1="208.28" x2="66.04" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="U$4" gate="G$1" pin="MR"/>
-<wire x1="66.04" y1="185.42" x2="-50.8" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="-50.8" y1="185.42" x2="-50.8" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="-50.8" y1="203.2" x2="-63.5" y2="203.2" width="0.1524" layer="91"/>
-<junction x="-50.8" y="203.2"/>
-<label x="-63.5" y="203.2" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="U2" gate="A" pin="PTB18"/>
 <wire x1="81.28" y1="104.14" x2="88.9" y2="104.14" width="0.1524" layer="91"/>
 <junction x="88.9" y="104.14"/>
