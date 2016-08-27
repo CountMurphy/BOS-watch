@@ -8480,11 +8480,6 @@ Source: 008-0260-0_E.pdf</description>
 <wire x1="88.9" y1="96.52" x2="81.28" y2="96.52" width="0.1524" layer="91"/>
 <junction x="88.9" y="96.52"/>
 </segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="3D-FIX"/>
-<wire x1="162.56" y1="91.44" x2="149.86" y2="91.44" width="0.1524" layer="91"/>
-<label x="149.86" y="88.9" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="PTE30" class="0">
 <segment>
@@ -8922,6 +8917,10 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="LED-E" gate="G$1" pin="A"/>
 <wire x1="-144.78" y1="55.88" x2="-134.62" y2="55.88" width="0.1524" layer="91"/>
 <label x="-142.24" y="58.42" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="3D-FIX"/>
+<wire x1="162.56" y1="91.44" x2="152.4" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PTD2" class="0">
