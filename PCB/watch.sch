@@ -8456,11 +8456,6 @@ Source: 008-0260-0_E.pdf</description>
 <wire x1="83.82" y1="83.82" x2="81.28" y2="83.82" width="0.1524" layer="91"/>
 <junction x="83.82" y="83.82"/>
 </segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="TX"/>
-<wire x1="162.56" y1="81.28" x2="152.4" y2="81.28" width="0.1524" layer="91"/>
-<label x="149.86" y="81.28" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="N$6" class="0">
 <segment>
@@ -8918,10 +8913,6 @@ Source: 008-0260-0_E.pdf</description>
 <wire x1="-144.78" y1="55.88" x2="-134.62" y2="55.88" width="0.1524" layer="91"/>
 <label x="-142.24" y="58.42" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="3D-FIX"/>
-<wire x1="162.56" y1="91.44" x2="152.4" y2="91.44" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="PTD2" class="0">
 <segment>
@@ -9201,6 +9192,30 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="R10" gate="G$1" pin="1"/>
 <pinref part="DISP2" gate="G$1" pin="D4"/>
 <wire x1="83.82" y1="264.16" x2="83.82" y2="302.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PTC10" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="3D-FIX"/>
+<wire x1="162.56" y1="91.44" x2="152.4" y2="91.44" width="0.1524" layer="91"/>
+<label x="149.86" y="88.9" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTC10"/>
+<wire x1="81.28" y1="139.7" x2="86.36" y2="139.7" width="0.1524" layer="91"/>
+<junction x="86.36" y="139.7"/>
+</segment>
+</net>
+<net name="PTC11" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="TX"/>
+<wire x1="162.56" y1="81.28" x2="152.4" y2="81.28" width="0.1524" layer="91"/>
+<label x="149.86" y="78.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="A" pin="PTC11"/>
+<wire x1="81.28" y1="142.24" x2="86.36" y2="142.24" width="0.1524" layer="91"/>
+<junction x="86.36" y="142.24"/>
 </segment>
 </net>
 </nets>
