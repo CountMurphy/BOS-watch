@@ -9002,11 +9002,6 @@ Source: 008-0260-0_E.pdf</description>
 <wire x1="-25.4" y1="83.82" x2="-33.02" y2="83.82" width="0.1524" layer="91"/>
 <junction x="-33.02" y="83.82"/>
 </segment>
-<segment>
-<pinref part="T2" gate="G$1" pin="B"/>
-<wire x1="134.62" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
-<label x="127" y="121.92" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="N$2" class="0">
 <segment>
@@ -9216,6 +9211,18 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="U2" gate="A" pin="PTC11"/>
 <wire x1="81.28" y1="142.24" x2="86.36" y2="142.24" width="0.1524" layer="91"/>
 <junction x="86.36" y="142.24"/>
+</segment>
+</net>
+<net name="PTC4" class="0">
+<segment>
+<pinref part="U2" gate="A" pin="PTC4/LLWU_P8"/>
+<wire x1="81.28" y1="124.46" x2="86.36" y2="124.46" width="0.1524" layer="91"/>
+<junction x="86.36" y="124.46"/>
+</segment>
+<segment>
+<pinref part="T2" gate="G$1" pin="B"/>
+<wire x1="134.62" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
+<label x="127" y="121.92" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
