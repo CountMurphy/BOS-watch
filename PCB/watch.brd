@@ -1621,7 +1621,7 @@ design rules under a new name.</description>
 </element>
 <element name="LASER" library="Photonics" package="LD-FLUSH-WITH-JUMPER" value="LD" x="20.32" y="48.26" rot="R180"/>
 <element name="LED-E" library="led" package="LED5MM" value="" x="87.884" y="18.034"/>
-<element name="LED-IR" library="led" package="LED5MM" value="" x="32.385" y="57.15"/>
+<element name="LED-IR" library="led" package="LED5MM" value="" x="36.195" y="55.372"/>
 <element name="LED-N" library="led" package="LED5MM" value="" x="82.169" y="26.289"/>
 <element name="LED-S" library="led" package="LED5MM" value="" x="82.169" y="10.922"/>
 <element name="LED-W" library="led" package="LED5MM" value="" x="76.835" y="18.669"/>
@@ -1649,7 +1649,7 @@ design rules under a new name.</description>
 <element name="R12" library="SparkFun-Resistors" package="0603-RES" value="220Ohm" x="88.392" y="26.162" rot="R180"/>
 <element name="R13" library="SparkFun-Resistors" package="0603-RES" value="220Ohm" x="89.027" y="9.271" rot="R180"/>
 <element name="R14" library="SparkFun-Resistors" package="0603-RES" value="220Ohm" x="72.644" y="12.827" rot="R90"/>
-<element name="R15" library="SparkFun-Resistors" package="0603-RES" value="220Ohm" x="36.068" y="53.213" rot="R180"/>
+<element name="R15" library="SparkFun-Resistors" package="0603-RES" value="220Ohm" x="39.116" y="51.054" rot="R270"/>
 <element name="R16" library="SparkFun-Resistors" package="0603-RES" value="10" x="13.97" y="51.181" rot="R90"/>
 <element name="R17" library="SparkFun-Resistors" package="0603-RES" value="10K" x="13.335" y="41.275" rot="R90"/>
 <element name="R2" library="SparkFun-Resistors" package="0603-RES" value="470" x="68.326" y="54.864" rot="R270"/>
@@ -2032,8 +2032,9 @@ design rules under a new name.</description>
 <signal name="PTE20">
 <contactref element="U2" pad="9"/>
 <contactref element="LED-IR" pad="K"/>
-<wire x1="33.655" y1="57.15" x2="35.079459375" y2="57.15" width="0.254" layer="1"/>
-<wire x1="35.079459375" y1="57.15" x2="46.51875" y2="45.710709375" width="0.254" layer="1"/>
+<wire x1="37.465" y1="55.372" x2="44.831" y2="48.006" width="0.254" layer="1"/>
+<wire x1="44.831" y1="48.006" x2="44.831" y2="47.398459375" width="0.254" layer="1"/>
+<wire x1="44.831" y1="47.398459375" x2="46.51875" y2="45.710709375" width="0.254" layer="1"/>
 </signal>
 <signal name="PTA13">
 <contactref element="U$3" pad="D"/>
@@ -2451,8 +2452,10 @@ design rules under a new name.</description>
 <signal name="N$39">
 <contactref element="R15" pad="2"/>
 <contactref element="LED-IR" pad="A"/>
-<wire x1="31.115" y1="57.15" x2="35.052" y2="53.213" width="0.254" layer="1"/>
-<wire x1="35.052" y1="53.213" x2="35.218" y2="53.213" width="0.254" layer="1"/>
+<wire x1="34.925" y1="55.372" x2="34.925" y2="51.308" width="0.254" layer="1"/>
+<wire x1="34.925" y1="51.308" x2="35.941" y2="50.292" width="0.254" layer="1"/>
+<wire x1="35.941" y1="50.292" x2="39.028" y2="50.292" width="0.254" layer="1"/>
+<wire x1="39.028" y1="50.292" x2="39.116" y2="50.204" width="0.254" layer="1"/>
 </signal>
 <signal name="PTA12">
 <contactref element="U$3" pad="BTN"/>
