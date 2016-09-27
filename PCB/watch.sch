@@ -7940,7 +7940,7 @@ Source: 008-0260-0_E.pdf</description>
 <part name="U2" library="Freescale" deviceset="MKL27Z256VLH4" device=""/>
 <part name="SUPPLY6" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY7" library="supply2" deviceset="GND" device=""/>
-<part name="C2" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="C2" library="SparkFun" deviceset="CAP" device="0603" value="1uf"/>
 <part name="SUPPLY10" library="supply2" deviceset="V+" device=""/>
 <part name="U$3" library="5-wayswitch" deviceset="5-WAYSWITCH" device=""/>
 <part name="SP1" library="adafruit" deviceset="SPEAKER" device="/PS12"/>
@@ -8026,6 +8026,7 @@ Source: 008-0260-0_E.pdf</description>
 <part name="R8" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="680"/>
 <part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="680"/>
 <part name="R10" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="680"/>
+<part name="GPTX" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="330"/>
 </parts>
 <sheets>
 <sheet>
@@ -8132,6 +8133,7 @@ Source: 008-0260-0_E.pdf</description>
 <instance part="R8" gate="G$1" x="78.74" y="281.94" rot="R270"/>
 <instance part="R9" gate="G$1" x="81.28" y="269.24" rot="R270"/>
 <instance part="R10" gate="G$1" x="83.82" y="259.08" rot="R270"/>
+<instance part="GPTX" gate="G$1" x="137.16" y="81.28" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -9203,14 +9205,14 @@ Source: 008-0260-0_E.pdf</description>
 </net>
 <net name="PTC11" class="0">
 <segment>
-<pinref part="U1" gate="G$1" pin="TX"/>
-<wire x1="162.56" y1="81.28" x2="152.4" y2="81.28" width="0.1524" layer="91"/>
-<label x="149.86" y="78.74" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="U2" gate="A" pin="PTC11"/>
 <wire x1="81.28" y1="142.24" x2="86.36" y2="142.24" width="0.1524" layer="91"/>
 <junction x="86.36" y="142.24"/>
+</segment>
+<segment>
+<pinref part="GPTX" gate="G$1" pin="2"/>
+<wire x1="132.08" y1="81.28" x2="127" y2="81.28" width="0.1524" layer="91"/>
+<label x="124.46" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PTC4" class="0">
@@ -9223,6 +9225,13 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="T2" gate="G$1" pin="B"/>
 <wire x1="134.62" y1="121.92" x2="129.54" y2="121.92" width="0.1524" layer="91"/>
 <label x="127" y="121.92" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$30" class="0">
+<segment>
+<pinref part="GPTX" gate="G$1" pin="1"/>
+<pinref part="U1" gate="G$1" pin="TX"/>
+<wire x1="142.24" y1="81.28" x2="162.56" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
