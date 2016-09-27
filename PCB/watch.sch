@@ -7996,7 +7996,7 @@ Source: 008-0260-0_E.pdf</description>
 <part name="R17" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10K"/>
 <part name="T2" library="transistor" deviceset="*-PNP-" device="SOT23-EBC"/>
 <part name="SUPPLY32" library="supply2" deviceset="V+" device=""/>
-<part name="C1" library="SparkFun" deviceset="CAP" device="0603" value=".1uf"/>
+<part name="C1" library="SparkFun" deviceset="CAP" device="0603" value="1uf"/>
 <part name="SUPPLY8" library="supply2" deviceset="V+" device=""/>
 <part name="SUPPLY9" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY33" library="supply2" deviceset="GND" device=""/>
