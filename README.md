@@ -4,7 +4,7 @@ Brotherhood of Steel Watch
 
 Ad Victoriam brother!
 
-The BOS watch is the second version of my GPS enabled wristwatches. Stripped of the non used features of the [Pipman](https://www.random-hackery.net/pipman-gps-watch/) , the BOS watch contains all of the fixes and new features a man travling the wastes could want
+The BOS watch is the second version of my GPS enabled wristwatches. Stripped of the non used features and annoyances of the [Pipman](https://www.random-hackery.net/pipman-gps-watch/) , the BOS watch contains all things a man travling the wastes could want ^1^
 
 Features
 ---------------
@@ -14,18 +14,34 @@ Features
 
 - Stop watch / countdown timer
 
-- Speaker
+- Speaker (Plays the fallout theme!)
 
 - TV B-gone
 
-- Laser
+- A Frickn' Laser!&trade;
 
-- low power usage
+- Low power usage
+
+- USB charging
+
+
+-  Gieger Counter sound emulator (planned at least)
+
+- Retro look and feel using custom DIP switches (with 7 operating modes) and 1970's era calculator display bubble LEDs
+
+- The ability to repel women from 5 yards away!
 
 Tech
 ---------
-The BOS watch uses an arm processor (no more awful propeller spin code)
+The BOS watch uses an arm processor and C (Huzzah! No more awful propeller spin code)
 
 License
 ----------
 [DBAD](https://github.com/philsturgeon/dbad/blob/master/LICENSE-en.md) 
+
+
+
+
+
+----
+^1^ Not really. Not responsible for death, dismemberment, rad sickness or perpetual singleness
