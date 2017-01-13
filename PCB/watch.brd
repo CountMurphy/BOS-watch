@@ -2457,8 +2457,8 @@ design rules under a new name.</description>
 </element>
 <element name="I2CR1" library="SparkFun-Resistors" package="0603-RES" value="10K" x="24.638" y="44.704" rot="R90"/>
 <element name="IC1" library="adafruit" package="MSOP10" value="ISL1209" x="64.008" y="45.974" rot="R90"/>
-<element name="J2" library="SparkFun-Connectors" package="USB-MICROB" value="USB-MICROB" x="86.741" y="51.435" rot="R90">
-<attribute name="PROD_ID" value="CONN-09505" x="86.741" y="51.435" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="J2" library="SparkFun-Connectors" package="USB-MICROB" value="USB-MICROB" x="90.80459375" y="51.435" rot="R90">
+<attribute name="PROD_ID" value="CONN-09505" x="90.80459375" y="51.435" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="LASER" library="Photonics" package="LD-FLUSH-WITH-JUMPER" value="LD" x="20.32" y="48.26" rot="R180"/>
 <element name="LED-E" library="led" package="LED5MM" value="" x="87.884" y="18.118659375"/>
@@ -3036,7 +3036,7 @@ design rules under a new name.</description>
 <wire x1="81.915" y1="58.928" x2="82.296" y2="58.547" width="0.254" layer="1"/>
 <wire x1="82.296" y1="58.547" x2="82.296" y2="50.546" width="0.254" layer="1"/>
 <wire x1="82.296" y1="50.546" x2="82.707" y2="50.135" width="0.254" layer="1"/>
-<wire x1="82.707" y1="50.135" x2="84.091" y2="50.135" width="0.254" layer="1"/>
+<wire x1="82.707" y1="50.135" x2="88.15459375" y2="50.135" width="0.254" layer="1"/>
 </signal>
 <signal name="N$5">
 <contactref element="LED1" pad="C"/>
