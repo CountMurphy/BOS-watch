@@ -38,7 +38,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
@@ -439,7 +439,6 @@
 <rectangle x1="16.9545" y1="24.0665" x2="17.2085" y2="24.1935" layer="21"/>
 <rectangle x1="16.9545" y1="24.1935" x2="17.2085" y2="24.3205" layer="21"/>
 <rectangle x1="16.9545" y1="24.3205" x2="17.2085" y2="24.4475" layer="21"/>
-<hole x="46.482" y="54.356" drill="8.89"/>
 <dimension x1="91.999" y1="59.934" x2="91.999" y2="6.858" x3="99.822" y3="33.396" textsize="1.778" layer="1"/>
 <dimension x1="10.922" y1="6.858" x2="91.999" y2="6.858" x3="51.4605" y3="-1.651" textsize="1.778" layer="1"/>
 <rectangle x1="83.009309375" y1="27.894990625" x2="83.601128125" y2="27.979571875" layer="22"/>
@@ -1294,7 +1293,6 @@
 <wire x1="10.92090625" y1="6.941971875" x2="30.222975" y2="6.941971875" width="0" layer="20"/>
 <wire x1="73.652634375" y1="6.941971875" x2="91.93880625" y2="6.941971875" width="0" layer="20"/>
 <wire x1="91.93880625" y1="6.941971875" x2="91.93880625" y2="59.853346875" width="0" layer="20"/>
-<wire x1="91.93880625" y1="59.853346875" x2="23.8736125" y2="59.853346875" width="0" layer="20"/>
 <wire x1="23.8736125" y1="59.853346875" x2="23.8736125" y2="50.117653125" width="0" layer="20"/>
 <wire x1="23.8736125" y1="50.117653125" x2="16.59300625" y2="50.117653125" width="0" layer="20"/>
 <wire x1="16.59300625" y1="50.117653125" x2="16.59300625" y2="59.93800625" width="0" layer="20"/>
@@ -1303,6 +1301,11 @@
 <wire x1="30.222978125" y1="6.941971875" x2="38.434825" y2="15.15381875" width="0" layer="20"/>
 <wire x1="38.434821875" y1="15.15381875" x2="65.4407875" y2="15.15381875" width="0" layer="20"/>
 <wire x1="73.652634375" y1="6.941971875" x2="65.4407875" y2="15.15381875" width="0" layer="20"/>
+<wire x1="23.8736125" y1="59.853346875" x2="46.223378125" y2="59.853346875" width="0" layer="20"/>
+<wire x1="46.223378125" y1="59.853346875" x2="46.223378125" y2="52.14945" width="0" layer="20"/>
+<wire x1="46.223378125" y1="52.14945" x2="52.488084375" y2="52.14945" width="0" layer="20"/>
+<wire x1="52.488084375" y1="52.14945" x2="52.488084375" y2="59.853346875" width="0" layer="20"/>
+<wire x1="52.488084375" y1="59.853346875" x2="91.93880625" y2="59.853346875" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="SparkFun-Resistors">
@@ -2709,6 +2712,7 @@ design rules under a new name.</description>
 <vertex x="16.33903125" y="59.599371875"/>
 </polygon>
 <wire x1="63.881" y1="45.085" x2="64.809" y2="45.085" width="0" layer="19" extent="16-16"/>
+<wire x1="40.259" y1="47.879" x2="35.52" y2="45.72" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="V+">
 <contactref element="COMPCAP" pad="1"/>
