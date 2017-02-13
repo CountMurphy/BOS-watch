@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name watch)(type Legacy)(uri "$(KIPRJMOD)/watch.mod")(options "")(descr ""))
+  (lib (name watchFIX)(type KiCad)(uri "$(KIPRJMOD)/watchFIX.pretty")(options "")(descr ""))
+  (lib (name images)(type KiCad)(uri "/home/hk47/My media/nifty software/git/BOS_watch/images")(options "")(descr ""))
+)

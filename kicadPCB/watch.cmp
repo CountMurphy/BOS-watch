@@ -1,0 +1,437 @@
+Cmp-Mod V01 Created by Cvpcb (2015-02-06 BZR 5410)-product   date = Mon 09 Feb 2015 04:12:04 PM PST
+
+BeginCmp
+TimeStamp = /58A1DFD1;
+Reference = 12CR2;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E099;
+Reference = C1;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E161;
+Reference = C2;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E229;
+Reference = C3;
+ValeurCmp = 0.1UF-25V(+80/-20%)(0603);
+IdModule  = SPARKFUN-CAPACITORS_0603-CAP;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E2F1;
+Reference = C4;
+ValeurCmp = 0.1UF-25V(+80/-20%)(0603);
+IdModule  = SPARKFUN-CAPACITORS_0603-CAP;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E3B9;
+Reference = C5;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E481;
+Reference = C6;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E549;
+Reference = C7;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E611;
+Reference = C8;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E6D9;
+Reference = C9;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E7A1;
+Reference = COMPCAP46;
+ValeurCmp = CAP0603;
+IdModule  = SPARKFUN_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E869;
+Reference = DISP1;
+ValeurCmp = 7-SEGMENT-4DIGIT-COUNTER-HP-BUBBLE;
+IdModule  = SPARKFUN-DISPLAYS_DIL12;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E931;
+Reference = DISP2;
+ValeurCmp = 7-SEGMENT-4DIGIT-COUNTER-HP-BUBBLE;
+IdModule  = SPARKFUN-DISPLAYS_DIL12;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1E9F9;
+Reference = GPTX46;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EAC1;
+Reference = I2CR1;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EB89;
+Reference = IC1;
+ValeurCmp = ISL1209;
+IdModule  = ADAFRUIT_MSOP10;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EC51;
+Reference = J2;
+ValeurCmp = USB-MICROB;
+IdModule  = SPARKFUN-CONNECTORS_USB-MICROB;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1ED19;
+Reference = LASER46;
+ValeurCmp = LD;
+IdModule  = PHOTONICS_LD-FLUSH-WITH-JUMPER;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EDE1;
+Reference = LED-E46;
+ValeurCmp = LED5MM;
+IdModule  = LED_LED5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EEA9;
+Reference = LED-IR46;
+ValeurCmp = LED5MM;
+IdModule  = LED_LED5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1EF71;
+Reference = LED-N46;
+ValeurCmp = LED5MM;
+IdModule  = LED_LED5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F039;
+Reference = LED-S46;
+ValeurCmp = LED5MM;
+IdModule  = LED_LED5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F101;
+Reference = LED-W46;
+ValeurCmp = LED5MM;
+IdModule  = LED_LED5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F1C9;
+Reference = LED1;
+ValeurCmp = LED_ESML0603;
+IdModule  = EAGLE-LTSPICE_LED_SML0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F291;
+Reference = LIPO46;
+ValeurCmp = JST_2MM_MALE;
+IdModule  = SPARKFUN-CONNECTORS_JST-2-SMD;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F359;
+Reference = Q1;
+ValeurCmp = CRYSTALTC26H;
+IdModule  = CRYSTAL_TC26H;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F421;
+Reference = R1;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F4E9;
+Reference = R2;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F5B1;
+Reference = R3;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F679;
+Reference = R4;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F741;
+Reference = R5;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F809;
+Reference = R6;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F8D1;
+Reference = R7;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1F999;
+Reference = R8;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FA61;
+Reference = R9;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FB29;
+Reference = R10;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FBF1;
+Reference = R11;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FCB9;
+Reference = R12;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FD81;
+Reference = R13;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FE49;
+Reference = R14;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FF11;
+Reference = R15;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A1FFD9;
+Reference = R16;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A200A1;
+Reference = R17;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A20169;
+Reference = R26;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A20231;
+Reference = R27;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A202F9;
+Reference = R29;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A203C1;
+Reference = R30;
+ValeurCmp = RESISTOR0603;
+IdModule  = SPARKFUN-RESISTORS_0603-RES;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A20489;
+Reference = S1;
+ValeurCmp = EG1213;
+IdModule  = ADAFRUIT_EG1213;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A20551;
+Reference = SP1;
+ValeurCmp = SPEAKER/PS12;
+IdModule  = ADAFRUIT_PS12;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A217AD;
+Reference = SWD_BREAKOUT46;
+ValeurCmp = SWD_BREAKOUTS;
+IdModule  = BOS_LIBS_SWD;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21875;
+Reference = T1;
+ValeurCmp = BC850;
+IdModule  = TRANSISTOR_SOT23;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A2193D;
+Reference = T2;
+ValeurCmp = -PNP-SOT23-EBC;
+IdModule  = TRANSISTOR_SOT23-EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21A05;
+Reference = U$1;
+ValeurCmp = HMC6343A;
+IdModule  = SPARKFUN_LCC36;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21ACD;
+Reference = U$2;
+ValeurCmp = MCP73831;
+IdModule  = GEEKAMMO_SOT23-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21B95;
+Reference = U$3;
+ValeurCmp = DIPS;
+IdModule  = BOS_LIBS_DIPS;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21C5D;
+Reference = U$4;
+ValeurCmp = 74HC595PW;
+IdModule  = BOS_LIBS_74HC595PW;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21D25;
+Reference = U$5;
+ValeurCmp = 74HC595PW;
+IdModule  = BOS_LIBS_74HC595PW;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21DED;
+Reference = U$7;
+ValeurCmp = DIPS;
+IdModule  = BOS_LIBS_DIPS;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21EB5;
+Reference = U$8;
+ValeurCmp = DIPS;
+IdModule  = BOS_LIBS_DIPS;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A21F7D;
+Reference = U$9;
+ValeurCmp = DIPS;
+IdModule  = BOS_LIBS_DIPS;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A22045;
+Reference = U1;
+ValeurCmp = GPS_FGPMMOPA6H;
+IdModule  = ADAFRUIT_FGPMMOPA6H;
+EndCmp
+
+BeginCmp
+TimeStamp = /58A2210D;
+Reference = U2;
+ValeurCmp = MKL27Z256VLH4;
+IdModule  = FREESCALE_LQFP-64_10X10X1.6;
+EndCmp
+
+EndListe
