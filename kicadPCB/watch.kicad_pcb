@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 107.917149 78.430582 189.085051 131.576618)
     (thickness 1.6)
-    (drawings 86)
+    (drawings 87)
     (tracks 800)
     (zones 0)
     (modules 64)
@@ -2825,6 +2825,9 @@
       (net 60 /PTA3))
   )
 
+  (gr_text "IR LED" (at 137.16 80.772) (layer F.SilkS)
+    (effects (font (size 0.5 0.5) (thickness 0.125)))
+  )
   (gr_text "LASER RADIATION\nDO NOT STARE INTO BEAM" (at 112.268 82.55 270) (layer F.SilkS)
     (effects (font (size 0.3 0.3) (thickness 0.075)))
   )
