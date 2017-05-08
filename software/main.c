@@ -23,7 +23,7 @@ i2c_device_t compass=
 
 int main (void)
 {
-	i2c_
+//	i2c_
 		//http://www.nxp.com/assets/documents/data/en/supporting-information/Inter-Integrated-Circuit-Training.pdf
 
     return 0;
