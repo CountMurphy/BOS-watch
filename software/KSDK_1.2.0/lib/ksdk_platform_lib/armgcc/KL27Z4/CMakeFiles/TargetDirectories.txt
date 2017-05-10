@@ -1,3 +1,0 @@
-/home/hk47/My media/nifty software/git/ahabadge/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/CMakeFiles/edit_cache.dir
-/home/hk47/My media/nifty software/git/ahabadge/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/CMakeFiles/rebuild_cache.dir
-/home/hk47/My media/nifty software/git/ahabadge/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/CMakeFiles/KsdkPlatformLib.dir
