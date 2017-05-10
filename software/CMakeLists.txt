@@ -98,6 +98,7 @@ ADD_EXECUTABLE(hello_world
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/lptmr/fsl_lptmr_irq.c"
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/lpuart/fsl_lpuart_irq.c"
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/spi/fsl_spi_irq.c"
+    "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/i2c/fsl_i2c_irq.c"
     "${ProjDirPath}/main.c"
 )
 SET_TARGET_PROPERTIES(hello_world PROPERTIES OUTPUT_NAME "hello_world.elf")
