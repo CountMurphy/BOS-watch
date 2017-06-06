@@ -1111,7 +1111,7 @@ Text Label 11450 11950 0    65   ~ 0
 PTA1
 Text Label 11450 11750 0    65   ~ 0
 PTA4
-Text Label 9650 6450 0    65   ~ 0
+Text Label 9750 6450 0    65   ~ 0
 PTB17
 Text Label 7950 5450 0    65   ~ 0
 PTB19
@@ -1125,7 +1125,7 @@ Text Label 11350 6150 0    65   ~ 0
 PTC7
 Text Label 8350 11650 0    65   ~ 0
 PTC8
-Text Label 8550 8450 0    65   ~ 0
+Text Label 8650 8450 0    65   ~ 0
 PTC8
 Text Label 8350 11750 0    65   ~ 0
 PTC9
