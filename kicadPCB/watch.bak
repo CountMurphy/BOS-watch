@@ -1523,10 +1523,6 @@ Text Label 14350 10650 0    10   ~ 0
 PTB3
 Text Label 14350 10550 0    10   ~ 0
 PTB16
-Text Label 9350 6450 3    10   ~ 0
-PTB17
-Text Label 13750 6050 0    10   ~ 0
-PTB17
 Text Label 14350 10450 0    10   ~ 0
 PTB17
 Text Label 14350 10350 0    10   ~ 0
@@ -1535,11 +1531,7 @@ Text Label 14350 10250 0    10   ~ 0
 PTB19
 Text Label 14350 10150 0    10   ~ 0
 PTC0
-Text Label 11650 6350 2    10   ~ 0
-PTC0
 Text Label 14350 9950 0    10   ~ 0
-PTC2
-Text Label 9250 4350 1    10   ~ 0
 PTC2
 Text Label 14350 9550 0    10   ~ 0
 PTC4
