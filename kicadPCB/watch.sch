@@ -1134,11 +1134,9 @@ PTC9
 Text Label 17150 10850 0    65   ~ 0
 PTC10
 Text Label 16150 11250 0    65   ~ 0
-PTC11
+PTD2
 Text Label 2250 12050 0    65   ~ 0
 PTD1
-Text Label 3950 13650 0    65   ~ 0
-PTD2
 Text Label 5850 12250 0    65   ~ 0
 PTD3
 Text Label 4050 10850 0    65   ~ 0
@@ -1563,15 +1561,11 @@ Text Label 14350 8950 0    10   ~ 0
 PTC10
 Text Label 14350 8850 0    10   ~ 0
 PTC11
-Text Label 16350 11250 2    10   ~ 0
-PTC11
 Text Label 14350 8650 0    10   ~ 0
 PTD1
 Text Label 2650 12050 2    10   ~ 0
 PTD1
 Text Label 14350 8550 0    10   ~ 0
-PTD2
-Text Label 3950 13350 3    10   ~ 0
 PTD2
 Text Label 14350 8450 0    10   ~ 0
 PTD3
@@ -2376,4 +2370,6 @@ Wire Wire Line
 	14350 9850 14600 9850
 Text Label 14600 9850 0    60   ~ 0
 PTC3
+Text Label 3950 13650 0    60   ~ 0
+PTE0
 $EndSCHEMATC
