@@ -1114,9 +1114,9 @@ PTA4
 Text Label 9750 6450 0    65   ~ 0
 PTB17
 Text Label 7950 5450 0    65   ~ 0
-PTB19
+PTB16
 Text Label 9050 3950 1    65   ~ 0
-PTC0
+PTC3
 Text Label 9250 3950 0    65   ~ 0
 PTC2
 Text Label 16250 9650 0    65   ~ 0
@@ -1531,15 +1531,9 @@ Text Label 14350 10450 0    10   ~ 0
 PTB17
 Text Label 14350 10350 0    10   ~ 0
 PTB18
-Text Label 8650 5450 2    10   ~ 0
-PTB19
 Text Label 14350 10250 0    10   ~ 0
 PTB19
 Text Label 14350 10150 0    10   ~ 0
-PTC0
-Text Label 9050 4350 1    10   ~ 0
-PTC0
-Text Label 11650 6350 2    10   ~ 0
 PTC0
 Text Label 14350 9950 0    10   ~ 0
 PTC2
@@ -2384,4 +2378,8 @@ F 3 "" H 17050 8250 60  0001 C CNN
 	1    17050 8250
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	14350 9850 14600 9850
+Text Label 14600 9850 0    60   ~ 0
+PTC3
 $EndSCHEMATC
