@@ -2371,5 +2371,5 @@ Wire Wire Line
 Text Label 14600 9850 0    60   ~ 0
 PTC3
 Text Label 3950 13650 0    60   ~ 0
-PTC11
+PTE0
 $EndSCHEMATC

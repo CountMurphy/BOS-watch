@@ -1112,7 +1112,7 @@ PTA1
 Text Label 11450 11750 0    65   ~ 0
 PTA4
 Text Label 9750 6450 0    65   ~ 0
-PTB17
+PTB18
 Text Label 7950 5450 0    65   ~ 0
 PTB16
 Text Label 9050 3950 1    65   ~ 0
