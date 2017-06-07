@@ -1118,11 +1118,9 @@ PTB16
 Text Label 9050 3950 1    65   ~ 0
 PTC3
 Text Label 9250 3950 0    65   ~ 0
-PTC2
+PTD4
 Text Label 16250 9650 0    65   ~ 0
 PTC4
-Text Label 11350 6150 0    65   ~ 0
-PTC7
 Text Label 8350 11650 0    65   ~ 0
 PTC8
 Text Label 8650 8450 0    65   ~ 0
@@ -1537,21 +1535,15 @@ Text Label 16450 9650 2    10   ~ 0
 PTC4
 Text Label 14350 9250 0    10   ~ 0
 PTC7
-Text Label 11650 6150 2    10   ~ 0
-PTC7
 Text Label 14350 9150 0    10   ~ 0
 PTC8
 Text Label 15150 8950 3    10   ~ 0
-PTC8
-Text Label 8050 11650 0    10   ~ 0
 PTC8
 Text Label 8350 8450 0    10   ~ 0
 PTC8
 Text Label 14350 9050 0    10   ~ 0
 PTC9
 Text Label 14750 8950 3    10   ~ 0
-PTC9
-Text Label 8050 11750 0    10   ~ 0
 PTC9
 Text Label 8350 8550 0    10   ~ 0
 PTC9
@@ -2167,7 +2159,7 @@ Wire Wire Line
 	14350 9250 14550 9250
 Connection ~ 14550 9250
 Wire Wire Line
-	11650 6150 11350 6150
+	11200 6150 11650 6150
 Wire Wire Line
 	14350 9150 15350 9150
 Wire Wire Line
@@ -2372,4 +2364,13 @@ Text Label 14600 9850 0    60   ~ 0
 PTC3
 Text Label 3950 13650 0    60   ~ 0
 PTE0
+Wire Wire Line
+	14350 8350 14500 8350
+Text Label 14500 8350 0    60   ~ 0
+PTD4
+Wire Wire Line
+	11200 6150 11200 4050
+Wire Wire Line
+	11200 4050 9250 4050
+Connection ~ 9250 4050
 $EndSCHEMATC
