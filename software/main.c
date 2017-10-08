@@ -22,29 +22,29 @@ int main (void)
     // Initialize i2c master
     hardware_init();
     OSA_Init();
-GPIO_DRV_InputPinInit(&swtch_exec);
-GPIO_DRV_OutputPinInit(&LED_East);
-GPIO_DRV_OutputPinInit(&LED_North);
-GPIO_DRV_OutputPinInit(&LED_South);
-GPIO_DRV_OutputPinInit(&LED_West);
-while(1)
-{
-    GPIO_DRV_WritePinOutput(LED_East.pinName,1);
-    OSA_TimeDelay(500);
-    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
-    GPIO_DRV_WritePinOutput(LED_North.pinName,1);
-    OSA_TimeDelay(500);
-    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
-    GPIO_DRV_WritePinOutput(LED_West.pinName,1);
-    OSA_TimeDelay(500);
-    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
-    GPIO_DRV_WritePinOutput(LED_South.pinName,1);
-    OSA_TimeDelay(500);
-    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
-}
+    GPIO_DRV_InputPinInit(&swtch_exec);
+    GPIO_DRV_OutputPinInit(&LED_East);
+    GPIO_DRV_OutputPinInit(&LED_North);
+    GPIO_DRV_OutputPinInit(&LED_South);
+    GPIO_DRV_OutputPinInit(&LED_West);
+    while(1)
+    {
+        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+        OSA_TimeDelay(500);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_North.pinName,1);
+        OSA_TimeDelay(500);
+        GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+        OSA_TimeDelay(500);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_South.pinName,1);
+        OSA_TimeDelay(500);
+        GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+    }
     I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
 
-	// Master sends 1 bytes CMD and data to slave
+    // Master sends 1 bytes CMD and data to slave
     txBuff[0]=0x50;
 
     // OSA_TimeDelay(500);

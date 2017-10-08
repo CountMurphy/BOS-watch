@@ -101,6 +101,7 @@ ADD_EXECUTABLE(BOS
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/i2c/fsl_i2c_irq.c"
     "${ProjDirPath}/main.c"
     "${ProjDirPath}/pins.c"
+    "${ProjDirPath}/pins.h"
 )
 SET_TARGET_PROPERTIES(BOS PROPERTIES OUTPUT_NAME "BOS.elf")
 
