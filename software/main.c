@@ -25,10 +25,33 @@ i2c_device_t compass=
 
 i2c_master_state_t compass_state;
 
-// static const gpio_output_pin_user_config_t wiggle={
-//     .pinName=GPIO_MAKE_PIN(GPIOC_IDX,9),
-//     .config.outputLogic=1
-// };
+ static const gpio_output_pin_user_config_t wiggle={
+     .pinName=GPIO_MAKE_PIN(GPIOD_IDX,3),
+     .config.outputLogic=0
+ };
+
+ static const gpio_output_pin_user_config_t wiggle2={
+     .pinName=GPIO_MAKE_PIN(GPIOD_IDX,5),
+     .config.outputLogic=0
+ };
+
+ static const gpio_output_pin_user_config_t wiggle3 ={
+     .pinName=GPIO_MAKE_PIN(GPIOE_IDX,0),
+     .config.outputLogic=0
+ };
+
+  static const gpio_output_pin_user_config_t wiggle4 ={
+     .pinName=GPIO_MAKE_PIN(GPIOD_IDX,1),
+     .config.outputLogic=0
+ };
+
+
+
+ static const gpio_output_pin_user_config_t test={
+     .pinName=GPIO_MAKE_PIN(GPIOA_IDX,1),
+     .config.outputLogic=0
+ };
+
 
 
 int main (void)
@@ -36,12 +59,26 @@ int main (void)
     // Initialize i2c master
     hardware_init();
     OSA_Init();
-/*GPIO_DRV_OutputPinInit(&wiggle);
+GPIO_DRV_InputPinInit(&test);
+GPIO_DRV_OutputPinInit(&wiggle);
+GPIO_DRV_OutputPinInit(&wiggle2);
+GPIO_DRV_OutputPinInit(&wiggle3);
+GPIO_DRV_OutputPinInit(&wiggle4);
 while(1)
 {
     GPIO_DRV_WritePinOutput(wiggle.pinName,1);
+    OSA_TimeDelay(500);
     GPIO_DRV_WritePinOutput(wiggle.pinName,0);
-}*/
+    GPIO_DRV_WritePinOutput(wiggle2.pinName,1);
+    OSA_TimeDelay(500);
+    GPIO_DRV_WritePinOutput(wiggle2.pinName,0);
+    GPIO_DRV_WritePinOutput(wiggle3.pinName,1);
+    OSA_TimeDelay(500);
+    GPIO_DRV_WritePinOutput(wiggle3.pinName,0);
+    GPIO_DRV_WritePinOutput(wiggle4.pinName,1);
+    OSA_TimeDelay(500);
+    GPIO_DRV_WritePinOutput(wiggle4.pinName,0);
+}
     I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
 
 	// Master sends 1 bytes CMD and data to slave
@@ -71,7 +108,17 @@ void hardware_init(void)
     CLOCK_SYS_EnablePortClock(PORTA_IDX);
     CLOCK_SYS_EnablePortClock(PORTC_IDX);
     CLOCK_SYS_EnablePortClock(PORTD_IDX);
+    CLOCK_SYS_EnablePortClock(PORTE_IDX);
 
+    PORT_HAL_SetMuxMode(PORTA,4u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTA,1u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTE,25u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTE,24u,kPortMuxAsGpio);
+
+    PORT_HAL_SetMuxMode(PORTD,3u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTD,5u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTE,0u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTD,1u,kPortMuxAsGpio);
     //I2C0
     /* Affects PORTC_PCR8 register  */
     PORT_HAL_SetMuxMode(PORTC,8u,kPortMuxAlt2);
