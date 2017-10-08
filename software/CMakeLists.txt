@@ -88,7 +88,7 @@ ELSEIF(CMAKE_BUILD_TYPE MATCHES Release)
 ENDIF()
 
 # ADD_EXECUTABLE
-ADD_EXECUTABLE(hello_world 
+ADD_EXECUTABLE(BOS 
     "${ProjDirPath}/KSDK_1.2.0/platform/devices/MKL27Z4/startup/gcc/startup_MKL27Z4.S"
     "${ProjDirPath}/KSDK_1.2.0/platform/devices/MKL27Z4/startup/system_MKL27Z4.c"
     "${ProjDirPath}/KSDK_1.2.0/platform/devices/startup.c"
@@ -100,28 +100,29 @@ ADD_EXECUTABLE(hello_world
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/spi/fsl_spi_irq.c"
     "${ProjDirPath}/KSDK_1.2.0/platform/drivers/src/i2c/fsl_i2c_irq.c"
     "${ProjDirPath}/main.c"
+    "${ProjDirPath}/pins.c"
 )
-SET_TARGET_PROPERTIES(hello_world PROPERTIES OUTPUT_NAME "hello_world.elf")
+SET_TARGET_PROPERTIES(BOS PROPERTIES OUTPUT_NAME "BOS.elf")
 
-TARGET_LINK_LIBRARIES(hello_world -Wl,--start-group)
+TARGET_LINK_LIBRARIES(BOS -Wl,--start-group)
 # LIBRARIES
 IF(CMAKE_BUILD_TYPE MATCHES Debug)
-    TARGET_LINK_LIBRARIES(hello_world ${ProjDirPath}/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/debug/libksdk_platform.a)
+    TARGET_LINK_LIBRARIES(BOS ${ProjDirPath}/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/debug/libksdk_platform.a)
 ELSEIF(CMAKE_BUILD_TYPE MATCHES Release)
-    TARGET_LINK_LIBRARIES(hello_world ${ProjDirPath}/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/release/libksdk_platform.a)
+    TARGET_LINK_LIBRARIES(BOS ${ProjDirPath}/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/release/libksdk_platform.a)
 ENDIF()
 
 # SYSTEM LIBRARIES
-TARGET_LINK_LIBRARIES(hello_world m)
-TARGET_LINK_LIBRARIES(hello_world c)
-TARGET_LINK_LIBRARIES(hello_world gcc)
-TARGET_LINK_LIBRARIES(hello_world nosys)
-TARGET_LINK_LIBRARIES(hello_world -Wl,--end-group)
+TARGET_LINK_LIBRARIES(BOS m)
+TARGET_LINK_LIBRARIES(BOS c)
+TARGET_LINK_LIBRARIES(BOS gcc)
+TARGET_LINK_LIBRARIES(BOS nosys)
+TARGET_LINK_LIBRARIES(BOS -Wl,--end-group)
 
 # MAP FILE
-SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG}  -Xlinker -Map=debug/hello_world.map")
-SET(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}  -Xlinker -Map=release/hello_world.map")
+SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG}  -Xlinker -Map=debug/BOS.map")
+SET(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}  -Xlinker -Map=release/BOS.map")
 
 # BIN AND HEX
-ADD_CUSTOM_COMMAND(TARGET hello_world POST_BUILD COMMAND ${CMAKE_OBJCOPY} -Oihex ${EXECUTABLE_OUTPUT_PATH}/hello_world.elf ${EXECUTABLE_OUTPUT_PATH}/hello_world.hex)
-ADD_CUSTOM_COMMAND(TARGET hello_world POST_BUILD COMMAND ${CMAKE_OBJCOPY} -Obinary ${EXECUTABLE_OUTPUT_PATH}/hello_world.elf ${EXECUTABLE_OUTPUT_PATH}/hello_world.bin)
+ADD_CUSTOM_COMMAND(TARGET BOS POST_BUILD COMMAND ${CMAKE_OBJCOPY} -Oihex ${EXECUTABLE_OUTPUT_PATH}/BOS.elf ${EXECUTABLE_OUTPUT_PATH}/BOS.hex)
+ADD_CUSTOM_COMMAND(TARGET BOS POST_BUILD COMMAND ${CMAKE_OBJCOPY} -Obinary ${EXECUTABLE_OUTPUT_PATH}/BOS.elf ${EXECUTABLE_OUTPUT_PATH}/BOS.bin)
