@@ -32,4 +32,13 @@ void hardware_init(void)
     PORT_HAL_SetMuxMode(PORTC,9u,kPortMuxAlt2);
     //PORT_HAL_SetMuxMode(PORTC,9u,kPortMuxAsGpio);
 
+
+    //SPI
+    //SPI bubble screen
+      PORT_HAL_SetMuxMode(PORTC,3u,kPortMuxAlt2);
+      PORT_HAL_SetMuxMode(PORTB,16u,kPortMuxAlt2);
+
+      PORT_HAL_SetMuxMode(PORTB,18u,kPortMuxAsGpio);
+      PORT_HAL_SetMuxMode(PORTD,4u,kPortMuxAsGpio);
+
 }

@@ -34,3 +34,15 @@ i2c_master_state_t compass_state;
      .pinName=GPIO_MAKE_PIN(GPIOD_IDX,1),
      .config.outputLogic=0
  };
+
+
+static const gpio_output_pin_user_config_t displayOutput={
+    .pinName=GPIO_MAKE_PIN(GPIOB_IDX,18),
+    .config.outputLogic=0
+};
+
+static const gpio_output_pin_user_config_t spiAccept={
+    .pinName=GPIO_MAKE_PIN(GPIOD_IDX,4),
+    .config.outputLogic=0
+};
+
