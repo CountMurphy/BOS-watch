@@ -11,8 +11,10 @@
 
 #define DATA_LENGTH             64
 #define BOARD_I2C_INSTANCE      0
+//for headers
 uint8_t dictionary(char);
 void spiLatch();
+uint8_t addDot(char);
 
 // Buffer store data to send to slave
 uint8_t txBuff[DATA_LENGTH] = {0};
@@ -68,7 +70,8 @@ int main (void)
 
     SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
 
-    uint8_t digit = dictionary('v');
+    uint8_t digit = dictionary('8');
+    digit=addDot(digit);
     uint8_t spiData[2] = {0x00,digit};
 
 
@@ -248,4 +251,10 @@ uint8_t dictionary(char digit)
         break;
     }
     return retVal;
+}
+
+uint8_t addDot(char digit)
+{
+    uint8_t dot= 0x80;
+    return  digit^dot;
 }
