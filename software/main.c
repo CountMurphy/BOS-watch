@@ -51,10 +51,8 @@ int main (void)
     //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);
     uint8_t  rx[2];
     GPIO_DRV_OutputPinInit(&spiAccept);
-    GPIO_DRV_WritePinOutput(spiAccept.pinName,0);
 
     GPIO_DRV_OutputPinInit(&displayOutput);
-    GPIO_DRV_WritePinOutput(displayOutput.pinName,0);
 
     SPI_Transfer(spiData,rx,2);
 
@@ -63,9 +61,9 @@ int main (void)
 
     while(1)
     {
-        GPIO_DRV_WritePinOutput(displayOutput.pinName,1);
-        OSA_TimeDelay(1000);
         GPIO_DRV_WritePinOutput(displayOutput.pinName,0);
+        OSA_TimeDelay(1000);
+        GPIO_DRV_WritePinOutput(displayOutput.pinName,1);
         OSA_TimeDelay(1000);
     }
 
@@ -90,6 +88,3 @@ int main (void)
 
     return 0;
 }
-
-
-                //http://www.nxp.com/assets/documents/data/en/supporting-information/Inter-Integrated-Circuit-Training.pdf
