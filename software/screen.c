@@ -56,7 +56,6 @@ uint8_t dictionary(char digit)
         retVal=0b01101101;
         break;
     case '6':
-    case 'g':
     case 'G':
         retVal=0b01111101;
         break;
@@ -96,6 +95,9 @@ uint8_t dictionary(char digit)
     case 'f':
     case 'F':
         retVal=0b01110001;
+        break;
+    case 'g':
+        retVal=0b01101111;
         break;
     case 'H':
         retVal=0b01110110;
@@ -158,3 +160,42 @@ uint8_t addDot(char digit)
     uint8_t dot= 0x80;
     return  digit^dot;
 }
+
+
+uint8_t center(int count)
+{
+    uint8_t mask=0xFF;
+    uint8_t retval=0x00;
+    uint8_t right=0x08;
+    uint8_t left=0x10;
+    bool isOdd=(count%2)!=0;
+    for(int i=1;i<=(count/2);i++)
+    {
+        uint8_t shiftedL=left<<(i-1);
+        retval=retval|shiftedL;
+        if(i<=count)
+        {
+            uint8_t shiftedR=right>>(i-1);
+            retval=retval|shiftedR;
+        }
+    }
+    if(isOdd)
+    {
+      retval=retval|(right>>count/2);
+    }
+    return reverseBin(retval^mask);
+}
+
+uint8_t reverseBin(uint8_t data)
+{
+    uint8_t output = 0;
+    uint8_t n = sizeof(data) << 3;
+    uint8_t i = 0;
+
+    for (i = 0; i < n; i++)
+        if ((data>> i) & 0x1)
+            output |=  (0x1 << (n - 1 - i));
+
+    return output;
+}
+

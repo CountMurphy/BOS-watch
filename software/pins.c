@@ -1,11 +1,6 @@
 #include "pins.h"
 
 
- static const gpio_input_pin_user_config_t swtch_exec={
-     .pinName=GPIO_MAKE_PIN(GPIOA_IDX,1)
- };
-
-
 void hardware_init(void)
 {
 
