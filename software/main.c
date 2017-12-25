@@ -43,9 +43,9 @@ int main (void)
 
     SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
 
-    uint8_t digit = dictionary('g');
+    uint8_t digit = dictionary('8');
 //    digit=addDot(digit);
-    uint8_t spiData[2] = {0x00,digit};
+    uint8_t spiData[2] = {center(4),digit};
 
 
     //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);

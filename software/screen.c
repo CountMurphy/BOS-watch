@@ -160,3 +160,26 @@ uint8_t addDot(char digit)
     uint8_t dot= 0x80;
     return  digit^dot;
 }
+
+
+uint8_t center(int count)
+{
+    int leftBuffer=count/2;
+    uint8_t mask=0xFF;
+    uint8_t retVal=mask<<leftBuffer;
+    return reverseBin(retVal^mask);
+}
+
+uint8_t reverseBin(uint8_t data)
+{
+    uint8_t output = 0;
+    uint8_t n = sizeof(data) << 3;
+    uint8_t i = 0;
+
+    for (i = 0; i < n; i++)
+        if ((data>> i) & 0x1)
+            output |=  (0x1 << (n - 1 - i));
+
+    return output;
+}
+
