@@ -43,8 +43,8 @@ int main (void)
 
     SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
 
-    uint8_t digit = dictionary('H');
-    digit=addDot(digit);
+    uint8_t digit = dictionary('g');
+//    digit=addDot(digit);
     uint8_t spiData[2] = {0x00,digit};
 
 

@@ -56,7 +56,6 @@ uint8_t dictionary(char digit)
         retVal=0b01101101;
         break;
     case '6':
-    case 'g':
     case 'G':
         retVal=0b01111101;
         break;
@@ -96,6 +95,9 @@ uint8_t dictionary(char digit)
     case 'f':
     case 'F':
         retVal=0b01110001;
+        break;
+    case 'g':
+        retVal=0b01101111;
         break;
     case 'H':
         retVal=0b01110110;
