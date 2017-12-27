@@ -164,10 +164,21 @@ uint8_t addDot(char digit)
 
 uint8_t center(int count)
 {
-    int leftBuffer=count/2; //this line is horse shit
     uint8_t mask=0xFF;
-    uint8_t retVal=mask<<leftBuffer;
-    return reverseBin(retVal^mask);
+    uint8_t retval=count>0? 0b00001000:0x00;
+    uint8_t right=0x01;
+    uint8_t left=0x08;
+    for(int i=1;i<count;i++)
+    {
+        uint8_t shiftedL=left<<i;
+        retval=retval|shiftedL;
+        if(i<count)
+        {
+            uint8_t shiftedR=right>>i;
+            retval=retval|shiftedR;
+        }
+    }
+    return reverseBin(retval^mask);
 }
 
 uint8_t reverseBin(uint8_t data)
