@@ -168,6 +168,7 @@ uint8_t center(int count)
     uint8_t retval=0x00;
     uint8_t right=0x08;
     uint8_t left=0x10;
+    bool isOdd=(count%2)!=0;
     for(int i=1;i<=(count/2);i++)
     {
         uint8_t shiftedL=left<<(i-1);
@@ -177,6 +178,10 @@ uint8_t center(int count)
             uint8_t shiftedR=right>>(i-1);
             retval=retval|shiftedR;
         }
+    }
+    if(isOdd)
+    {
+      retval=retval|(right>>count/2);
     }
     return reverseBin(retval^mask);
 }

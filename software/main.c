@@ -45,7 +45,7 @@ int main (void)
 
     uint8_t digit = dictionary('8');
 //    digit=addDot(digit);
-    uint8_t spiData[2] = {center(4),digit};
+    uint8_t spiData[2] = {center(3),digit};
 
 
     //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);
