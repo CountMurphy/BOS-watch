@@ -168,7 +168,7 @@ uint8_t center(int count)
     uint8_t retval=0x00;
     uint8_t right=0x08;
     uint8_t left=0x10;
-    for(int i=1;i<=count;i++)
+    for(int i=1;i<=(count/2);i++)
     {
         uint8_t shiftedL=left<<(i-1);
         retval=retval|shiftedL;
