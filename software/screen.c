@@ -24,8 +24,45 @@ void spiLatch()
 {
                 //have shift registers accept current values
             GPIO_DRV_WritePinOutput(spiAccept.pinName,1);
-            OSA_TimeDelay(100);
+//            OSA_TimeDelay(100);
             GPIO_DRV_WritePinOutput(spiAccept.pinName,0);
+}
+
+void multiplex(char msg[], int count)
+{
+
+    uint8_t digits;
+    if(count==0)
+    {
+        digits=0xFF;
+    }else{
+        digits=center(count);
+    }
+
+    uint8_t digitMask=0x01;
+    uint8_t  rx[2];
+
+    int countIndex=0;
+    for(int i=0;i<8;i++)
+    {
+        //get current digit
+        uint8_t digit=digits & digitMask;
+
+        uint8_t shiftedDigit=digit>>i;
+        uint8_t spiData[2] = {digitMask^0xFF,shiftedDigit== 0x00? dictionary(msg[countIndex]): 0x00};
+        if(shiftedDigit == 0x00)
+        {
+            countIndex++;
+        }
+
+        SPI_Transfer(spiData,rx,2);
+
+        spiLatch();
+        digitMask=digitMask<<1;
+
+//                OSA_TimeDelay(2);
+//        OSA_TimeDelay(1000); //debug
+    }
 }
 
 uint8_t dictionary(char digit)
@@ -119,7 +156,7 @@ uint8_t dictionary(char digit)
     case 'L':
         retVal=0b00111000;
         break;
-        //m an M.....just do a double 'n'
+        //m an M.....just do a double 'n', or an 'rn'
     case 'l':
         retVal=0b00110000;
         break;
