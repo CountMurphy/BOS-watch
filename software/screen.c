@@ -58,7 +58,7 @@ void multiplex(char msg[], int count)
 
         spiLatch();
         digitMask=digitMask<<1;
-            OSA_TimeDelay(3);
+            OSA_TimeDelay(1);
 
     }
 }
