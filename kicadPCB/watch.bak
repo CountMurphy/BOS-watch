@@ -2316,7 +2316,7 @@ Wire Wire Line
 Wire Wire Line
 	8350 6150 8650 6150
 Wire Wire Line
-	13450 6750 13450 6850
+	13450 6700 13450 6850
 Wire Wire Line
 	6050 5850 6050 5650
 Wire Wire Line
@@ -2371,4 +2371,17 @@ Connection ~ 9250 4050
 Wire Wire Line
 	12800 13400 12800 13350
 NoConn ~ 12700 13350
+NoConn ~ 13100 12950
+NoConn ~ 13100 13050
+NoConn ~ 13100 13150
+Wire Wire Line
+	9150 6450 8450 6450
+Wire Wire Line
+	8450 6450 8450 6150
+Connection ~ 8450 6150
+Wire Wire Line
+	13750 6250 13750 6700
+Wire Wire Line
+	13750 6700 13450 6700
+Connection ~ 13450 6750
 $EndSCHEMATC
