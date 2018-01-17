@@ -1,4 +1,4 @@
-update=Tue 14 Feb 2017 09:13:24 AM CST
+update=Tue 16 Jan 2018 09:23:43 PM CST
 version=1
 last_client=kicad
 [pcbnew]
@@ -31,3 +31,4 @@ LibDir=
 [eeschema/libraries]
 LibName1=watch
 LibName2=device
+LibName3=conn
