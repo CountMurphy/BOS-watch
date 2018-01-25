@@ -36,4 +36,6 @@ void hardware_init(void)
       PORT_HAL_SetMuxMode(PORTB,18u,kPortMuxAsGpio);
       PORT_HAL_SetMuxMode(PORTD,4u,kPortMuxAsGpio);
 
+      //buzzer
+      PORT_HAL_SetMuxMode(g_portBase[GPIOE_IDX], 30, kPortMuxAlt3);
 }

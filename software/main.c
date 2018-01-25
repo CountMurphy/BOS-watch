@@ -4,10 +4,12 @@
 #include "fsl_os_abstraction.h"
 #include "fsl_gpio_driver.h"
 #include "fsl_debug_console.h"
+#include "fsl_tpm_driver.h"
 
 
 #include "pins.c"
 #include "screen.c"
+#include "buzzer.c"
 
 #define DATA_LENGTH             64
 #define BOARD_I2C_INSTANCE      0
@@ -43,6 +45,8 @@ int main (void)
 
     SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
 
+    PlayTheme();
+
 //    uint8_t digit = dictionary('8');
 //    digit=addDot(digit);
 //    uint8_t spiData[2] = {center(3),digit};
@@ -50,18 +54,18 @@ int main (void)
 
     //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);
 //    uint8_t  rx[2];
-    GPIO_DRV_OutputPinInit(&spiAccept);
+//    GPIO_DRV_OutputPinInit(&spiAccept);
 
-    GPIO_DRV_OutputPinInit(&displayOutput);
+//    GPIO_DRV_OutputPinInit(&displayOutput);
 
 //    SPI_Transfer(spiData,rx,2);
 
 //    spiLatch();
-    char word[5]={'P','e', 'n','i','s'};
-    while(1)
-    {
-        multiplex(word,5);
-    }
+//    char word[5]={'P','e', 'n','i','s'};
+//    while(1)
+//    {
+//        multiplex(word,5);
+//    }
 
 //    while(1)
 //    {
