@@ -10,6 +10,7 @@
 #include "pins.c"
 #include "screen.c"
 #include "buzzer.c"
+#include "rtc.c"
 
 #define DATA_LENGTH             64
 #define BOARD_I2C_INSTANCE      0
@@ -23,7 +24,7 @@ uint8_t rxBuff[DATA_LENGTH] = {0};
 
 int main (void)
 {
-    // Initialize i2c master
+    // Initialize
     hardware_init();
     OSA_Init();
 
@@ -45,44 +46,36 @@ int main (void)
 
     SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
 
-    PlayTheme();
+//    PlayTheme();
 
-    uint8_t digit = dictionary('8');
-    digit=addDot(digit);
-    uint8_t spiData[2] = {center(3),digit};
+//    uint8_t digit = dictionary('8');
+//    digit=addDot(digit);
+//    uint8_t spiData[2] = {center(3),digit};
 
 
     //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);
-    uint8_t  rx[2];
+//    uint8_t  rx[2];
     GPIO_DRV_OutputPinInit(&spiAccept);
 
     GPIO_DRV_OutputPinInit(&displayOutput);
 
-    SPI_Transfer(spiData,rx,2);
+//    SPI_Transfer(spiData,rx,2);
 
-    spiLatch();
-    char word[5]={'P','e', 'n','i','s'};
-    while(1)
-    {
-        multiplex(word,5);
-    }
-
+//    spiLatch();
+//    char word[5]={'P','e', 'n','i','s'};
+//    bool dots[5]={0,1,1,0,1};
 //    while(1)
 //    {
-//        GPIO_DRV_WritePinOutput(displayOutput.pinName,0);
-//        OSA_TimeDelay(1000);
-//        GPIO_DRV_WritePinOutput(displayOutput.pinName,1);
-//        OSA_TimeDelay(1000);
+//        multiplex(word,dots,5);
 //    }
 
-    return 0;
-    I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
 
     // Master sends 1 bytes CMD and data to slave
     txBuff[0]=0x50;
 
     // OSA_TimeDelay(500);
-
+/*
+    I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
     i2c_status_t retVal;
     retVal= I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
 
@@ -92,7 +85,30 @@ int main (void)
 
     // Master receives count byte data from slave
     I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, rxBuff, 6, 1000);
+*/
 
+    RTC_init();
+    setRtc(21,15,59,11,12,18,1);
+
+    ReadHourMinute();
+    ReadSecond();
+    int rtcCounter=0;
+
+    while(1)
+    {
+        //Roughly 500 mils, dumb effort to save power by slowing down polling
+        if(rtcCounter>=10)
+        {
+           rtcCounter=0;
+            ReadSecond();
+            if(second==0x00)
+            {
+                ReadHourMinute();
+            }
+        }
+        printTime();
+        rtcCounter++;
+    }
 
     return 0;
 }

@@ -27,7 +27,7 @@ void spiLatch()
             GPIO_DRV_WritePinOutput(spiAccept.pinName,0);
 }
 
-void multiplex(char msg[], int count)
+void multiplex(char msg[], bool dots[], int count)
 {
 
     uint8_t digits;
@@ -48,7 +48,8 @@ void multiplex(char msg[], int count)
         uint8_t digit=digits & digitMask;
 
         uint8_t shiftedDigit=digit>>i;
-        uint8_t spiData[2] = {digitMask^0xFF,shiftedDigit== 0x00? dictionary(msg[countIndex]): 0x00};
+        uint8_t charData= dots[countIndex] ==true ? addDot(dictionary(msg[countIndex])) : dictionary(msg[countIndex]);
+        uint8_t spiData[2] = {digitMask^0xFF,shiftedDigit== 0x00? charData :0x00};
         if(shiftedDigit == 0x00)
         {
             countIndex++;
@@ -188,8 +189,10 @@ uint8_t dictionary(char digit)
         break;
     case 'y':
     case 'Y':
-        retVal=0b01100110;
+        retVal=0b01101110;
         break;
+    case '\0':
+        retVal=0x00;
     }
     return retVal;
 }
@@ -197,7 +200,7 @@ uint8_t dictionary(char digit)
 uint8_t addDot(char digit)
 {
     uint8_t dot= 0x80;
-    return  digit^dot;
+    return  digit|dot;
 }
 
 

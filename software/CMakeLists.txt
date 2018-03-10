@@ -102,6 +102,8 @@ ADD_EXECUTABLE(BOS
     "${ProjDirPath}/main.c"
     "${ProjDirPath}/pins.c"
     "${ProjDirPath}/pins.h"
+    "${ProjDirPath}/rtc.h"
+    "${ProjDirPath}/rtc.c"
 )
 SET_TARGET_PROPERTIES(BOS PROPERTIES OUTPUT_NAME "BOS.elf")
 
