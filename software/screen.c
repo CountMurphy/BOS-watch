@@ -186,6 +186,10 @@ uint8_t dictionary(char digit)
     case 'u':
         retVal=0b00011100;
         break;
+    case 'y':
+    case 'Y':
+        retVal=0b01100110;
+        break;
     }
     return retVal;
 }
