@@ -20,3 +20,20 @@ _autosave-*
 # Exported BOM files
 *.xml
 *.csv
+
+
+#Kenetis files
+software/CMakeCache.txt
+software/CMakeFiles/
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/CMakeCache.txt
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/CMakeFiles/
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/Makefile
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/cmake_install.cmake
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/debug/
+software/KSDK_1.2.0/lib/ksdk_platform_lib/armgcc/KL27Z4/release/
+software/Makefile
+software/cmake_install.cmake
+software/debug/
+software/release/
+
+
