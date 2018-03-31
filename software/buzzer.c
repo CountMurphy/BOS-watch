@@ -1,3 +1,4 @@
+#include "fsl_os_abstraction.h"
 #include "buzzer.h"
 
 void PlayTheme()

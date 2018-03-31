@@ -1,3 +1,5 @@
+#include "fsl_tpm_driver.h"
+
 void PlayTheme();
 
 tpm_general_config_t tmpConfig = {

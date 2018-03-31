@@ -21,21 +21,23 @@ void hardware_init(void)
     PORT_HAL_SetMuxMode(PORTD,1u,kPortMuxAsGpio);
 
     //I2C0
-    /* Affects PORTC_PCR8 register  */
     PORT_HAL_SetMuxMode(PORTC,8u,kPortMuxAlt2);
-    /* Affects PORTB_PCR1 register */
     PORT_HAL_SetMuxMode(PORTC,9u,kPortMuxAlt2);
-    //PORT_HAL_SetMuxMode(PORTC,9u,kPortMuxAsGpio);
 
 
     //SPI
     //SPI bubble screen
-      PORT_HAL_SetMuxMode(PORTC,3u,kPortMuxAlt2);
-      PORT_HAL_SetMuxMode(PORTB,16u,kPortMuxAlt2);
+    PORT_HAL_SetMuxMode(PORTC,3u,kPortMuxAlt2);
+    PORT_HAL_SetMuxMode(PORTB,16u,kPortMuxAlt2);
 
-      PORT_HAL_SetMuxMode(PORTB,18u,kPortMuxAsGpio);
-      PORT_HAL_SetMuxMode(PORTD,4u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTB,18u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTD,4u,kPortMuxAsGpio);
 
-      //buzzer
-      PORT_HAL_SetMuxMode(g_portBase[GPIOE_IDX], 30, kPortMuxAlt3);
+    //buzzer
+    PORT_HAL_SetMuxMode(g_portBase[GPIOE_IDX], 30, kPortMuxAlt3);
+
+    //GPS
+    PORT_HAL_SetMuxMode(PORTC,4u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTC,10u,kPortMuxAsGpio);
+    PORT_HAL_SetMuxMode(PORTD,2u,kPortMuxAlt3);
 }

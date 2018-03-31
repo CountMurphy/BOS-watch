@@ -1,4 +1,35 @@
+#include "fsl_gpio_driver.h"
 #include "screen.h"
+
+
+static const gpio_output_pin_user_config_t displayOutput={
+    .pinName=GPIO_MAKE_PIN(GPIOB_IDX,18),
+    .config.outputLogic=0
+};
+
+static const gpio_output_pin_user_config_t spiAccept={
+    .pinName=GPIO_MAKE_PIN(GPIOD_IDX,4),
+    .config.outputLogic=0
+};
+
+spi_master_user_config_t userConfig =
+{
+    .bitsPerSec = 4000000, /* 4 MHz */
+    .polarity = kSpiClockPolarity_ActiveHigh,
+    .phase = kSpiClockPhase_FirstEdge,
+    .direction = kSpiMsbFirst,
+    .bitCount = kSpi8BitMode,
+};
+
+
+void ScreenInit()
+{
+    GPIO_DRV_OutputPinInit(&spiAccept);
+    GPIO_DRV_OutputPinInit(&displayOutput);
+    SPI_DRV_MasterInit(SPI_MASTER_INSTANCE, &spiMasterState);
+    SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
+}
+
 
 static spi_status_t SPI_Transfer(const uint8_t *tx, uint8_t *rx, size_t count)
 {
@@ -22,9 +53,21 @@ static spi_status_t SPI_Transfer(const uint8_t *tx, uint8_t *rx, size_t count)
 
 void spiLatch()
 {
-                //have shift registers accept current values
-            GPIO_DRV_WritePinOutput(spiAccept.pinName,1);
-            GPIO_DRV_WritePinOutput(spiAccept.pinName,0);
+    //have shift registers accept current values
+    GPIO_DRV_WritePinOutput(spiAccept.pinName,1);
+    GPIO_DRV_WritePinOutput(spiAccept.pinName,0);
+}
+
+void rawWriteToScreen(uint8_t bytes[])
+{
+    uint8_t rx;
+    SPI_Transfer(bytes,&rx,2);
+    spiLatch();
+}
+
+void powerDisplay(bool isEnabled)
+{
+    GPIO_DRV_WritePinOutput(displayOutput.pinName,isEnabled?0:1);
 }
 
 void multiplex(char msg[], bool dots[], int count)

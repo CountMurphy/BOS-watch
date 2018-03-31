@@ -2,15 +2,14 @@
 #include <stdio.h>
 // SDK Included Files
 #include "fsl_os_abstraction.h"
-#include "fsl_gpio_driver.h"
-#include "fsl_debug_console.h"
-#include "fsl_tpm_driver.h"
 
 
-#include "pins.c"
-#include "screen.c"
-#include "buzzer.c"
-#include "rtc.c"
+#include "pins.h"
+#include "screen.h"
+#include "buzzer.h"
+#include "rtc.h"
+#include "gps.h"
+
 
 #define DATA_LENGTH             64
 #define BOARD_I2C_INSTANCE      0
@@ -28,47 +27,66 @@ int main (void)
     hardware_init();
     OSA_Init();
 
-    //SPI
+    ScreenInit();
+    //turn on gps
+    GPSPower(true);
 
-    spi_master_state_t spiMasterState;
-    spi_master_user_config_t userConfig =
+    uint8_t gpsWait[2]={0x00,0xFF};
+    rawWriteToScreen(gpsWait);
+    bool lastValue=SatFixStatus();
+    OSA_TimeDelay(500);
+    int count=0;
+    while(1)
     {
-            .bitsPerSec = 2000000, /* 2 MHz */
-            .polarity = kSpiClockPolarity_ActiveHigh,
-            .phase = kSpiClockPhase_FirstEdge,
-            .direction = kSpiMsbFirst,
-            .bitCount = kSpi8BitMode,
-    };
+        bool currentValue=SatFixStatus();
+        if(currentValue==lastValue)
+        {
+            count++;
+        }
+        else{
+            count=0;
+        }
+        //Sat Fix detection
+        if(count==8 || 1==1)//debug!!!!
+        {
+            //turn on UART
+            GPSInit();
+            uint8_t minute;
+            uint8_t second;
+            uint8_t hour;
+            uint8_t month;
+            uint8_t day;
+            uint8_t year;
+            uint32_t lon;
+            uint8_t dow;
+            char direction;
+            ParseNMEAMOCK(&minute,&hour,&second,&day,&month,&year,&lon,&direction); //DEBUG!!
+            GPSPower(false);
 
-    uint32_t calculatedBaudRate;
+            //set clocks
+            int8_t offset=GetLocalTimeZoneOffset(lon,direction);
+            //if DST then offset +=1
+            RTC_init();
+            adjustDate(&day,&month,&year,offset,hour);
+            hour = AdjustUTCHour(hour,offset);
+            dow=dayofweek((2000+year),month,day);
+            setRtc(hour,minute,second,month,day,year,dow);
+            break;
+        }else{
+            lastValue=currentValue;
+        }
 
-    SPI_DRV_MasterInit(SPI_MASTER_INSTANCE, &spiMasterState);
+        if (currentValue)
+        {
+            powerDisplay(true);
+        }else{
+            powerDisplay(false);
+        }
+        OSA_TimeDelay(250);
+    }
 
-    SPI_DRV_MasterConfigureBus(SPI_MASTER_INSTANCE,&userConfig,&calculatedBaudRate);
-
-//    PlayTheme();
-
-//    uint8_t digit = dictionary('8');
-//    digit=addDot(digit);
-//    uint8_t spiData[2] = {center(3),digit};
-
-
-    //           SPI_DRV_MasterTransferBlocking(SPI_MASTER_INSTANCE, NULL, spiData,NULL, TRANSFER_SIZE, MASTER_TRANSFER_TIMEOUT);
-//    uint8_t  rx[2];
-    GPIO_DRV_OutputPinInit(&spiAccept);
-
-    GPIO_DRV_OutputPinInit(&displayOutput);
-
-//    SPI_Transfer(spiData,rx,2);
-
-//    spiLatch();
-//    char word[5]={'P','e', 'n','i','s'};
-//    bool dots[5]={0,1,1,0,1};
-//    while(1)
-//    {
-//        multiplex(word,dots,5);
-//    }
-
+    PlayTheme();
+    powerDisplay(true);
 
     // Master sends 1 bytes CMD and data to slave
     txBuff[0]=0x50;
@@ -87,11 +105,14 @@ int main (void)
     I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, rxBuff, 6, 1000);
 */
 
-    RTC_init();
-    setRtc(21,15,59,11,12,18,1);
+    // setRtc(21,15,59,11,12,18,1);
 
-    ReadHourMinute();
-    ReadSecond();
+    uint8_t second;
+    uint8_t minute;
+    uint8_t hour;
+
+    ReadHourMinute(&minute,&hour);
+    second = ReadSecond();
     int rtcCounter=0;
 
     while(1)
@@ -99,14 +120,14 @@ int main (void)
         //Roughly 500 mils, dumb effort to save power by slowing down polling
         if(rtcCounter>=10)
         {
-           rtcCounter=0;
-            ReadSecond();
+            rtcCounter=0;
+            second = ReadSecond();
             if(second==0x00)
             {
-                ReadHourMinute();
+                ReadHourMinute(&minute,&hour);
             }
         }
-        printTime();
+        printTime(hour,minute,second);
         rtcCounter++;
     }
 

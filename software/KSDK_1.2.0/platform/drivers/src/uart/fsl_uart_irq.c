@@ -126,7 +126,7 @@ void UART5_RX_TX_IRQHandler(void)
 }
 #endif
 
-#elif defined (KL27Z644_SERIES) || defined (KL17Z644_SERIES) ||  defined (KL43Z4_SERIES)
+#elif defined (KL27Z4_SERIES) || defined (KL27Z644_SERIES) || defined (KL17Z644_SERIES) ||  defined (KL43Z4_SERIES)
 
 #if (UART_INSTANCE_COUNT > 0)
 /* Implementation of UART1 handler named in startup code. */
