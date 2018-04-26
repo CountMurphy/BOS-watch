@@ -42,10 +42,4 @@ static const gpio_output_pin_user_config_t LED_West={
     .config.outputLogic=0
 };
 
-/*##################Switches#########################*/
-static const gpio_input_pin_user_config_t swtch_exec={
-    .pinName=GPIO_MAKE_PIN(GPIOA_IDX,1)
-};
-
-
 #endif

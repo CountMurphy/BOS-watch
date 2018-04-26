@@ -7,7 +7,6 @@ void GPSInit();
 void GPSPower(bool power);
 uint8_t ReadChar();
 void ParseNMEA(uint8_t *minutes, uint8_t *hours, uint8_t *seconds, uint8_t *day, uint8_t *month, uint8_t *year, uint32_t *lon,char *direction);
-void ParseNMEAMOCK(uint8_t *minutes, uint8_t *hours, uint8_t *seconds, uint8_t *day, uint8_t *month, uint8_t *year, uint32_t *lon,char *direction);
 void GetGPRMC(uint8_t NMEACount, char *GPRMC);
 void GetGPGGA(uint8_t NMEACount, char *GPGGA);
 void GetCurrentLocation(char *lat, char *N_S,char*lon, char *E_W);

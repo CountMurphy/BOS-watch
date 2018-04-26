@@ -4,6 +4,8 @@
 void hardware_init(void)
 {
 
+    // NVIC_DisableIRQ(30); //disable PTA interrupt
+
     CLOCK_SYS_EnablePortClock(PORTA_IDX);
     CLOCK_SYS_EnablePortClock(PORTC_IDX);
     CLOCK_SYS_EnablePortClock(PORTD_IDX);
@@ -11,6 +13,8 @@ void hardware_init(void)
 
     //input switches
     PORT_HAL_SetMuxMode(PORTA,4u,kPortMuxAsGpio);
+//fuck
+//https://community.nxp.com/thread/468689
     PORT_HAL_SetMuxMode(PORTA,1u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTE,25u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTE,24u,kPortMuxAsGpio);
@@ -40,4 +44,5 @@ void hardware_init(void)
     PORT_HAL_SetMuxMode(PORTC,4u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTC,10u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTD,2u,kPortMuxAlt3);
+
 }

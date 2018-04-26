@@ -1,6 +1,7 @@
 #include "fsl_tpm_driver.h"
 
 void PlayTheme();
+void Click();
 
 tpm_general_config_t tmpConfig = {
     .isDBGMode = false,

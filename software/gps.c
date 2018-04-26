@@ -49,11 +49,16 @@ uint8_t ReadChar()
 
 void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uint8_t *month,uint8_t *year,uint32_t *lon,char *direction)
 {
-    uint8_t NMEACount = 100;
-    char GPRMC[NMEACount];
-    char GPGGA[NMEACount];
-    GetGPGGA(NMEACount,GPGGA);
-    GetGPRMC(NMEACount,GPRMC);
+    #if DEBUG
+        char GPRMC[100] = "\002GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
+        char GPGGA[100] = "\002GPGGA,015833.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
+    #else
+        uint8_t NMEACount = 100;
+        char GPRMC[NMEACount];
+        char GPGGA[NMEACount];
+        GetGPGGA(NMEACount,GPGGA);
+        GetGPRMC(NMEACount,GPRMC);
+    #endif
 
     char hourChar[2];
     hourChar[0]=GPGGA[7];
@@ -164,59 +169,7 @@ bool SatFixStatus()
     return GPIO_DRV_ReadPinInput(SatFix.pinName);
 }
 
-void ParseNMEAMOCK(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uint8_t *month,uint8_t *year,uint32_t *lon,char *direction)
-{
-    char GPRMC[100] = "\002GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
-    char GPGGA[100] = "\002GPGGA,203433.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
 
-    char hourChar[2];
-    hourChar[0]=GPGGA[7];
-    hourChar[1]=GPGGA[8];
-    int temp;
-    sscanf(hourChar, "%d", &temp);
-    *hours=(uint8_t)temp;
-
-    char minChar[2];
-    minChar[0]=GPGGA[9];
-    minChar[1]=GPGGA[10];
-    sscanf(minChar, "%d", &temp);
-    *minutes=(uint8_t)temp;
-
-    char secChar[2];
-    secChar[0]=GPGGA[11];
-    secChar[1]=GPGGA[12];
-    sscanf(secChar, "%d", &temp);
-    *seconds=(uint8_t)temp;
-
-    char dayChar[2];
-    dayChar[0]=GPRMC[56];
-    dayChar[1]=GPRMC[57];
-    sscanf(dayChar, "%d", &temp);
-    *day=(uint8_t)temp;
-
-    char monChar[2];
-    monChar[0]=GPRMC[58];
-    monChar[1]=GPRMC[59];
-    sscanf(monChar, "%d", &temp);
-    *month=(uint8_t)temp;
-
-    char yearChar[2];
-    yearChar[0]=GPRMC[60];
-    yearChar[1]=GPRMC[61];
-    sscanf(yearChar, "%d", &temp);
-    *year=(uint8_t)temp;
-
-    char lonChar[5];
-    lonChar[0]=GPRMC[32];
-    lonChar[1]=GPRMC[33];
-    lonChar[2]=GPRMC[34];
-    lonChar[3]=GPRMC[35];
-    lonChar[4]=GPRMC[36];
-    sscanf(lonChar, "%d", &temp);
-    *lon=(uint32_t)temp;
-
-    *direction=GPRMC[43];
-}
 
 void GetCurrentLocation(char *lat, char *N_S,char*lon, char *E_W)
 {

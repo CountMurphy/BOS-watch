@@ -22,6 +22,7 @@ void RTC_deinit()
 void setRtc(uint8_t hours,uint8_t minutes, uint8_t second, uint8_t month, uint8_t day, uint8_t year, uint8_t dow)
 {
     hours = ConvertToBCD(hours);
+    hours = 0x80 | hours;
     minutes = ConvertToBCD(minutes);
     second = ConvertToBCD(second);
     month = ConvertToBCD(month);
@@ -122,7 +123,7 @@ void ReadHourMinute(uint8_t *minute,uint8_t *hour)
     //read hour
     cmd[0]=0x02;
     I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &rtc, cmd, 1, rtcRxBuff, 1, 1000);
-    *hour =rtcRxBuff[0];
+    *hour =rtcRxBuff[0] & 0x7F;
 }
 
 void ReadDate(uint8_t *month, uint8_t *day, uint8_t *year)

@@ -109,6 +109,8 @@ ADD_EXECUTABLE(BOS
     "${ProjDirPath}/buzzer.h"
     "${ProjDirPath}/screen.c"
     "${ProjDirPath}/screen.h"
+    "${ProjDirPath}/switch.c"
+    "${ProjDirPath}/switch.h"
 )
 SET_TARGET_PROPERTIES(BOS PROPERTIES OUTPUT_NAME "BOS.elf")
 

@@ -9,6 +9,7 @@
 #include "buzzer.h"
 #include "rtc.h"
 #include "gps.h"
+#include "switch.h"
 
 
 #define DATA_LENGTH             64
@@ -18,7 +19,13 @@
 uint8_t txBuff[DATA_LENGTH] = {0};
 // Buffer store data to receive from slave
 uint8_t rxBuff[DATA_LENGTH] = {0};
-
+void RunClock(void);
+void RunCompass();
+void RunPewPew();
+void RunGPS();
+void RunBuzzer();
+void RunStopWatch();
+void RunStandBy();
 
 
 int main (void)
@@ -28,6 +35,12 @@ int main (void)
     OSA_Init();
 
     ScreenInit();
+    SwitchInit();
+    //lights init
+    GPIO_DRV_OutputPinInit(&LED_North);
+    GPIO_DRV_OutputPinInit(&LED_South);
+    GPIO_DRV_OutputPinInit(&LED_West);
+    GPIO_DRV_OutputPinInit(&LED_East);
     //turn on gps
     GPSPower(true);
 
@@ -47,7 +60,10 @@ int main (void)
             count=0;
         }
         //Sat Fix detection
-        if(count==8 || 1==1)//debug!!!!
+        #if DEBUG
+            count=8;
+        #endif
+        if(count==8)
         {
             //turn on UART
             GPSInit();
@@ -60,7 +76,7 @@ int main (void)
             uint32_t lon;
             uint8_t dow;
             char direction;
-            ParseNMEAMOCK(&minute,&hour,&second,&day,&month,&year,&lon,&direction); //DEBUG!!
+            ParseNMEA(&minute,&hour,&second,&day,&month,&year,&lon,&direction); 
             GPSPower(false);
 
             //set clocks
@@ -107,6 +123,58 @@ int main (void)
 
     // setRtc(21,15,59,11,12,18,1);
 
+    for(;;)
+    {
+        while(!InterruptTriggered())
+        {
+            uint8_t mode=GetMainMode();
+            switch(mode)
+            {
+            case 0:
+            {
+                RunClock();
+                break;
+            }
+            case 1:
+            {
+                RunCompass();
+                break;
+            }
+            case 2:
+            {
+                RunPewPew();
+                break;
+            }
+            case 3:
+            {
+                RunGPS();
+                break;
+            }
+            case 4:
+            {
+                RunBuzzer();
+                break;
+            }
+            case 5:
+            {
+                RunStopWatch();
+                break;
+            }
+            case 6:
+            {
+                RunStandBy();
+                break;
+            }
+            }
+        }
+    }
+    
+
+    return 0;
+}
+
+void RunClock(void)
+{
     uint8_t second;
     uint8_t minute;
     uint8_t hour;
@@ -115,8 +183,15 @@ int main (void)
     second = ReadSecond();
     int rtcCounter=0;
 
-    while(1)
+    while(!InterruptTriggered())
     {
+        if(GetSubMode()==2)
+        {
+            char dick[5]="penis";
+            bool dots[5]={false,false,false,false,false};
+            multiplex(dick,dots,5);
+            continue;
+        }
         //Roughly 500 mils, dumb effort to save power by slowing down polling
         if(rtcCounter>=10)
         {
@@ -130,6 +205,53 @@ int main (void)
         printTime(hour,minute,second);
         rtcCounter++;
     }
+}
 
-    return 0;
+void RunBuzzer()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
+}
+
+void RunCompass()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
+}
+
+void RunGPS()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
+}
+
+void RunPewPew()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
+}
+
+
+void RunStandBy()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
+}
+
+void RunStopWatch()
+{
+    while(!InterruptTriggered())
+    {
+
+    }
 }
