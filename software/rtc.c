@@ -104,6 +104,41 @@ void printDate()
     multiplex(date,timeDots,8);
 }
 
+void PrintDOW()
+{
+    bool dots[9]={false,false,false,false,false,false,false,false,false};
+    switch(ReadDOW())
+    {
+        case 0:
+            multiplex("sunday",dots,6);
+            break;
+        case 1:
+            multiplex("monday",dots,6);
+            break;
+        case 2:
+            multiplex("tuesday",dots,7);
+            break;
+        case 3:
+            multiplex("wednesday",dots,9);
+            break;
+        case 4:
+            multiplex("thursday",dots,8);
+            break;
+        case 5:
+            multiplex("friday",dots,6);
+            break;
+        case 6:
+            multiplex("saturday",dots,8);
+            break;
+    }
+}
+
+uint8_t ReadDOW()
+{
+    uint8_t cmd[1]={0x06};
+    I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &rtc, cmd, 1, rtcRxBuff, 1, 1000);
+    return rtcRxBuff[0];
+}
 
 uint8_t ReadSecond()
 {
@@ -143,6 +178,8 @@ void ReadDate(uint8_t *month, uint8_t *day, uint8_t *year)
     I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &rtc, cmd, 1, rtcRxBuff, 1, 1000);
     *year = rtcRxBuff[0];
 }
+
+//Here down is auto time setting stuff.
 
 uint8_t AdjustUTCHour(uint8_t hour, int8_t offset)
 {

@@ -185,25 +185,29 @@ void RunClock(void)
 
     while(!InterruptTriggered())
     {
-        if(GetSubMode()==2)
+        switch(GetSubMode())
         {
-            char dick[5]="penis";
-            bool dots[5]={false,false,false,false,false};
-            multiplex(dick,dots,5);
-            continue;
+            case 0:
+                //Roughly 500 mils, dumb effort to save power by slowing down polling
+                if(rtcCounter>=10)
+                {
+                    rtcCounter=0;
+                    second = ReadSecond();
+                    if(second==0x00)
+                    {
+                       ReadHourMinute(&minute,&hour);
+                    }
+                }
+                printTime(hour,minute,second);
+                rtcCounter++;
+                break;
+            case 1:
+                printDate();
+                break;
+            case 2:
+                PrintDOW();
+                break;
         }
-        //Roughly 500 mils, dumb effort to save power by slowing down polling
-        if(rtcCounter>=10)
-        {
-            rtcCounter=0;
-            second = ReadSecond();
-            if(second==0x00)
-            {
-                ReadHourMinute(&minute,&hour);
-            }
-        }
-        printTime(hour,minute,second);
-        rtcCounter++;
     }
 }
 

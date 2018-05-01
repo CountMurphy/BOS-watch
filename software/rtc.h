@@ -18,6 +18,8 @@ void setRtc(uint8_t hours,uint8_t minutes, uint8_t second, uint8_t month, uint8_
 uint8_t ConvertToBCD(uint8_t integer);
 uint8_t ReadSecond();
 void ReadHourMinute(uint8_t *minute,uint8_t *hour);
+void PrintDOW();
+uint8_t ReadDOW();
 void RTC_init();
 void RTC_deinit();
 void ReadDate(uint8_t *month, uint8_t *day, uint8_t *year);
