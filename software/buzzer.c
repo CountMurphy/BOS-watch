@@ -1,6 +1,7 @@
 #include "fsl_os_abstraction.h"
 #include "fsl_gpio_driver.h"
 #include "buzzer.h"
+#include "switch.h"
 
 
 void Click()
@@ -65,6 +66,10 @@ void PlayTheme()
 
     };
     for(int i = 0;  i <  sizeof(beeps);(i=i+1) ) {
+        if(InterruptTriggered())
+        {
+            break;
+        }
         param.uFrequencyHZ = notes[beeps[i]];
         if (param.uFrequencyHZ)
             TPM_DRV_PwmStart(0, &param, 3);

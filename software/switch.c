@@ -29,7 +29,7 @@ static const pit_user_config_t g_pitChan0 = {
 };
 
 static bool isSubOn=false;
-static bool isMainOn=true;
+static bool isMainOn=false;
 uint8_t mainMode=0;
 uint8_t subMode=0;
 
