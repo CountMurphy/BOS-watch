@@ -1,11 +1,40 @@
 #include "fsl_os_abstraction.h"
+#include "fsl_gpio_driver.h"
 #include "buzzer.h"
+
 
 void Click()
 {
     TPM_DRV_Init(0, &tmpConfig);
     TPM_DRV_SetClock(0, kTpmClockSourceModuleMCGIRCLK, kTpmDividedBy1);
     param.uFrequencyHZ=50;
+    TPM_DRV_PwmStart(0,&param,3);
+    OSA_TimeDelay(125);
+    TPM_DRV_PwmStop(0,&param,3);
+}
+
+void Gieger()
+{
+    TPM_DRV_Init(0, &tmpConfig);
+    TPM_DRV_SetClock(0, kTpmClockSourceModuleMCGIRCLK, kTpmDividedBy1);
+    if((rand() %20) < 10)
+    {
+        OSA_TimeDelay(125);
+    }
+    else
+    {
+        param.uFrequencyHZ=0;
+        TPM_DRV_PwmStart(0,&param,3);
+        OSA_TimeDelay(92);
+        TPM_DRV_PwmStop(0,&param,3);
+    }
+}
+
+void PlayAlarm()
+{
+    TPM_DRV_Init(0, &tmpConfig);
+    TPM_DRV_SetClock(0, kTpmClockSourceModuleMCGIRCLK, kTpmDividedBy1);
+    param.uFrequencyHZ=20;
     TPM_DRV_PwmStart(0,&param,3);
     OSA_TimeDelay(125);
     TPM_DRV_PwmStop(0,&param,3);

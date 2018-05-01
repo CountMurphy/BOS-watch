@@ -213,9 +213,21 @@ void RunClock(void)
 
 void RunBuzzer()
 {
+    bool dots[5]={false,false,false,false,false};
     while(!InterruptTriggered())
     {
-
+        switch(GetSubMode())
+        {
+            case 0:
+                multiplex("audio",dots,5);
+                break;
+            case 1:
+                PlayTheme();
+                break;
+            case 2:
+                Gieger();
+                break;
+        }
     }
 }
 

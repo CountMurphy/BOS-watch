@@ -2,6 +2,8 @@
 
 void PlayTheme();
 void Click();
+void Gieger();
+void PlayAlarm();
 
 tpm_general_config_t tmpConfig = {
     .isDBGMode = false,
