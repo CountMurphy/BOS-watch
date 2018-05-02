@@ -30,6 +30,18 @@ static const pit_user_config_t g_pitChan0 = {
 
 static bool isSubOn=false;
 static bool isMainOn=false;
+
+/*  the heisenbug is very odd. If I switch main mode to something 4 or above, once the exec switch
+    is flipped back to off, the interrupt handler is called twice (should only be called once).
+    this second call results in the submode switch interrupt being processed. The code specifically
+    forbids this. Attempts to observe behavior in the debugger yeilds a change in behavior. The second
+    rogue interrupt run is never called. Hence the heisenbug. This is also not a timing (debounce) issue
+    as added a 1 second delay doesn't stop the heisenbug. In fact, this issue has happened in other
+    scenerios as well. Hence all the redundent else if conditions in the interrupt handler.
+    Since attempts to isolate it have proven fruitless, here is a dirty ass hack to fix it.
+*/
+static bool heisenbug=false;
+
 uint8_t mainMode=0;
 uint8_t subMode=0;
 
@@ -40,10 +52,6 @@ void PIT_IRQHandler(void)
         PIT_HAL_ClearIntFlag(g_pitBase[0], 0);
         CommandSetAck();
     }
-    if (PIT_HAL_IsIntPending(g_pitBase[0], 1))
-    {
-        PIT_HAL_ClearIntFlag(g_pitBase[0], 1);
-    }
 }
 
 void PORTA_IRQHandler(void)
@@ -53,7 +61,7 @@ void PORTA_IRQHandler(void)
 
     /* Clear interrupt flag.*/
     PORT_HAL_ClearPortIntFlag(PORTA_BASE_PTR);
-    //test
+
     if(isMainOn && GetExecStatus()==false)
     {
         powerDisplay(true);
@@ -61,16 +69,23 @@ void PORTA_IRQHandler(void)
         mainMode=GetMode();
         subMode=0;
         isMainOn=false;
-
+        if(GetSubStatus())
+        {
+            heisenbug=true;
+        }
     }else if(isSubOn && GetSubStatus()==false)
     {
         //Sub command entered
         powerDisplay(true);
         subMode=GetMode();
         isSubOn=false;
-        
     }else if(!isSubOn && !isMainOn)
     {
+        if(heisenbug)
+        {
+            heisenbug=false;
+            return;
+        }
         //entered into command set mode
         if(GetExecStatus())
         {
