@@ -30,6 +30,7 @@ static const pit_user_config_t g_pitChan0 = {
 
 static bool isSubOn=false;
 static bool isMainOn=false;
+static bool isFirstRun=true; //for dst detection. breaks normal flow
 
 /*  the heisenbug is very odd. If I switch main mode to something 4 or above, once the exec switch
     is flipped back to off, the interrupt handler is called twice (should only be called once).
@@ -100,6 +101,10 @@ void PORTA_IRQHandler(void)
             isSubOn=true;
             PIT_DRV_StartTimer(0, 0);
         }
+        else
+        {
+            isFirstRun=false;
+        }
     }
 
     OSA_TimeDelay(10);//debounce
@@ -169,6 +174,11 @@ void CommandSetAck()
 bool InterruptTriggered()
 {
     return isSubOn || isMainOn;
+}
+
+bool GetFirstRun()
+{
+    return isFirstRun;
 }
 
 uint8_t GetMainMode()

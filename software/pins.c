@@ -13,8 +13,6 @@ void hardware_init(void)
 
     //input switches
     PORT_HAL_SetMuxMode(PORTA,4u,kPortMuxAsGpio);
-//fuck
-//https://community.nxp.com/thread/468689
     PORT_HAL_SetMuxMode(PORTA,1u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTE,25u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTE,24u,kPortMuxAsGpio);

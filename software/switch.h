@@ -7,6 +7,7 @@ uint8_t GetMainMode();
 uint8_t GetSubMode();
 bool GetExecStatus();
 bool GetSubStatus();
+bool GetFirstRun();
 void CommandSetAck();
 bool InterruptTriggered();
 

@@ -41,6 +41,22 @@ int main (void)
     GPIO_DRV_OutputPinInit(&LED_South);
     GPIO_DRV_OutputPinInit(&LED_West);
     GPIO_DRV_OutputPinInit(&LED_East);
+    
+    //prompt for dst
+    bool dst=false;
+    while(GetFirstRun())
+    {
+        bool dots[8]={false,false,false,false,false,false,false,false};
+        if(GetMode()>0)
+        {
+            multiplex("is\0dst\0y",dots,8);
+            dst=true;
+        }else{
+            multiplex("is\0dst\0n",dots,8);
+            dst=false;
+        }
+    }
+
     //turn on gps
     GPSPower(true);
 
@@ -81,7 +97,12 @@ int main (void)
 
             //set clocks
             int8_t offset=GetLocalTimeZoneOffset(lon,direction);
-            //if DST then offset +=1
+
+            if(dst==true)
+            {
+                offset+=1;
+            }
+
             RTC_init();
             adjustDate(&day,&month,&year,offset,hour);
             hour = AdjustUTCHour(hour,offset);
