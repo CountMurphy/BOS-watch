@@ -10,6 +10,7 @@ uint8_t addDot(char);
 uint8_t center(int count);
 uint8_t reverseBin(uint8_t data);
 void multiplex(char[], bool dots[],int count);
+void Scroll(char *word,bool dots[], uint8_t count);
 void rawWriteToScreen(uint8_t[2]);
 void powerDisplay(bool);
 void ScreenInit();

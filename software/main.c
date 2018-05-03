@@ -262,10 +262,33 @@ void RunCompass()
 
 void RunGPS()
 {
+    bool dots[8]={false,false,false,false,false,false,false,false};
+    char lat[9];
+    char lon[10];
+    double gLat;
+    double gLon;
+    char N_S;
+    char E_W;
+
     while(!InterruptTriggered())
     {
-
+        switch(GetSubMode())
+        {
+            case 0:
+                multiplex("gps",dots,3);
+                break;
+            case 1:
+                //print raw
+                GetCurrentLocation(lat,&N_S,lon,&E_W);
+                break;
+            case 2:
+                //print google ready 
+                GetCurrentLocation(lat,&N_S,lon,&E_W);
+                GetGoogleReadyLocation(lat,N_S,lon,E_W,&gLat,&gLon);
+                break;
+        }
     }
+    GPSPower(false);
 }
 
 void RunPewPew()

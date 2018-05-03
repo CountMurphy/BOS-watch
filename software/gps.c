@@ -173,8 +173,12 @@ bool SatFixStatus()
 
 void GetCurrentLocation(char *lat, char *N_S,char*lon, char *E_W)
 {
-    char GPRMC[100];
-    GetGPRMC(100,GPRMC);
+    #if DEBUG
+        char GPRMC[100] = "\002GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
+    #else
+        char GPRMC[100];
+        GetGPRMC(100,GPRMC);
+    #endif
     lon[0]=GPRMC[32];
     lon[1]=GPRMC[33];
     lon[2]=GPRMC[34];

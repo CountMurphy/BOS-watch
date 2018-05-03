@@ -102,9 +102,40 @@ void multiplex(char msg[], bool dots[], int count)
 
         spiLatch();
         digitMask=digitMask<<1;
-            OSA_TimeDelay(1);
+        OSA_TimeDelay(1);
 
     }
+}
+
+void Scroll(char *word, bool dots[],uint8_t count)
+{
+	for(int i=0;i<count+8;i++)
+	{
+		uint8_t digit=0x80>>i;
+
+		//multiplex loop
+		for(int waitCount=0;waitCount<5001;waitCount++)
+		{
+			int ii=i;
+			int newCount=0;
+			while(ii>-1)
+			{
+                if(i>=8)
+                {
+                    uint8_t data[2]={(0x80>>ii)^0xFF, dictionary(newCount>count? '\0':word[newCount])};
+			    	rawWriteToScreen(data);
+                }
+                else
+                {
+                    uint8_t data[2]={(digit<<newCount)^0xFF, dictionary(newCount>count? '\0':word[newCount])};
+				    rawWriteToScreen(data);
+                }
+				newCount++;
+				ii--;
+			}
+		}
+
+	}  
 }
 
 uint8_t dictionary(char digit)
