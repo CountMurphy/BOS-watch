@@ -6,6 +6,8 @@
 
 #include "gps.h"
 #include "pins.h"
+#include "screen.h"
+#include "switch.h"
 
 static const gpio_output_pin_user_config_t GPSEnable={
     .pinName=GPIO_MAKE_PIN(GPIOC_IDX,4),
@@ -164,9 +166,43 @@ void GetGPGGA(uint8_t NMEACount, char *GPGGA)
     }
 }
 
-bool SatFixStatus()
+void WaitOnSatFix()
 {
-    return GPIO_DRV_ReadPinInput(SatFix.pinName);
+    uint8_t gpsWait[2]={0x00,0xFF};
+    rawWriteToScreen(gpsWait);
+    bool lastValue=GPIO_DRV_ReadPinInput(SatFix.pinName);
+    OSA_TimeDelay(500);
+    int count=0;
+    while(!InterruptTriggered())
+    {
+        bool currentValue=GPIO_DRV_ReadPinInput(SatFix.pinName);
+        if(currentValue==lastValue)
+        {
+            count++;
+        }
+        else{
+            count=0;
+        }
+        //Sat Fix detection
+        #if DEBUG
+            count=8;
+        #endif
+        if(count==8)
+        {
+            return;
+        }else{
+            lastValue=currentValue;
+        }
+
+        if (currentValue)
+        {
+            powerDisplay(true);
+        }else{
+            powerDisplay(false);
+        }
+        OSA_TimeDelay(250);
+
+    }
 }
 
 

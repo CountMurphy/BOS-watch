@@ -1,5 +1,6 @@
 #include "fsl_gpio_driver.h"
 #include "screen.h"
+#include "switch.h"
 
 
 static const gpio_output_pin_user_config_t displayOutput={
@@ -114,12 +115,16 @@ void Scroll(char *word, bool dots[],uint8_t count)
 		uint8_t digit=0x80>>i;
 
 		//multiplex loop
-		for(int waitCount=0;waitCount<5001;waitCount++)
+		for(int waitCount=0;waitCount<3001;waitCount++)
 		{
 			int ii=i;
 			int newCount=0;
 			while(ii>-1)
 			{
+                if(InterruptTriggered())
+                {
+                    return;
+                }
                 if(i>=8)
                 {
                     uint8_t data[2]={(0x80>>ii)^0xFF, dictionary(newCount>count? '\0':word[newCount])};
@@ -234,6 +239,7 @@ uint8_t dictionary(char digit)
         retVal=0b00110000;
         break;
     case 'n':
+    case 'N':
         retVal=0b01010100;
         break;
     case 'o':
@@ -261,12 +267,23 @@ uint8_t dictionary(char digit)
     case 'u':
         retVal=0b00011100;
         break;
+    case 'W':
+    case 'w':
+        retVal=0b01111110;
+        break;
     case 'y':
     case 'Y':
         retVal=0b01101110;
         break;
     case '\0':
         retVal=0x00;
+        break;
+    case '-':
+        retVal=0b01000000;
+        break;
+    case '.':
+        retVal=0b10000000;
+        break;
     }
     return retVal;
 }

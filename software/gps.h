@@ -11,7 +11,7 @@ void GetGPRMC(uint8_t NMEACount, char *GPRMC);
 void GetGPGGA(uint8_t NMEACount, char *GPGGA);
 void GetCurrentLocation(char *lat, char *N_S,char*lon, char *E_W);
 void GetGoogleReadyLocation(char *lat,char N_S,char *lon, char E_W, double *gLat,double *gLon);
-bool SatFixStatus();
+void WaitOnSatFix();
 int8_t GetLocalTimeZoneOffset(uint32_t lon, char direction);
 double CoordConvert(int coordWhole,int coordDecimal);
 #endif

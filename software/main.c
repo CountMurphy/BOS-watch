@@ -1,5 +1,6 @@
 // Standard C Included Files
 #include <stdio.h>
+#include <string.h>
 // SDK Included Files
 #include "fsl_os_abstraction.h"
 
@@ -60,67 +61,35 @@ int main (void)
     //turn on gps
     GPSPower(true);
 
-    uint8_t gpsWait[2]={0x00,0xFF};
-    rawWriteToScreen(gpsWait);
-    bool lastValue=SatFixStatus();
-    OSA_TimeDelay(500);
-    int count=0;
-    while(1)
+
+    WaitOnSatFix();
+    //turn on UART
+    GPSInit();
+    uint8_t minute;
+    uint8_t second;
+    uint8_t hour;
+    uint8_t month;
+    uint8_t day;
+    uint8_t year;
+    uint32_t lon;
+    uint8_t dow;
+    char direction;
+    ParseNMEA(&minute,&hour,&second,&day,&month,&year,&lon,&direction);
+    GPSPower(false);
+
+    //set clocks
+    int8_t offset=GetLocalTimeZoneOffset(lon,direction);
+
+    if(dst==true)
     {
-        bool currentValue=SatFixStatus();
-        if(currentValue==lastValue)
-        {
-            count++;
-        }
-        else{
-            count=0;
-        }
-        //Sat Fix detection
-        #if DEBUG
-            count=8;
-        #endif
-        if(count==8)
-        {
-            //turn on UART
-            GPSInit();
-            uint8_t minute;
-            uint8_t second;
-            uint8_t hour;
-            uint8_t month;
-            uint8_t day;
-            uint8_t year;
-            uint32_t lon;
-            uint8_t dow;
-            char direction;
-            ParseNMEA(&minute,&hour,&second,&day,&month,&year,&lon,&direction); 
-            GPSPower(false);
-
-            //set clocks
-            int8_t offset=GetLocalTimeZoneOffset(lon,direction);
-
-            if(dst==true)
-            {
-                offset+=1;
-            }
-
-            RTC_init();
-            adjustDate(&day,&month,&year,offset,hour);
-            hour = AdjustUTCHour(hour,offset);
-            dow=dayofweek((2000+year),month,day);
-            setRtc(hour,minute,second,month,day,year,dow);
-            break;
-        }else{
-            lastValue=currentValue;
-        }
-
-        if (currentValue)
-        {
-            powerDisplay(true);
-        }else{
-            powerDisplay(false);
-        }
-        OSA_TimeDelay(250);
+        offset+=1;
     }
+
+    RTC_init();
+    adjustDate(&day,&month,&year,offset,hour);
+    hour = AdjustUTCHour(hour,offset);
+    dow=dayofweek((2000+year),month,day);
+    setRtc(hour,minute,second,month,day,year,dow);
 
     PlayTheme();
     powerDisplay(true);
@@ -129,7 +98,7 @@ int main (void)
     txBuff[0]=0x50;
 
     // OSA_TimeDelay(500);
-/*
+    /*
     I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
     i2c_status_t retVal;
     retVal= I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
@@ -208,26 +177,26 @@ void RunClock(void)
     {
         switch(GetSubMode())
         {
-            case 0:
-                //Roughly 500 mils, dumb effort to save power by slowing down polling
-                if(rtcCounter>=10)
+        case 0:
+            //Roughly 500 mils, dumb effort to save power by slowing down polling
+            if(rtcCounter>=10)
+            {
+                rtcCounter=0;
+                second = ReadSecond();
+                if(second==0x00)
                 {
-                    rtcCounter=0;
-                    second = ReadSecond();
-                    if(second==0x00)
-                    {
-                       ReadHourMinute(&minute,&hour);
-                    }
+                    ReadHourMinute(&minute,&hour);
                 }
-                printTime(hour,minute,second);
-                rtcCounter++;
-                break;
-            case 1:
-                printDate();
-                break;
-            case 2:
-                PrintDOW();
-                break;
+            }
+            printTime(hour,minute,second);
+            rtcCounter++;
+            break;
+        case 1:
+            printDate();
+            break;
+        case 2:
+            PrintDOW();
+            break;
         }
     }
 }
@@ -239,15 +208,15 @@ void RunBuzzer()
     {
         switch(GetSubMode())
         {
-            case 0:
-                multiplex("audio",dots,5);
-                break;
-            case 1:
-                PlayTheme();
-                break;
-            case 2:
-                Gieger();
-                break;
+        case 0:
+            multiplex("audio",dots,5);
+            break;
+        case 1:
+            PlayTheme();
+            break;
+        case 2:
+            Gieger();
+            break;
         }
     }
 }
@@ -262,7 +231,8 @@ void RunCompass()
 
 void RunGPS()
 {
-    bool dots[8]={false,false,false,false,false,false,false,false};
+    bool dots[3]={false,false,false};
+    bool latDots[11]={false,false,false,false,false,false,false,false,false,false,false};
     char lat[9];
     char lon[10];
     double gLat;
@@ -274,18 +244,43 @@ void RunGPS()
     {
         switch(GetSubMode())
         {
-            case 0:
-                multiplex("gps",dots,3);
-                break;
-            case 1:
-                //print raw
-                GetCurrentLocation(lat,&N_S,lon,&E_W);
-                break;
-            case 2:
-                //print google ready 
-                GetCurrentLocation(lat,&N_S,lon,&E_W);
-                GetGoogleReadyLocation(lat,N_S,lon,E_W,&gLat,&gLon);
-                break;
+        case 0:
+            multiplex("gps",dots,3);
+            break;
+        case 1:
+            //print raw
+            #if RELEASE
+                GPSPower(true);
+            #endif
+            WaitOnSatFix();
+            GetCurrentLocation(lat,&N_S,lon,&E_W);
+            char fullLat[10];
+            strcpy(fullLat,lat);
+            fullLat[9]=N_S;
+            Scroll(fullLat,latDots,9);
+            char fullLon[11];
+            strcpy(fullLon,lon);
+            fullLon[10]=E_W;
+            Scroll(fullLon,latDots,10);
+            break;
+        case 2:
+            //print google ready
+            #if RELEASE
+                GPSPower(true);
+            #endif
+            WaitOnSatFix();
+            GetCurrentLocation(lat,&N_S,lon,&E_W);
+            GetGoogleReadyLocation(lat,N_S,lon,E_W,&gLat,&gLon);
+            char chargLat[9];
+            char chargLon[10];
+            int ret =snprintf(chargLat, 9, "%f", 30.356145);
+            if(ret<0){
+                ret=2;
+            }
+            Scroll(chargLat,latDots,9);
+            snprintf(chargLon, 10, "%f", gLon);
+            Scroll(chargLon,latDots,10);
+            break;
         }
     }
     GPSPower(false);
