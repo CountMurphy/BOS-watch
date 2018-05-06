@@ -12,13 +12,7 @@
 
 void hardware_init(void);
 
-i2c_device_t compass=
-{
-    .address=0x32>>1,
-    .baudRate_kbps=100
-};
 
-i2c_master_state_t compass_state;
 
 
 /*##################Lights#############################*/

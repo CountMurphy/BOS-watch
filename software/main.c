@@ -11,15 +11,10 @@
 #include "rtc.h"
 #include "gps.h"
 #include "switch.h"
+#include "compass.h"
 
 
-#define DATA_LENGTH             64
-#define BOARD_I2C_INSTANCE      0
 
-// Buffer store data to send to slave
-uint8_t txBuff[DATA_LENGTH] = {0};
-// Buffer store data to receive from slave
-uint8_t rxBuff[DATA_LENGTH] = {0};
 void RunClock(void);
 void RunCompass();
 void RunPewPew();
@@ -94,22 +89,7 @@ int main (void)
     PlayTheme();
     powerDisplay(true);
 
-    // Master sends 1 bytes CMD and data to slave
-    txBuff[0]=0x50;
-
-    // OSA_TimeDelay(500);
-    /*
-    I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
-    i2c_status_t retVal;
-    retVal= I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
-
-    // Delay to wait slave received data
-    OSA_TimeDelay(1);
-
-
-    // Master receives count byte data from slave
-    I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, rxBuff, 6, 1000);
-*/
+ 
 
     // setRtc(21,15,59,11,12,18,1);
 
@@ -225,8 +205,87 @@ void RunCompass()
 {
     while(!InterruptTriggered())
     {
-
+        uint16_t heading = GetHeading();
+        bool dots[4]={false,false,true,false};
+        bool wordDots[8]={false,false,false,false,false,false,false,false};
+        char charHead[4];
+        switch(GetSubMode())
+        {
+            case 0:
+                multiplex("connpass",wordDots,8);
+                break;
+            case 1:
+                sprintf (charHead, "%u", heading);
+                multiplex(charHead,dots,4);
+                break;
+            case 2:
+                sprintf (charHead, "%u", heading);
+                multiplex(charHead,dots,4);
+                heading=heading/10;
+                if((heading>=340 && heading <=360)|| (heading >=0 && heading<=20))
+                {
+                    //North
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+                }else if(heading >20 && heading <=40)
+                {
+                    //North East
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+                }else if(heading >40 && heading <=120)
+                {
+                    //East
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+                }else if(heading >120 && heading <=150)
+                {
+                    //South East
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,1);
+                }else if(heading >150 && heading <=220)
+                {
+                    //South
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,1);
+                }else if(heading >200 && heading <=230)
+                {
+                    //South West
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,1);
+                }else if(heading > 230 && heading <=300)
+                {
+                    //West
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+                }else if(heading >300 && heading <340)
+                {
+                    //North West
+                    GPIO_DRV_WritePinOutput(LED_North.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+                    GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+                    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+                }
+                break;
+        }
     }
+    GPIO_DRV_WritePinOutput(LED_North.pinName,0);
+    GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+    GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+    GPIO_DRV_WritePinOutput(LED_South.pinName,0);
 }
 
 void RunGPS()
