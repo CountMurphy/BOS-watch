@@ -28,8 +28,7 @@ uint16_t GetHeading()
    // Master sends 1 bytes CMD and data to slave
     txBuff[0]=0x50;
 
-    i2c_status_t retVal;
-    retVal= I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
+    I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
 
     // Delay to wait slave received data
     OSA_TimeDelay(1);
