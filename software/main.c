@@ -22,6 +22,8 @@ void RunGPS();
 void RunBuzzer();
 void RunStopWatch();
 void RunStandBy();
+void CreateStopWatchString(char countedTime[],int8_t hour,int8_t minute,int8_t second);
+void SetCountDownTime(int8_t *hour,int8_t *minute,int8_t *second);
 
 
 int main (void)
@@ -364,29 +366,21 @@ void RunStandBy()
 
 void RunStopWatch()
 {
-    uint8_t minute=0;
-    uint8_t hour=0;
-    uint8_t second=0;
-    uint8_t milisecond=0;
-    char minChar[2],hourChar[2],secChar[2];
+    int8_t minute=0;
+    int8_t hour=0;
+    int8_t second=0;
+    int8_t milisecond=0;
     bool fuckingDots[8]={false,false,false,false,false,false,false,false};//for those grepping for swear words. You're welcome
     char countedTime[8];
     while(!InterruptTriggered())
     {
+        
         switch(GetSubMode())
         {
         case 0:
-            sprintf (hourChar, "%u", hour);
-            sprintf (minChar, "%u", minute);
-            sprintf (secChar, "%u", second);
-            countedTime[0]=hourChar[0];
-            countedTime[1]=hourChar[1];
-            countedTime[2]='\0';
-            countedTime[3]=minChar[0];
-            countedTime[4]=minChar[1];
-            countedTime[5]='\0';
-            countedTime[6]=secChar[0];
-            countedTime[7]=secChar[1];
+            //stopwatch
+
+            CreateStopWatchString(countedTime,hour,minute,second);
             //multiplex has a milisecond delay already
             multiplex(countedTime,fuckingDots,8);
             if(GetMode()==1)
@@ -408,6 +402,128 @@ void RunStopWatch()
                 hour=minute=second=0;
             }
             break;
+        case 1:
+            //countdown
+            milisecond=59;
+            SetCountDownTime(&hour,&minute,&second);
+            while(!InterruptTriggered())
+            {
+                CreateStopWatchString(countedTime,hour,minute,second);
+                multiplex(countedTime,fuckingDots,8);
+                milisecond--;
+                if(second==0 && minute==0 && hour==0)
+                {
+                    while(!InterruptTriggered())
+                    {
+                        PlayAlarm();
+                    }
+                }else if(milisecond<0)
+                {
+                    milisecond=59;
+                    second--;
+                    if(second<0)
+                    {
+                        minute--;
+                        second=59;
+                        if(minute<0)
+                        {
+                            minute=59;
+                            hour--;
+                        }
+                    }
+                }
+            }
+            break;
         }
     }
+}
+
+void SetCountDownTime(int8_t *hour,int8_t *minute,int8_t *second)
+{
+    *hour=0;
+    *minute=0;
+    *second=0;
+    uint8_t mode=GetMode();
+    char digToPrint[2];
+    bool dots[2]={false,false};
+    //Set hour
+    for(int i=0;i<3;i++)
+    {
+        uint16_t timeDelay=0;
+        while(mode==2)
+        {
+            mode=GetMode();
+        }
+
+        while(mode!=2)
+        {
+            mode=GetMode();
+            switch(i)
+            {
+            case 0:
+                digToPrint[0]=(*hour>>4)+48;
+                digToPrint[1]=(*hour&0xF)+48;
+                multiplex(digToPrint,dots,2);
+                break;
+            case 1:
+                digToPrint[0]=(*minute>>4)+48;
+                digToPrint[1]=(*minute&0xF)+48;
+                multiplex(digToPrint,dots,2);
+                break;
+            case 2:
+                digToPrint[0]=(*second>>4)+48;
+                digToPrint[1]=(*second&0xF)+48;
+                multiplex(digToPrint,dots,2);
+                break;
+            }
+            if(mode==1 && timeDelay>=25)
+            {
+                timeDelay=0;
+                switch(i)
+                {
+                case 0:
+                    *hour+=1;
+                    if(*hour==10)
+                    {
+                        *hour =0;
+                    }
+                    break;
+                case 1:
+                    *minute+=1;
+                    if(*minute>59)
+                    {
+                        *minute=0;
+                    }
+                    break;
+                case 2:
+                    *second+=1;
+                    if(*second>59)
+                    {
+                        *second=0;
+                    }
+                    break;
+                }
+
+
+            }
+            timeDelay+=1;
+        }
+    }
+}
+
+
+void CreateStopWatchString(char countedTime[],int8_t hour,int8_t minute,int8_t second)
+{
+    char minChar[2],hourChar[2],secChar[2];
+    sprintf (hourChar, "%u", hour);
+    sprintf (minChar, "%u", minute);
+    sprintf (secChar, "%u", second);
+    countedTime[0]=hourChar[0];
+    countedTime[1]=hourChar[1];
+    countedTime[2]='\0';
+    countedTime[3]=minChar[0];
+    countedTime[4]=minChar[1];
+    countedTime[5]='\0';
+    countedTime[6]=secChar[0];
+    countedTime[7]=secChar[1];
 }
