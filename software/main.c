@@ -364,8 +364,50 @@ void RunStandBy()
 
 void RunStopWatch()
 {
+    uint8_t minute=0;
+    uint8_t hour=0;
+    uint8_t second=0;
+    uint8_t milisecond=0;
+    char minChar[2],hourChar[2],secChar[2];
+    bool fuckingDots[8]={false,false,false,false,false,false,false,false};//for those grepping for swear words. You're welcome
+    char countedTime[8];
     while(!InterruptTriggered())
     {
-
+        switch(GetSubMode())
+        {
+        case 0:
+            sprintf (hourChar, "%u", hour);
+            sprintf (minChar, "%u", minute);
+            sprintf (secChar, "%u", second);
+            countedTime[0]=hourChar[0];
+            countedTime[1]=hourChar[1];
+            countedTime[2]='\0';
+            countedTime[3]=minChar[0];
+            countedTime[4]=minChar[1];
+            countedTime[5]='\0';
+            countedTime[6]=secChar[0];
+            countedTime[7]=secChar[1];
+            //multiplex has a milisecond delay already
+            multiplex(countedTime,fuckingDots,8);
+            if(GetMode()==1)
+            {
+                // OSA_TimeDelay(1000);
+                milisecond++;
+                if(milisecond==60)
+                {
+                    milisecond=0;
+                    second++;
+                    if(second==60)
+                    {
+                        second=0;
+                        minute++;
+                    }
+                }
+            }else if(GetMode()>1)
+            {
+                hour=minute=second=0;
+            }
+            break;
+        }
     }
 }
