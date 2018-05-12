@@ -238,6 +238,10 @@ uint8_t dictionary(char digit)
     case 'l':
         retVal=0b00110000;
         break;
+    case 'm':
+    case 'M':
+        retVal=0b01010101;
+        break;
     case 'n':
     case 'N':
         retVal=0b01010100;
