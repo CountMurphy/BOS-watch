@@ -43,4 +43,7 @@ void hardware_init(void)
     PORT_HAL_SetMuxMode(PORTC,10u,kPortMuxAsGpio);
     PORT_HAL_SetMuxMode(PORTD,2u,kPortMuxAlt3);
 
+    //Firn' mah lazors!
+    PORT_HAL_SetMuxMode(PORTE,1u,kPortMuxAsGpio);
+
 }

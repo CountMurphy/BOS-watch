@@ -113,6 +113,8 @@ ADD_EXECUTABLE(BOS
     "${ProjDirPath}/switch.h"
     "${ProjDirPath}/compass.c"
     "${ProjDirPath}/compass.h"
+    "${ProjDirPath}/pewpew.c"
+    "${ProjDirPath}/pewpew.h"
 )
 SET_TARGET_PROPERTIES(BOS PROPERTIES OUTPUT_NAME "BOS.elf")
 

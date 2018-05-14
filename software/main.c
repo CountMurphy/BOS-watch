@@ -12,6 +12,7 @@
 #include "gps.h"
 #include "switch.h"
 #include "compass.h"
+#include "pewpew.h"
 
 static void RunClock(void)
 {
@@ -246,10 +247,21 @@ static void RunGPS()
 
 static void RunPewPew()
 {
+    bool dots[5]={false,false,false,false,false};
     while(!InterruptTriggered())
     {
-
+        switch(GetSubMode())
+        {
+            case 0:
+                multiplex("Armed",dots,5);
+                FirnMahLaser(false);
+                break;
+            case 1:
+                FirnMahLaser(true);
+                break;
+        }
     }
+    FirnMahLaser(false);
 }
 
 
@@ -436,6 +448,7 @@ int main (void)
 
     ScreenInit();
     SwitchInit();
+    laserInit();
     //lights init
     GPIO_DRV_OutputPinInit(&LED_North);
     GPIO_DRV_OutputPinInit(&LED_South);
