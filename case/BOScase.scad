@@ -1,4 +1,5 @@
 module board(){
+
     union(){
         linear_extrude(1.6){  
             difference(){
@@ -152,4 +153,118 @@ module board(){
 
 
 
-board();
+
+
+module boardBaseOnly(){
+        union(){
+        linear_extrude(5.6){  //got to exagerate to make hole in bottom
+            difference(){
+                square(size=[81.24,53.12]);
+                translate([19.90,0]){
+                    polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
+                }
+            }
+        };
+            //laser
+    translate([8.37,53.35+40,(6.42-1.6-(5.9/2))]){
+        color([1,0,0]){
+            rotate([90,90,0]) {
+                cylinder(r=(5.9/2),h=50);
+            };
+        };
+    };
+    //power switch
+    translate([63.23,48.92,1.6,]){
+        union(){
+            color([0,0,1]){
+            cube([10.12,3.80,(6.86-1.6)]);
+            translate([3.80,3.8,2.5])
+                cube([1.90,4.82,2.03]);
+        }}
+    };
+    
+        //usb
+    rotate([90,0,90]){
+        translate([45.21,4,75.24]){
+            minkowski() {
+                    linear_extrude(15.56)
+                        polygon([[-7.25/2,0], [7.25/2,0],
+                                [7.25/2,-1], [5.25/2,-2.3],
+                                [-5.25/2,-2.3], [-7.25/2,-1]]);
+                    cylinder(r=0.5, h=1);
+            }    
+      }
+     }
+    };
+}    
+
+module pins(){
+            color([0,1,0]){
+            //Create Pins
+            union(){
+                translate([25,10,-2]){
+                    rotate([0,90,0]){
+                        translate([3,0,1]){
+                            //pin
+                            cylinder(r=4.82/2,h=28.39);
+                        }
+                    }
+                    translate([-1.5,0,-6]){
+                        rotate([0,0,45]){
+                            cylinder(8,3,7,$fn=4);
+                        }
+                    }
+                    translate([32,0,-6]){
+                        rotate([0,0,45]){
+                            cylinder(8,3,7,$fn=4);
+                        }
+                    }
+                }
+            }
+        }
+}
+
+module bottom(){
+    union(){
+        color([1,0,1]){
+        difference(){
+            linear_extrude(7){
+                difference(){
+                    hull(){
+                        circle(r=3);
+    
+                        translate([0,53.12,0]){
+                            circle(r=3);
+                        }
+                        translate([81.24,53.12,0]){
+                            circle(r=3);
+                        }
+                        translate([81.24,0,0]){
+                            circle(r=3);
+                        }
+                    };
+                translate([19.90,-3,0]){
+                    polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
+                };
+                }
+            };
+            translate([0,0,4]){
+                boardBaseOnly();
+            };
+        };
+        };
+        pins();
+        translate([0,35,0]){
+            pins();
+        };
+    }
+}
+
+//
+//
+//
+bottom();
+translate([0,0,15]){
+    board();
+};
+
