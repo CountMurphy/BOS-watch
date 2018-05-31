@@ -174,13 +174,13 @@ static void PrintRawGPS()
 
 #if RELEASE
     GPSPower(true);
-#endif
     WaitOnSatFix();
+#endif
     GetCurrentLocation(lat,&N_S,lon,&E_W);
     while(!InterruptTriggered())
     {
 
-        char fullLat[10];
+        char fullLat[11];
         strcpy(fullLat,lat);
         fullLat[9]=N_S;
         Scroll(fullLat,latDots,9);
@@ -203,8 +203,8 @@ static void PrintGoogleGPS()
 
 #if RELEASE
     GPSPower(true);
-#endif
     WaitOnSatFix();
+#endif
     GetCurrentLocation(lat,&N_S,lon,&E_W);
     GetGoogleReadyLocation(lat,N_S,lon,E_W,&gLat,&gLon);
     char chargLat[9];
