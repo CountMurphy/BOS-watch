@@ -85,23 +85,23 @@ static void toggleDirectionLight(uint16_t heading)
     {
         //North East
         GPIO_DRV_WritePinOutput(LED_North.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
         GPIO_DRV_WritePinOutput(LED_South.pinName,0);
     }else if(heading >40 && heading <=120)
     {
         //East
         GPIO_DRV_WritePinOutput(LED_North.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
         GPIO_DRV_WritePinOutput(LED_South.pinName,0);
     }else if(heading >120 && heading <=150)
     {
         //South East
         GPIO_DRV_WritePinOutput(LED_North.pinName,0);
         GPIO_DRV_WritePinOutput(LED_East.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_South.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_South.pinName,0);
     }else if(heading >150 && heading <=220)
     {
         //South
@@ -113,15 +113,15 @@ static void toggleDirectionLight(uint16_t heading)
     {
         //South West
         GPIO_DRV_WritePinOutput(LED_North.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
         GPIO_DRV_WritePinOutput(LED_South.pinName,1);
     }else if(heading > 230 && heading <=300)
     {
         //West
         GPIO_DRV_WritePinOutput(LED_North.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
         GPIO_DRV_WritePinOutput(LED_South.pinName,0);
     }else if(heading >300 && heading <340)
     {
