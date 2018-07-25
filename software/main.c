@@ -3,6 +3,7 @@
 #include <string.h>
 // SDK Included Files
 #include "fsl_os_abstraction.h"
+#include "fsl_smc_hal.h"
 
 
 #include "pins.h"
@@ -13,6 +14,65 @@
 #include "switch.h"
 #include "compass.h"
 #include "pewpew.h"
+
+
+            // CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
+/* Configuration for enter VLPR mode. Core clock = 4MHz. */
+static const clock_manager_user_config_t g_defaultClockConfigVlpr = {   
+    .mcgliteConfig =
+    {    
+        .mcglite_mode       = kMcgliteModeLirc8M,   // Work in LIRC_8M mode.
+        .irclkEnable        = true,  // MCGIRCLK enable.
+        .irclkEnableInStop  = false, // MCGIRCLK disable in STOP mode.
+        .ircs               = kMcgliteLircSel8M, // Select LIRC_8M.
+        .fcrdiv             = kMcgliteLircDivBy1,    // FCRDIV is 0.
+        .lircDiv2           = kMcgliteLircDivBy1,    // LIRC_DIV2 is 0.
+        .hircEnableInNotHircMode         = false, // HIRC disable.
+    },
+    .simConfig =
+    {    
+        .er32kSrc  = kClockEr32kSrcOsc0,   // ERCLK32K selection, use OSC.
+        .outdiv1   = 1U, // divide by 2, core clock = 8 MHz / 2
+        .outdiv4   = 3U, // divide by 4, bus clock = 4 MHz / 4
+    },
+    .oscerConfig =
+    {   
+        .enable       = false, // OSCERCLK disable.
+        .enableInStop = false, // OSCERCLK disable in STOP mode.
+    }
+};
+
+/* Configuration for enter RUN mode. Core clock = 48MHz. */
+static const clock_manager_user_config_t g_defaultClockConfigRun = {
+    .mcgliteConfig =
+    {   
+        .mcglite_mode        = kMcgliteModeHirc48M,   // Work in HIRC mode.
+        .irclkEnable        = false, // MCGIRCLK disable.
+        .irclkEnableInStop  = false, // MCGIRCLK disable in STOP mode.
+        .ircs               = kMcgliteLircSel2M, // Select LIRC_2M.
+        .fcrdiv             = kMcgliteLircDivBy1,    // FCRDIV is 0.
+        .lircDiv2           = kMcgliteLircDivBy1,    // LIRC_DIV2 is 0.
+        .hircEnableInNotHircMode         = true,  // HIRC disable.
+    },
+    .simConfig =
+    {   
+        .er32kSrc  = kClockEr32kSrcOsc0,  // ERCLK32K selection, use OSC.
+        .outdiv1   = 0U,
+        .outdiv4   = 1U,
+    },
+    .oscerConfig =
+    {
+        .enable       = false, // OSCERCLK disable.
+        .enableInStop = false, // OSCERCLK disable in STOP mode.
+    }
+};
+
+// /* Idle the CPU in Very Low Power Wait (VLPW) */
+// /* This should be the lowest power mode where the PIT still functions. */
+// static const smc_power_mode_config_t g_idlePowerMode = {
+//     .powerModeName = kPowerModeVlpw,
+// };
+
 
 static void RunClock(void)
 {
