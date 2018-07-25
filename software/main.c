@@ -16,7 +16,6 @@
 #include "pewpew.h"
 
 
-            // CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
 /* Configuration for enter VLPR mode. Core clock = 4MHz. */
 static const clock_manager_user_config_t g_defaultClockConfigVlpr = {   
     .mcgliteConfig =
@@ -327,10 +326,35 @@ static void RunPewPew()
 
 static void RunStandBy()
 {
+    bool dots[6]={false,false,false,false,false,false};
     while(!InterruptTriggered())
     {
-
+        switch(GetSubMode())
+        {
+            case 0: 
+                multiplex("Power",dots,5);
+                break;
+            case 1: 
+                for(int i=0;i<50;i++)
+                {
+                    multiplex("Stndby",dots,6);
+                }
+                powerDisplay(false);
+                break;
+            case 2:
+                if(GetMode()==1)
+                {
+                    multiplex("Low",dots,3);
+                    CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
+                }else if(GetMode()==0)
+                {
+                    multiplex("High",dots,4);
+                    CLOCK_SYS_SetConfiguration(&g_defaultClockConfigRun);
+                }
+                break;
+        }
     }
+    powerDisplay(true);
 }
 
 
