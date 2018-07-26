@@ -158,9 +158,9 @@ static void toggleDirectionLight(uint16_t heading)
     {
         //South East
         GPIO_DRV_WritePinOutput(LED_North.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
         GPIO_DRV_WritePinOutput(LED_West.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_South.pinName,0);
+        GPIO_DRV_WritePinOutput(LED_South.pinName,1);
     }else if(heading >150 && heading <=220)
     {
         //South
@@ -186,8 +186,8 @@ static void toggleDirectionLight(uint16_t heading)
     {
         //North West
         GPIO_DRV_WritePinOutput(LED_North.pinName,1);
-        GPIO_DRV_WritePinOutput(LED_East.pinName,0);
-        GPIO_DRV_WritePinOutput(LED_West.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_East.pinName,1);
+        GPIO_DRV_WritePinOutput(LED_West.pinName,0);
         GPIO_DRV_WritePinOutput(LED_South.pinName,0);
     }
 }
