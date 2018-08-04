@@ -52,8 +52,8 @@ uint8_t ReadChar()
 void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uint8_t *month,uint8_t *year,uint32_t *lon,char *direction)
 {
     #if DEBUG
-        char GPRMC[100] = "\002GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
-        char GPGGA[100] = "\002GPGGA,015833.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
+        char GPRMC[100] = "$GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
+        char GPGGA[100] = "$GPGGA,015833.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
     #else
         uint8_t NMEACount = 100;
         char GPRMC[NMEACount];
@@ -81,21 +81,24 @@ void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uin
     sscanf(secChar, "%d", &temp);
     *seconds=(uint8_t)temp;
 
+    //The true Course value can be either double or tripple digits
+    uint8_t trueCourseModifier = (GPRMC[56]==',')?1:0;
+
     char dayChar[2];
-    dayChar[0]=GPRMC[56];
-    dayChar[1]=GPRMC[57];
+    dayChar[0]=GPRMC[56+trueCourseModifier];
+    dayChar[1]=GPRMC[57+trueCourseModifier];
     sscanf(dayChar, "%d", &temp);
     *day=(uint8_t)temp;
 
     char monChar[2];
-    monChar[0]=GPRMC[58];
-    monChar[1]=GPRMC[59];
+    monChar[0]=GPRMC[58+trueCourseModifier];
+    monChar[1]=GPRMC[59+trueCourseModifier];
     sscanf(monChar, "%d", &temp);
     *month=(uint8_t)temp;
 
     char yearChar[2];
-    yearChar[0]=GPRMC[60];
-    yearChar[1]=GPRMC[61];
+    yearChar[0]=GPRMC[60+trueCourseModifier];
+    yearChar[1]=GPRMC[61+trueCourseModifier];
     sscanf(yearChar, "%d", &temp);
     *year=(uint8_t)temp;
 
