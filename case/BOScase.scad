@@ -218,7 +218,7 @@ module boardBaseTop(){
     //GPS
         translate([63.05-5.5,19,1.6]){
             color([1,0,1]){
-            cube([20.63,20.63,5]);}
+            cube([20.63,25.63,5]);}
         };
     };
     
@@ -319,7 +319,7 @@ module boardBaseTop(){
     }
     //rtc?
     translate([27.58,26.57,3]){
-        #cube([45.63,18.63,5]);
+        #cube([47.8,18.63,5]);
     }
     //SWD pins
     translate([12.5,44.33,1.6]){
