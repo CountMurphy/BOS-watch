@@ -712,33 +712,33 @@ module directionalLED(){
     translate([71,11,1]){
         //led group hole
         color([0,1,0]){
-            cylinder(r=8.5,h=1.5);
+            cylinder(r=8.5,h=1);
         }
     }
     translate([71.39,16.80,1.6]){
         color([1,1,1]){
             rotate([0,0,90]){
-                cylinder(h=3,r=2.5,$fn=3);
+                cylinder(h=2.5,r=2.5,$fn=3);
             }
         }
     };
     translate([71.39,5.26,1.6]){
         color([1,1,1]){
             rotate([0,0,30]){
-                cylinder(h=3,r=2.5,$fn=3);
+                cylinder(h=2.5,r=2.5,$fn=3);
             }
         }
     };
      translate([65.80,11.3,1.6]){
         color([1,1,1]){
             rotate([0,0,180]){
-                cylinder(h=3,r=2.5,$fn=3);
+                cylinder(h=2.5,r=2.5,$fn=3);
             }
         }
     };
     translate([76.74,11.3,1.6]){
         color([1,1,1]){
-            cylinder(h=3,r=2.5,$fn=3);
+            cylinder(h=2.5,r=2.5,$fn=3);
         }
     };
 
@@ -753,8 +753,8 @@ translate([0,0,4]){
 //    board();
 };
 
- translate([25,36,-50]){topWithClaspAndLogo();};
-//  directionalLED();
+//  translate([25,36,-50]){topWithClaspAndLogo();};
+ directionalLED();
 //  translate([25,36,-40]){top();};
 // boardBaseTop();
 
