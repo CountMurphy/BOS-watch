@@ -194,6 +194,8 @@ static void toggleDirectionLight(uint16_t heading)
 
 static void RunCompass()
 {
+    Resume();
+    OSA_TimeDelay(1);
     while(!InterruptTriggered())
     {
         uint16_t heading = GetHeading();
@@ -217,6 +219,7 @@ static void RunCompass()
                 break;
         }
     }
+    StndBy();
     GPIO_DRV_WritePinOutput(LED_North.pinName,0);
     GPIO_DRV_WritePinOutput(LED_East.pinName,0);
     GPIO_DRV_WritePinOutput(LED_West.pinName,0);
@@ -533,6 +536,7 @@ int main (void)
     ScreenInit();
     SwitchInit();
     laserInit();
+    CompassInit();
     //lights init
     GPIO_DRV_OutputPinInit(&LED_North);
     GPIO_DRV_OutputPinInit(&LED_South);

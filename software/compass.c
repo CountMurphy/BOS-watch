@@ -21,6 +21,8 @@ i2c_master_state_t compass_state;
 void CompassInit()
 {
     I2C_DRV_MasterInit(BOARD_I2C_INSTANCE, &compass_state);
+    OSA_TimeDelay(1);
+    StndBy();
 }
 
 uint16_t GetHeading()
@@ -38,4 +40,22 @@ uint16_t GetHeading()
     I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, rxBuff, 6, 1000);
     uint16_t heading=rxBuff[0]<<8 | rxBuff[1];
     return heading;
+}
+
+void StndBy()
+{
+    txBuff[0]=0x83;
+
+    I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
+}
+
+void Resume()
+{
+    txBuff[0]=0x84;
+
+    I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
+    OSA_TimeDelay(1);
+    txBuff[0]=0x75;
+
+    I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
 }
