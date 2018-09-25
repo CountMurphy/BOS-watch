@@ -81,24 +81,42 @@ void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uin
     sscanf(secChar, "%d", &temp);
     *seconds=(uint8_t)temp;
 
-    //The true Course value can be either double or tripple digits
-    uint8_t trueCourseModifier = (GPRMC[56]==',')?1:0;
+    uint8_t startingParsePoint = 0;
+    uint8_t commaHit = 0;
+
+    for(int i=0;i<100;i++)
+    {
+	    if(GPRMC[i]==',')
+	    {
+		    commaHit++;
+	    }
+	    if(commaHit==9)
+	    {
+		    startingParsePoint=i;
+		    break;
+	    }
+	    if(GPRMC[i]=='\r')
+	    {
+		    //something went horridly wrong
+		    break;
+	    }
+    }
 
     char dayChar[2];
-    dayChar[0]=GPRMC[56+trueCourseModifier];
-    dayChar[1]=GPRMC[57+trueCourseModifier];
+    dayChar[0]=GPRMC[startingParsePoint+1];
+    dayChar[1]=GPRMC[startingParsePoint+2];
     sscanf(dayChar, "%d", &temp);
     *day=(uint8_t)temp;
 
     char monChar[2];
-    monChar[0]=GPRMC[58+trueCourseModifier];
-    monChar[1]=GPRMC[59+trueCourseModifier];
+    monChar[0]=GPRMC[startingParsePoint+3];
+    monChar[1]=GPRMC[startingParsePoint+4];
     sscanf(monChar, "%d", &temp);
     *month=(uint8_t)temp;
 
     char yearChar[2];
-    yearChar[0]=GPRMC[60+trueCourseModifier];
-    yearChar[1]=GPRMC[61+trueCourseModifier];
+    yearChar[0]=GPRMC[startingParsePoint+5];
+    yearChar[1]=GPRMC[startingParsePoint+6];
     sscanf(yearChar, "%d", &temp);
     *year=(uint8_t)temp;
 
