@@ -400,18 +400,18 @@ static void SetCountDownTime(int8_t *hour,int8_t *minute,int8_t *second)
             switch(i)
             {
             case 0:
-                digToPrint[0] = *hour/10;
-                digToPrint[1] = *hour%10;
+                digToPrint[0] = (*hour/10) + 48;
+                digToPrint[1] = (*hour%10) +48;
                 multiplex(digToPrint,dots,2);
                 break;
             case 1:
-                digToPrint[0]=*minute/10;
-                digToPrint[1]=*minute%10;
+                digToPrint[0]=(*minute/10) + 48;
+                digToPrint[1]=(*minute%10) + 48;
                 multiplex(digToPrint,dots,2);
                 break;
             case 2:
-                digToPrint[0]=*second/10;
-                digToPrint[1]=*second%10;
+                digToPrint[0]=(*second/10) + 48;
+                digToPrint[1]=(*second%10) + 48;
                 multiplex(digToPrint,dots,2);
                 break;
             }
