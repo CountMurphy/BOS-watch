@@ -368,7 +368,7 @@ module bottom(){
         translate([58.5+2.5/2,16.5-2.5/2,-1.5-1.7]){
             rotate([0,0,90]){
                 // cube([24.5,36.4,5.5]);
-                cube([24.5+3.5,36.4+3.5,5.5+1.7]);
+                cube([28,39.9,7.2]);
             }
         };
         union(){
@@ -748,13 +748,13 @@ module directionalLED(){
 // translate([-13.5,28.5,17])
 // rotate([0,180,0])
 // knob();
-// bottomWithClasp();
+bottomWithClasp();
 translate([0,0,4]){
 //    board();
 };
 
 //  translate([25,36,-50]){topWithClaspAndLogo();};
- directionalLED();
+//  directionalLED();
 //  translate([25,36,-40]){top();};
 // boardBaseTop();
 
