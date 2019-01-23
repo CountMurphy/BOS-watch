@@ -326,6 +326,18 @@ static void RunPewPew()
     FirnMahLaser(false);
 }
 
+static void AdjustPowerMode(bool islow)
+{
+    if(islow)
+    {
+        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
+    }
+    else
+    {
+        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigRun);
+    }
+
+}
 
 static void RunStandBy()
 {
@@ -347,12 +359,11 @@ static void RunStandBy()
             case 2:
                 if(GetMode()==1)
                 {
-                    multiplex("Low",dots,3);
-                    CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
+                    AdjustPowerMode(true);
                 }else if(GetMode()==0)
                 {
                     multiplex("High",dots,4);
-                    CLOCK_SYS_SetConfiguration(&g_defaultClockConfigRun);
+                    AdjustPowerMode(false);
                 }
                 break;
         }
@@ -549,7 +560,7 @@ int main (void)
     while(GetFirstRun())
     {
         bool dots[8]={false,false,false,false,false,false,false,false};
-        if(GetMode()>0)
+        if(GetMode()==1 || GetMode()==3)
         {
             multiplex("is\0dst\0y",dots,8);
             dst=true;
@@ -593,7 +604,21 @@ int main (void)
     setRtc(hour,minute,second,month,day,year,dow);
 
     PlayTheme();
-    powerDisplay(true);
+
+    //check for low power mode request
+    if(GetMode()==2 || GetMode()==3)
+    {
+        //spin it down, turn off display
+        AdjustPowerMode(true);
+        powerDisplay(false);
+        while(!InterruptTriggered())
+        {
+            //idle
+        }
+    }else{
+        powerDisplay(true);
+    }
+
 
     for(;;)
     {
