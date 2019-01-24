@@ -355,6 +355,10 @@ static void RunStandBy()
                     multiplex("Stndby",dots,6);
                 }
                 powerDisplay(false);
+                while(!InterruptTriggered())
+                {
+                    //idle
+                }
                 break;
             case 2:
                 if(GetMode()==1)
@@ -368,7 +372,6 @@ static void RunStandBy()
                 break;
         }
     }
-    powerDisplay(true);
 }
 
 
