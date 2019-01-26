@@ -363,6 +363,7 @@ static void RunStandBy()
             case 2:
                 if(GetMode()==1)
                 {
+                    multiplex("Low",dots,3);
                     AdjustPowerMode(true);
                 }else if(GetMode()==0)
                 {
