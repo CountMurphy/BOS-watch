@@ -200,6 +200,8 @@ static void RunCompass()
     {
         uint16_t heading = GetHeading();
         bool dots[4]={false,false,true,false};
+        bool dotsUnder100[4]={false,true,false,false};
+        bool dotsUnder10[4]={true,false,false,false};
         bool wordDots[8]={false,false,false,false,false,false,false,false};
         char charHead[4];
         switch(GetSubMode())
@@ -209,11 +211,28 @@ static void RunCompass()
                 break;
             case 1:
                 sprintf (charHead, "%u", heading);
-                multiplex(charHead,dots,4);
+                if(heading/10 <10)
+                {
+                    multiplex(charHead,dotsUnder10,2);
+                }else if(heading/10 <100)
+                {
+                    multiplex(charHead,dotsUnder100,3);
+                }else{
+                    multiplex(charHead,dots,4);
+                }
                 break;
             case 2:
                 sprintf (charHead, "%u", heading);
-                multiplex(charHead,dots,4);
+                if(heading/10 <10)
+                {
+                    multiplex(charHead,dotsUnder10,2);
+                }else if(heading/10 <100)
+                {
+                    multiplex(charHead,dotsUnder100,3);
+                }else{
+                    multiplex(charHead,dots,4);
+                }
+
                 heading=heading/10;
                 toggleDirectionLight(heading);
                 break;
