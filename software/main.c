@@ -127,6 +127,9 @@ static void RunBuzzer()
         case 2:
             Gieger();
             break;
+        case 3:
+            TakeOnMe();
+            break;
         }
     }
 }
