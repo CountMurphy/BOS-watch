@@ -1,5 +1,6 @@
 #include "rtc.h"
 #include "screen.h"
+#include "switch.h"
 
 
 i2c_device_t rtc=
@@ -100,8 +101,12 @@ void printDate()
 
     char date[8] = {(month>>4)+48,(month&0xF)+48,'\0',(day>>4)+48,(day&0xF)+48,'\0',(year>>4)+48,(year&0xF)+48};
 
-    bool timeDots[8] = {0,1,0,0,1,0,0,0};
-    multiplex(date,timeDots,8);
+    //to fix low power flicker
+    while(!InterruptTriggered())
+    {
+        bool timeDots[8] = {0,1,0,0,1,0,0,0};
+        multiplex(date,timeDots,8);
+    }
 }
 
 void PrintDOW()
