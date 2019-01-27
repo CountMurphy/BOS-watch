@@ -625,7 +625,7 @@ module knob(){
     t_od=8;    // Thread outer diameter
     t_st=2.5;   // Step/traveling per turn
     t_lf=55;    // Step angle degrees
-    t_ln=18;    // Length of the threade section
+    t_ln=20.5;    // Length of the threade section
     t_rs=PI/2;  // Resolution
     t_se=1;     // Thread ends style
     t_gp=0;     // Gap between nut and bolt threads
@@ -745,15 +745,15 @@ module directionalLED(){
 
 }
 
-// translate([-13.5,28.5,17])
-// rotate([0,180,0])
-// knob();
 bottomWithClasp();
-translate([0,0,4]){
-//    board();
-};
 
-//  translate([25,36,-50]){topWithClaspAndLogo();};
+// difference(){
+// knob();
+// translate([0,0,1]){
+    // #cylinder(r=2,r=2,h=12.5);
+// };}
+
+ translate([25,36,-50]){topWithClaspAndLogo();};
 //  directionalLED();
 //  translate([25,36,-40]){top();};
 // boardBaseTop();
