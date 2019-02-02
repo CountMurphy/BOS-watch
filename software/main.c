@@ -81,25 +81,18 @@ static void RunClock(void)
 
     ReadHourMinute(&minute,&hour);
     second = ReadSecond();
-    int rtcCounter=0;
 
     while(!InterruptTriggered())
     {
         switch(GetSubMode())
         {
         case 0:
-            //Roughly 500 mils, dumb effort to save power by slowing down polling
-            if(rtcCounter>=10)
-            {
-                rtcCounter=0;
                 second = ReadSecond();
                 if(second==0x00)
                 {
                     ReadHourMinute(&minute,&hour);
                 }
-            }
             printTime(hour,minute,second);
-            rtcCounter++;
             break;
         case 1:
             printDate();
