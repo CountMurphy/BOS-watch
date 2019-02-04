@@ -4,7 +4,7 @@ Brotherhood of Steel Watch
 
 Ad Victoriam brother!
 
-The BOS watch is the second version of my GPS enabled wristwatches. Stripped of the non used features and annoyances of the [Pipman](https://www.random-hackery.net/post/pipman-gps-watch/) , the BOS watch contains all things a man travling the wastes could want
+The BOS watch is the second version of my GPS enabled wristwatches. Stripped of the non used features and annoyances of the [Pipman](https://www.random-hackery.net/post/pipman-gps-watch/) , the BOS watch contains all things a man traveling the wastes could want
 
 [Official Page](https://random-hackery.net/post/bos-watch/)
 
