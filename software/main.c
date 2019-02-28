@@ -72,6 +72,22 @@ static const clock_manager_user_config_t g_defaultClockConfigRun = {
 //     .powerModeName = kPowerModeVlpw,
 // };
 
+static bool isLowPower=false;
+
+static void AdjustPowerMode(bool islow)
+{
+    if(islow)
+    {
+        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
+    isLowPower=true;
+    }
+    else
+    {
+        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigRun);
+    isLowPower=false;
+    }
+
+}
 
 static void RunClock(void)
 {
@@ -249,11 +265,14 @@ static void PrintRawGPS()
     char N_S;
     char E_W;
 
-#if RELEASE
+#if !DEBUG
     GPSPower(true);
     WaitOnSatFix();
+    powerDisplay(true);
+    PlayAlarm();
 #endif
     GetCurrentLocation(lat,&N_S,lon,&E_W);
+    GPSPower(false);
     while(!InterruptTriggered())
     {
 
@@ -278,9 +297,11 @@ static void PrintGoogleGPS()
     char N_S;
     char E_W;
 
-#if RELEASE
+#if !DEBUG
     GPSPower(true);
     WaitOnSatFix();
+    powerDisplay(true);
+    PlayAlarm();
 #endif
     GetCurrentLocation(lat,&N_S,lon,&E_W);
     GetGoogleReadyLocation(lat,N_S,lon,E_W,&gLat,&gLon);
@@ -302,6 +323,7 @@ static void PrintGoogleGPS()
 static void RunGPS()
 {
     bool dots[3]={false,false,false};
+    bool wasLowPower=isLowPower;
 
     while(!InterruptTriggered())
     {
@@ -311,15 +333,27 @@ static void RunGPS()
             multiplex("gps",dots,3);
             break;
         case 1:
+            if(wasLowPower)
+            {
+                //UART only runs in high power mode
+                AdjustPowerMode(false);
+            }
             PrintRawGPS();
             break;
         case 2:
             //print google ready
+            if(wasLowPower)
+            {
+                AdjustPowerMode(false);
+            }
             PrintGoogleGPS();
             break;
         }
     }
-    GPSPower(false);
+    if(wasLowPower)
+    {
+        AdjustPowerMode(true);
+    }
 }
 
 static void RunPewPew()
@@ -341,18 +375,7 @@ static void RunPewPew()
     FirnMahLaser(false);
 }
 
-static void AdjustPowerMode(bool islow)
-{
-    if(islow)
-    {
-        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigVlpr);
-    }
-    else
-    {
-        CLOCK_SYS_SetConfiguration(&g_defaultClockConfigRun);
-    }
 
-}
 
 static void RunStandBy()
 {
@@ -523,7 +546,7 @@ static void RunStopWatch()
             //countdown
             milisecond=59;
             SetCountDownTime(&hour,&minute,&second);
-	    //If you're reading this, you've been in a coma for almost 20 years now. We're trying a new technique. We don't know where this message will end up in your dream, but we hope it works. Please wake up, we miss you.
+            //If you're reading this, you've been in a coma for almost 20 years now. We're trying a new technique. We don't know where this message will end up in your dream, but we hope it works. Please wake up, we miss you.
             while(!InterruptTriggered())
             {
                 CreateStopWatchString(countedTime,hour,minute,second);
@@ -568,6 +591,7 @@ int main (void)
     SwitchInit();
     laserInit();
     CompassInit();
+    GPSInit();
     //lights init
     GPIO_DRV_OutputPinInit(&LED_North);
     GPIO_DRV_OutputPinInit(&LED_South);
@@ -589,13 +613,13 @@ int main (void)
         }
     }
 
+#if !DEBUG
     //turn on gps
     GPSPower(true);
+#endif
 
 
     WaitOnSatFix();
-    //turn on UART
-    GPSInit();
     uint8_t minute;
     uint8_t second;
     uint8_t hour;
@@ -630,6 +654,7 @@ int main (void)
         //spin it down, turn off display
         AdjustPowerMode(true);
         powerDisplay(false);
+        isLowPower=true;
         while(!InterruptTriggered())
         {
             //idle

@@ -31,14 +31,14 @@ uart_user_config_t g_uartConfig= {
 
 void GPSInit()
 {
+    GPIO_DRV_OutputPinInit(&GPSEnable);
+    GPIO_DRV_InputPinInit(&SatFix);
     UART_DRV_Init(2u, &g_uartState, &g_uartConfig);
 }
 
 
 void GPSPower(bool power)
 {
-    GPIO_DRV_OutputPinInit(&GPSEnable);
-    GPIO_DRV_InputPinInit(&SatFix);
     GPIO_DRV_WritePinOutput(GPSEnable.pinName,power?0:1);
 }
 
@@ -51,16 +51,16 @@ uint8_t ReadChar()
 
 void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uint8_t *month,uint8_t *year,uint32_t *lon,char *direction)
 {
-    #if DEBUG
-        char GPRMC[100] = "$GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
-        char GPGGA[100] = "$GPGGA,015833.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
-    #else
-        uint8_t NMEACount = 100;
-        char GPRMC[NMEACount];
-        char GPGGA[NMEACount];
-        GetGPGGA(NMEACount,GPGGA);
-        GetGPRMC(NMEACount,GPRMC);
-    #endif
+#if DEBUG
+    char GPRMC[100] = "$GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
+    char GPGGA[100] = "$GPGGA,015833.000,3000.0000,N,09000.0000,W,1,04,3.21,171.0,M,-22.6,M,,*5B\r\n";
+#else
+    uint8_t NMEACount = 100;
+    char GPRMC[NMEACount];
+    char GPGGA[NMEACount];
+    GetGPGGA(NMEACount,GPGGA);
+    GetGPRMC(NMEACount,GPRMC);
+#endif
 
     char hourChar[2];
     hourChar[0]=GPGGA[7];
@@ -86,20 +86,20 @@ void ParseNMEA(uint8_t *minutes,uint8_t *hours,uint8_t *seconds,uint8_t *day,uin
 
     for(int i=0;i<100;i++)
     {
-	    if(GPRMC[i]==',')
-	    {
-		    commaHit++;
-	    }
-	    if(commaHit==9)
-	    {
-		    startingParsePoint=i;
-		    break;
-	    }
-	    if(GPRMC[i]=='\r')
-	    {
-		    //something went horridly wrong
-		    break;
-	    }
+        if(GPRMC[i]==',')
+        {
+            commaHit++;
+        }
+        if(commaHit==9)
+        {
+            startingParsePoint=i;
+            break;
+        }
+        if(GPRMC[i]=='\r')
+        {
+            //something went horridly wrong
+            break;
+        }
     }
 
     char dayChar[2];
@@ -189,6 +189,7 @@ void GetGPGGA(uint8_t NMEACount, char *GPGGA)
 
 void WaitOnSatFix()
 {
+    //set all segments to '8'
     uint8_t gpsWait[2]={0x00,0xFF};
     rawWriteToScreen(gpsWait);
     bool lastValue=GPIO_DRV_ReadPinInput(SatFix.pinName);
@@ -205,9 +206,9 @@ void WaitOnSatFix()
             count=0;
         }
         //Sat Fix detection
-        #if DEBUG
-            count=8;
-        #endif
+#if DEBUG
+        count=8;
+#endif
         if(count==8)
         {
             return;
@@ -230,12 +231,12 @@ void WaitOnSatFix()
 
 void GetCurrentLocation(char *lat, char *N_S,char*lon, char *E_W)
 {
-    #if DEBUG
-        char GPRMC[100] = "\002GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
-    #else
-        char GPRMC[100];
-        GetGPRMC(100,GPRMC);
-    #endif
+#if DEBUG
+    char GPRMC[100] = "$GPRMC,193811.000,A,3000.0000,N,09000.0000,W,0.60,60.68,210418,,,A*4B\r\n";
+#else
+    char GPRMC[100];
+    GetGPRMC(100,GPRMC);
+#endif
     lon[0]=GPRMC[32];
     lon[1]=GPRMC[33];
     lon[2]=GPRMC[34];
@@ -337,7 +338,7 @@ int8_t GetLocalTimeZoneOffset(uint32_t lon, char direction)
     if (lon <=11 && lon >=0)
         offset=0;
 
-  if (direction=='W')
-    offset*=(-1);
-  return offset;
+    if (direction=='W')
+        offset*=(-1);
+    return offset;
 }
