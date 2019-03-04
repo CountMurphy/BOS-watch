@@ -12,14 +12,14 @@ module board(){
                 }
             }
         };
-    
-    //GPS
+
+        //GPS
         translate([63.05,23,1.6]){
             color([1,0,1]){
-            cube([15.13,15.13,5]);}
+                cube([15.13,15.13,5]);}
         };
     };
-    
+
     //LEDS
     translate([71.39,16.80,1.6]){
         color([1,1,1]){
@@ -31,7 +31,7 @@ module board(){
             cylinder(h=8.1,r=2.5);
         }
     };
-     translate([65.80,11.3,1.6]){
+    translate([65.80,11.3,1.6]){
         color([1,1,1]){
             cylinder(h=8.1,r=2.5);
         }
@@ -63,21 +63,21 @@ module board(){
     rotate([90,0,90]){
         translate([45.21,4,75.24]){
             minkowski() {
-                    linear_extrude(5.56)
-                        polygon([[-7.25/2,0], [7.25/2,0],
-                                [7.25/2,-1], [5.25/2,-2.3],
-                                [-5.25/2,-2.3], [-7.25/2,-1]]);
-                    cylinder(r=0.5, h=1);
+                linear_extrude(5.56)
+                    polygon([[-7.25/2,0], [7.25/2,0],
+                            [7.25/2,-1], [5.25/2,-2.3],
+                            [-5.25/2,-2.3], [-7.25/2,-1]]);
+                cylinder(r=0.5, h=1);
             }    
-      }
-     }
+        }
+    }
     //screen
     translate([25.8,14.33,1.6]){
         color([1,0,0]){
             cube([30.90,8.43,5.25]);
         };
     };
-    
+
     //toggles
     translate([11,17.32,1.6]){
         color([0,0,1]){
@@ -92,7 +92,7 @@ module board(){
             };
         };
     };
-    
+
     translate([11,11.96,1.6]){
         color([0,0,1]){
             union(){
@@ -136,10 +136,10 @@ module board(){
     translate([64.23,48.92,1.6,]){
         union(){
             color([0,0,1]){
-            cube([10.12,3.80,(6.86-1.6)]);
-            translate([3.80,3.8,2.5])
-                cube([1.90,4.82,2.03]);
-        }}
+                cube([10.12,3.80,(6.86-1.6)]);
+                translate([3.80,3.8,2.5])
+                    cube([1.90,4.82,2.03]);
+            }}
     }
     //bat
     translate([44.38,44.01,1.6]){
@@ -162,7 +162,7 @@ module board(){
 }
 
 module boardBaseOnly(){
-        union(){
+    union(){
         linear_extrude(5.6){  //got to exagerate to make hole in bottom
             translate([-1.5,-1.5,0]){
                 square(size=[82.74,55.62]);
@@ -171,41 +171,41 @@ module boardBaseOnly(){
                 }
             }
         };
-            //laser
-    translate([8.15,53.35+40,(6.42-1.6-(5.9/2))]){
-        color([1,0,0]){
-            rotate([90,90,0]) {
-                cylinder(r=(7.4/2),h=50);
+        //laser
+        translate([8.15,53.35+40,(6.42-1.6-(5.9/2))]){
+            color([1,0,0]){
+                rotate([90,90,0]) {
+                    cylinder(r=(7.4/2),h=50);
+                };
             };
         };
-    };
-    //power switch
-    translate([64.23,48.92,1.6,]){
-        union(){
-            color([0,0,1]){
-            cube([10.12,3.80,(6.86-1.6)]);
-            translate([3.80,3.8,2.5])
-                cube([1.90,4.82,2.03]);
-        }}
-    };
-    
+        //power switch
+        translate([64.23,48.92,1.6,]){
+            union(){
+                color([0,0,1]){
+                    cube([10.12,3.80,(6.86-1.6)]);
+                    translate([3.80,3.8,2.5])
+                        cube([1.90,4.82,2.03]);
+                }}
+        };
+
         //usb
-    rotate([90,0,90]){
-        translate([45.21,4,75.24]){
-            minkowski() {
+        rotate([90,0,90]){
+            translate([45.21,4,75.24]){
+                minkowski() {
                     linear_extrude(15.56)
                         polygon([[-7.25/2,0], [7.25/2,0],
                                 [7.25/2,-1], [5.25/2,-2.3],
                                 [-5.25/2,-2.3], [-7.25/2,-1]]);
                     cylinder(r=0.5, h=1);
-            }    
-      }
-     }
+                }    
+            }
+        }
     };
 }    
 
 module boardBaseTop(){
-     union(){
+    union(){
         linear_extrude(1.6){  
             difference(){
                 square(size=[81.24,53.12]);
@@ -214,14 +214,14 @@ module boardBaseTop(){
                 }
             }
         };
-    
-    //GPS
+
+        //GPS
         translate([63.05-5.5,19,1.6]){
             color([1,0,1]){
-            cube([20.63,25.63,5]);}
+                cube([20.63,25.63,5]);}
         };
     };
-    
+
     //LEDS
     translate([71,11,1]){
         //led group hole
@@ -243,7 +243,7 @@ module boardBaseTop(){
             }
         }
     };
-     translate([65.80,11.3,1.6]){
+    translate([65.80,11.3,1.6]){
         color([1,1,1]){
             rotate([0,0,180]){
                 cylinder(h=12,r=3,$fn=3);
@@ -264,7 +264,7 @@ module boardBaseTop(){
     };
 
 
-     //laser
+    //laser
     translate([9.15,53.35+40,(6.42-1.6-(5.9/2))]){
         color([1,0,0]){
             rotate([90,90,0]) {
@@ -273,31 +273,31 @@ module boardBaseTop(){
         };
     };
 
-        //usb
+    //usb
     rotate([90,0,90]){
         translate([45.21,4,75.24]){
             minkowski() {
-                    #linear_extrude(15.56)
-                        polygon([[-10.25/2,0], [10.25/2,0],
-                                [10.25/2,-1], [8.25/2,-5.3],
-                                [-8.25/2,-5.3], [-10.25/2,-1]]);
-                    cylinder(r=.5, h=1);
+#linear_extrude(15.56)
+                polygon([[-10.25/2,0], [10.25/2,0],
+                        [10.25/2,-1], [8.25/2,-5.3],
+                        [-8.25/2,-5.3], [-10.25/2,-1]]);
+                cylinder(r=.5, h=1);
             }    
-      }
-     }
+        }
+    }
     //screen
     translate([24.8,14.33,1.6]){
         color([1,0,0]){
             cube([31.90,8.43,10.25]);
         };
     };
-    
+
     //toggles
     translate([11,.5,1.6]){
         cube([10,22,7.54]);
     }
-    
-    
+
+
     //compass
     translate([1.5,23.5,2.5]){
         cube([13.5,32,2.5]);
@@ -306,10 +306,10 @@ module boardBaseTop(){
     translate([62,48.92,1.6,]){
         union(){
             color([0,0,1]){
-            #cube([11.62,15.80,(6.86-1.6)]);
-            translate([3.80,3.8,2.5])
-                cube([1.90,4.82,2.03]);
-        }}
+#cube([11.62,15.80,(6.86-1.6)]);
+                translate([3.80,3.8,2.5])
+                    cube([1.90,4.82,2.03]);
+            }}
     }
     //bat
     translate([42.84-5,44.01,1.6]){
@@ -319,14 +319,14 @@ module boardBaseTop(){
     }
     //rtc?
     translate([27.58,26.57,3]){
-        #cube([47.8,18.63,5]);
+#cube([47.8,18.63,5]);
     }
     //SWD pins
     translate([12.5,44.33,1.6]){
         cube([4.5,9.78,7.73]);
     }
     translate([14.5,41.33,3]){
-        #cube([2.5,5,2]);
+#cube([2.5,5,2]);
     }
     //ir
     translate([22.5,53.10-5.44,1.6]){
@@ -335,76 +335,76 @@ module boardBaseTop(){
 }
 
 module pins(){
-            color([0,1,0]){
-            //Create Pins
-            union(){
-                translate([25,10,-2]){
-                    rotate([0,90,0]){
-                        translate([4,0,0]){
-                            //pin
-                            cylinder(r=4.82/2,h=30.39);
-                        }
+    color([0,1,0]){
+        //Create Pins
+        union(){
+            translate([25,10,-2]){
+                rotate([0,90,0]){
+                    translate([4,0,0]){
+                        //pin
+                        cylinder(r=4.82/2,h=30.39);
                     }
-                    translate([-1.5,0,-7]){
-                        rotate([0,0,45]){
-                            cylinder(9,2,7,$fn=4);
-                        }
+                }
+                translate([-1.5,0,-7]){
+                    rotate([0,0,45]){
+                        cylinder(9,2,7,$fn=4);
                     }
-                    translate([32,0,-7]){
-                        rotate([0,0,45]){
-                            cylinder(9,2,7,$fn=4);
-                        }
+                }
+                translate([32,0,-7]){
+                    rotate([0,0,45]){
+                        cylinder(9,2,7,$fn=4);
                     }
                 }
             }
         }
+    }
 }
 
 module bottom(){
-    
+
     difference(){
-    union(){
-        //battery walls
-        translate([58.5+2.5/2,16.5-2.5/2,-4.2-.5]){
-            rotate([0,0,90]){
-                // cube([24.5,36.4,5.5]);
-                #cube([28,39.9,7.2]);
-            }
-        };
         union(){
-            color([1,0,1]){
-            difference(){
-                linear_extrude(7){
+            //battery walls
+            translate([58.5+2.5/2,16.5-2.5/2,-4.2-.5]){
+                rotate([0,0,90]){
+                    // cube([24.5,36.4,5.5]);
+#cube([28,39.9,7.2]);
+                }
+            };
+            union(){
+                color([1,0,1]){
                     difference(){
-                        hull(){
-                            circle(r=3);
-    
-                            translate([0,53.12,0]){
-                                circle(r=3);
-                            }
-                            translate([80.24,53.12,0]){
-                                circle(r=3);
-                            }
-                            translate([80.24,0,0]){
-                                circle(r=3);
+                        linear_extrude(7){
+                            difference(){
+                                hull(){
+                                    circle(r=3);
+
+                                    translate([0,53.12,0]){
+                                        circle(r=3);
+                                    }
+                                    translate([80.24,53.12,0]){
+                                        circle(r=3);
+                                    }
+                                    translate([80.24,0,0]){
+                                        circle(r=3);
+                                    }
+                                };
+                                translate([19.90,-3,0]){
+                                    polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
+                                };
                             }
                         };
-                    translate([19.90,-3,0]){
-                        polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
+                        translate([0,0,4]){
+                            boardBaseOnly();
+                        };
                     };
-                    }
                 };
-                translate([0,0,4]){
-                    boardBaseOnly();
-                };
-            };
-            };
-            pins();
-            translate([0,40,0]){
                 pins();
-            };
-        }
-    }//bat union
+                translate([0,40,0]){
+                    pins();
+                };
+            }
+        }//bat union
         {
             //wire trench
             translate([58.5,27,1]){
@@ -427,7 +427,7 @@ module bottom(){
                 }
             }
         }
-        
+
     }
 }
 
@@ -442,7 +442,7 @@ module bottomForHollow(){
                         translate([-.5,0,0]){
                             circle(r=3);
                         }
-    
+
                         translate([-0.5,53.62,0]){
                             circle(r=3);
                         }
@@ -453,9 +453,9 @@ module bottomForHollow(){
                             circle(r=3);
                         }
                     };
-                translate([19.90,-3,0]){
-                    polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
-                };
+                    translate([19.90,-3,0]){
+                        polygon(points=[[0,0],[43.22,0],[33.72,7.89],[10.20,7.89]]);
+                    };
                 }
             };
         };
@@ -469,113 +469,118 @@ module bottomForHollow(){
 
 module bottomWithClasp(){
     union(){
-        bottom();
-        difference(){
-            translate([-13,28.5,0]){
-                union(){
-                    color([0,1,0]){
-                        cylinder(r=5.5,h=4,$fn=100);
-                        translate([0,-5.5,0])
-                        cube([10,11,4]);
+        union(){
+            bottom();
+            difference(){
+                translate([-13,28.5,0]){
+                    union(){
+                        color([0,1,0]){
+                            cylinder(r=5.5,h=4,$fn=100);
+                            translate([0,-5.5,0])
+                                cube([10,11,4]);
+                        }
                     }
                 }
-            }
-            {
-                translate([-13.5,28.5,17])
-                rotate([0,180,0])
-                threadWithMoreSpace();
-            }
-        }   
+                {
+                    translate([-13.5,28.5,17])
+                        rotate([0,180,0])
+                        threadWithMoreSpace();
+                }
+            }   
+        }
+        translate([70,56,0]){
+            cube([2,.5,6.6]);
+        }
     }
 }
 
 module top(){
     union(){
-    difference(){
-    difference(){
-   color([1,1,0]){
-       union(){
-       difference(){
-       hull(){
-          //Bezel thing
-            translate([-5,0,4.5]){
-              difference(){ 
-               rotate([0,90,0]){
-                   cylinder(r=60,h=50,$fn=100);
-               };
-               translate([-50,-80,-83]){
-                   cube([125,225,140]);
-               }
-           };
-      
-            }
-            //hull Pegs
-            translate([-28,-40.5,50]){
-                cylinder(r=2,h=7.52);
-            };
-            translate([-28,-32+.7+53.12,50]){
-                cylinder(r=2,h=7.52);
-            };
-            translate([-22+80.24,-40-.7,50]){
-                cylinder(r=2,h=7.52);
-            };
-            translate([-22+80.24,-31+53.12,50]){
-                cylinder(r=2,h=7.52);
-            };
-        }
-
-        linear_extrude(100){
-        translate([-5,-40,-10]){
-                    polygon(points=[[-10,-10],[53.22,-9],[33.72,7.89],[10.20,7.89]]);
-                };
-    
-        }
-   }
-   //add led circle here
-   translate([46,-25,59])
-   {
-       cylinder(r=10,h=7,$fn=100);
-   }
-   }//union
-         //laser thing
-        translate([-15.82,22,57]){
-            difference(){
-                rotate([90,0,0]){
-                    cylinder(r=5,h=15,$fn=100);
-                };
-                translate([-10,-16,-13]){
-                    cube([17,18,15]);
-                }
-            };
-        };
-    }
-
-    translate([-25,-36,53.95]){
-        boardBaseTop();
-    }
-    }//hole diff
-    
-    translate([-25,-36,48])
-    {
-        bottomForHollow();
-    }
-    }//hollow diff
-    translate([-9.25,-33.5,-8.7]){
         difference(){
             difference(){
-                translate([-1,52.5,70]){
-                    rotate([90,0,0])
-                        cylinder(r=3.5,h=11,$fn=100);
+                color([1,1,0]){
+                    union(){
+                        difference(){
+                            hull(){
+                                //Bezel thing
+                                translate([-5,0,4.5]){
+                                    difference(){ 
+                                        rotate([0,90,0]){
+                                            cylinder(r=60,h=50,$fn=100);
+                                        };
+                                        translate([-50,-80,-83]){
+                                            cube([125,225,140]);
+                                        }
+                                    };
+
+                                }
+                                //hull Pegs
+                                translate([-28,-40.5,50]){
+                                    cylinder(r=2,h=7.52);
+                                };
+                                translate([-28,-32+.7+53.12,50]){
+                                    cylinder(r=2,h=7.52);
+                                };
+                                translate([-22+80.24,-40-.7,50]){
+                                    cylinder(r=2,h=7.52);
+                                };
+                                translate([-22+80.24,-31+53.12,50]){
+                                    cylinder(r=2,h=7.52);
+                                };
+                            }
+
+                            linear_extrude(100){
+                                translate([-5,-40,-10]){
+                                    polygon(points=[[-10,-10],[53.22,-9],[33.72,7.89],[10.20,7.89]]);
+                                };
+
+                            }
+                        }
+                        //add led circle here
+                        translate([46,-25,59])
+                        {
+                            cylinder(r=10,h=7,$fn=100);
+                        }
+                    }//union
+                    //laser thing
+                    translate([-15.82,22,57]){
+                        difference(){
+                            rotate([90,0,0]){
+                                cylinder(r=5,h=15,$fn=100);
+                            };
+                            translate([-10,-16,-13]){
+                                cube([17,18,15]);
+                            }
+                        };
+                    };
                 }
-                translate([-1,51.5,70]){
-                    rotate([90,0,0])
-                        cylinder(r=3,h=9.5,$fn=100);
+
+                translate([-25,-36,53.95]){
+                    boardBaseTop();
                 }
+            }//hole diff
+
+            translate([-25,-36,48])
+            {
+                bottomForHollow();
             }
-            translate([-3,41,65])
-                cube([6,10,4]);
+        }//hollow diff
+        translate([-9.25,-33.5,-8.7]){
+            difference(){
+                difference(){
+                    translate([-1,52.5,70]){
+                        rotate([90,0,0])
+                            cylinder(r=3.5,h=11,$fn=100);
+                    }
+                    translate([-1,51.5,70]){
+                        rotate([90,0,0])
+                            cylinder(r=3,h=9.5,$fn=100);
+                    }
+                }
+                translate([-3,41,65])
+                    cube([6,10,4]);
+            }
         }
-    }
     }//uu
 
 }
@@ -583,35 +588,35 @@ module top(){
 //
 
 module topWithClasp(){
-        difference(){
-            union(){
-                top();
-                translate([-38.5,-7.5,50]){
-                    difference(){
-                        union(){
-                            cylinder(r=8,h=7,$fn=100);
-                            translate([0,-7.5,0])
+    difference(){
+        union(){
+            top();
+            translate([-38.5,-7.5,50]){
+                difference(){
+                    union(){
+                        cylinder(r=8,h=7,$fn=100);
+                        translate([0,-7.5,0])
                             cube([10,15,7]);
-                        }
-                        translate([0,0,17])
+                    }
+                    translate([0,0,17])
                         rotate([0,180,0])
                         threadWithMoreSpace();
-                    }
-
-                }   
-            }
-            { 
-                translate([-38.5,-7.5,50]){
-                    cylinder(r=6,h=4,$fn=100);
-                    translate([0,-6,0])
-                    cube([11,12,4]);
                 }
+
+            }   
+        }
+        { 
+            translate([-38.5,-7.5,50]){
+                cylinder(r=6,h=4,$fn=100);
+                translate([0,-6,0])
+                    cube([11,12,4]);
             }
-        };
+        }
+    };
 }
 
 module logoDiff(){
- //add logo
+    //add logo
     difference(){
         translate([9,-5,62]){
             logo();
@@ -635,22 +640,22 @@ module knob(){
     {
         union()
         {
-             k_cyl_hg=10;   // Knurled cylinder height
-    k_cyl_od=15.5;   // Knurled cylinder outer* diameter
+            k_cyl_hg=10;   // Knurled cylinder height
+            k_cyl_od=15.5;   // Knurled cylinder outer* diameter
 
-    knurl_wd=3;      // Knurl polyhedron width
-    knurl_hg=3;      // Knurl polyhedron height
-    knurl_dp=1.5;    // Knurl polyhedron depth
+            knurl_wd=3;      // Knurl polyhedron width
+            knurl_hg=3;      // Knurl polyhedron height
+            knurl_dp=1.5;    // Knurl polyhedron depth
 
-    e_smooth=1;      // Cylinder ends smoothed height
-    s_smooth=0;      // [ 0% - 100% ] Knurled surface smoothing amount
+            e_smooth=1;      // Cylinder ends smoothed height
+            s_smooth=0;      // [ 0% - 100% ] Knurled surface smoothing amount
 
-    knurled_cyl(k_cyl_hg, k_cyl_od, 
-                knurl_wd, knurl_hg, knurl_dp, 
-                e_smooth, s_smooth);
+            knurled_cyl(k_cyl_hg, k_cyl_od, 
+                    knurl_wd, knurl_hg, knurl_dp, 
+                    e_smooth, s_smooth);
 
             translate([0,0,b_hg])
-              screw_thread(t_od+t_gp, t_st, t_lf, t_ln, t_rs, t_se);
+                screw_thread(t_od+t_gp, t_st, t_lf, t_ln, t_rs, t_se);
         }
 
     }
@@ -670,22 +675,22 @@ module threadWithMoreSpace(){
     {
         union()
         {
-             k_cyl_hg=10;   // Knurled cylinder height
-    k_cyl_od=15.5;   // Knurled cylinder outer* diameter
+            k_cyl_hg=10;   // Knurled cylinder height
+            k_cyl_od=15.5;   // Knurled cylinder outer* diameter
 
-    knurl_wd=3;      // Knurl polyhedron width
-    knurl_hg=3;      // Knurl polyhedron height
-    knurl_dp=1.5;    // Knurl polyhedron depth
+            knurl_wd=3;      // Knurl polyhedron width
+            knurl_hg=3;      // Knurl polyhedron height
+            knurl_dp=1.5;    // Knurl polyhedron depth
 
-    e_smooth=1;      // Cylinder ends smoothed height
-    s_smooth=0;      // [ 0% - 100% ] Knurled surface smoothing amount
+            e_smooth=1;      // Cylinder ends smoothed height
+            s_smooth=0;      // [ 0% - 100% ] Knurled surface smoothing amount
 
-    knurled_cyl(k_cyl_hg, k_cyl_od, 
-                knurl_wd, knurl_hg, knurl_dp, 
-                e_smooth, s_smooth);
+            knurled_cyl(k_cyl_hg, k_cyl_od, 
+                    knurl_wd, knurl_hg, knurl_dp, 
+                    e_smooth, s_smooth);
 
             translate([0,0,b_hg])
-              screw_thread(t_od+t_gp, t_st, t_lf, t_ln, t_rs, t_se);
+                screw_thread(t_od+t_gp, t_st, t_lf, t_ln, t_rs, t_se);
         }
 
     }
@@ -694,7 +699,7 @@ module threadWithMoreSpace(){
 module logo() {
     linear_extrude(10) {
         scale(.15)
-        import("outfile.dxf");
+            import("outfile.dxf");
     }
 }
 
@@ -729,7 +734,7 @@ module directionalLED(){
             }
         }
     };
-     translate([65.80,11.3,1.6]){
+    translate([65.80,11.3,1.6]){
         color([1,1,1]){
             rotate([0,0,180]){
                 cylinder(h=2.5,r=2.5,$fn=3);
@@ -745,16 +750,26 @@ module directionalLED(){
 
 }
 
+//Uncomment the following to render parts
+
+//The Bottom
 bottomWithClasp();
+
+//The Screw
 
 // difference(){
 // knob();
 // translate([0,0,1]){
-    // #cylinder(r=2,r=2,h=12.5);
+// #cylinder(r=2,r=2,h=12.5);
 // };}
 
- translate([25,36,-50]){topWithClaspAndLogo();};
+//The Top
+translate([25,36,-50]){topWithClaspAndLogo();};
+
+//LED Cover
 //  directionalLED();
+
+//Garbage debug stuff:
 //  translate([25,36,-40]){top();};
 // boardBaseTop();
 
