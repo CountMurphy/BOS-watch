@@ -2,10 +2,11 @@
 #include "fsl_i2c_master_driver.h"
 #include "compass.h"
 
-#define DATA_LENGTH             6
+#define DATA_LENGTH             64
 #define BOARD_I2C_INSTANCE      0
 
 // Buffer store data to send to slave
+uint8_t txBuff[DATA_LENGTH] = {0};
 // Buffer store data to receive from slave
 uint8_t rxBuff[DATA_LENGTH] = {0};
 
@@ -26,7 +27,6 @@ void CompassInit()
 
 uint16_t GetHeading()
 {
-    uint8_t txBuff[DATA_LENGTH] = {0};
    // Master sends 1 bytes CMD and data to slave
     txBuff[0]=0x50;
 
@@ -42,25 +42,8 @@ uint16_t GetHeading()
     return heading;
 }
 
-uint16_t GetPitch()
-{
-    uint8_t txBuff[DATA_LENGTH] = {0};
-    txBuff[0]=0x55;
-
-    //Get Tilt Data
-    I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
-
-    OSA_TimeDelay(1);
-
-
-    I2C_DRV_MasterReceiveDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, rxBuff, 6, 1000);
-    uint16_t pitch=rxBuff[0]<<8 | rxBuff[1];
-    return pitch;
-}
-
 void StndBy()
 {
-    uint8_t txBuff[DATA_LENGTH] = {0};
     txBuff[0]=0x83;
 
     I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);
@@ -68,7 +51,6 @@ void StndBy()
 
 void Resume()
 {
-    uint8_t txBuff[DATA_LENGTH] = {0};
     txBuff[0]=0x84;
 
     I2C_DRV_MasterSendDataBlocking(BOARD_I2C_INSTANCE, &compass, NULL, 0, txBuff, 1, 1000);

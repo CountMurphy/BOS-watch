@@ -98,10 +98,8 @@ static void RunClock(void)
     ReadHourMinute(&minute,&hour);
     second = ReadSecond();
 
-    Resume();
     while(!InterruptTriggered())
     {
-        uint16_t pitch=GetPitch();
         switch(GetSubMode())
         {
         case 0:
@@ -110,14 +108,7 @@ static void RunClock(void)
                 {
                     ReadHourMinute(&minute,&hour);
                 }
-                //Battery saver. Display on request
-                if(pitch>=250&& pitch<= 500)
-                {
-                    powerDisplay(1);
-                    printTime(hour,minute,second);
-                }else{
-                    powerDisplay(0);
-                }
+            printTime(hour,minute,second);
             break;
         case 1:
             printDate();
@@ -127,7 +118,6 @@ static void RunClock(void)
             break;
         }
     }
-    StndBy();
 }
 
 static void RunBuzzer()
