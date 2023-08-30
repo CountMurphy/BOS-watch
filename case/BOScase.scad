@@ -469,28 +469,23 @@ module bottomForHollow(){
 
 module bottomWithClasp(){
     union(){
-        union(){
-            bottom();
-            difference(){
-                translate([-13,28.5,0]){
-                    union(){
-                        color([0,1,0]){
-                            cylinder(r=5.5,h=4,$fn=100);
-                            translate([0,-5.5,0])
-                                cube([10,11,4]);
-                        }
+        bottom();
+        difference(){
+            translate([-13,28.5,0]){
+                union(){
+                    color([0,1,0]){
+                        cylinder(r=5.5,h=4,$fn=100);
+                        translate([0,-5.5,0])
+                            cube([10,11,4]);
                     }
                 }
-                {
-                    translate([-13.5,28.5,17])
-                        rotate([0,180,0])
-                        threadWithMoreSpace();
-                }
-            }   
-        }
-        translate([70,56,0]){
-            cube([2,.5,6.6]);
-        }
+            }
+            {
+                translate([-13.5,28.5,17])
+                    rotate([0,180,0])
+                    threadWithMoreSpace();
+            }
+        }   
     }
 }
 
@@ -710,6 +705,9 @@ module topWithClaspAndLogo(){
             logoDiff();
         }
     }
+    translate([58.5,-10,50]){
+        cube([.5,5,3]);
+    }
 }
 
 module directionalLED(){
@@ -750,10 +748,16 @@ module directionalLED(){
 
 }
 
+module dockingNub(){
+    translate([65,56,0]){
+        cube([5,.5,7.5]);
+    }
+}
+
 //Uncomment the following to render parts
 
 //The Bottom
-bottomWithClasp();
+//union(){dockingNub();bottomWithClasp();}
 
 //The Screw
 
